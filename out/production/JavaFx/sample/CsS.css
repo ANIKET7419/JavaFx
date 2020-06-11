@@ -1,0 +1,28 @@
+@keyframes animation1{
+
+0%{
+
+	-fx-background-color: red;
+}
+100%{
+	-fx-background-color: white;
+}
+
+}
+#id{
+-fx-animation-name: animation1;
+-fx-animation-iteration-count: infinite;
+-fx-animation-direction: normal;
+-fx-animation-timing-function: ease;
+-fx-animation-duration: 4s;
+
+
+
+}
+
+#id:hover
+{
+-fx-background-color:red;
+
+
+}
