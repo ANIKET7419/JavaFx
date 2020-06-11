@@ -31,8 +31,8 @@ public class Matrix_M {
      Matrix_handler handler=new Matrix_handler();
      System.out.println("Enter Size");
         Scanner scanner=new Scanner(System.in);
-        int n;
-        n=scanner.nextInt();
+
+      int n=scanner.nextInt();
         int data[]=new int[n];
         System.out.println("Enter data");
         for (int i=0;i<n;i++)
