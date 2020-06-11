@@ -1,6 +1,5 @@
 package Comp_P;
 import java.util.Scanner;
-
 class  Matrix_handler
 {
     int data[];
