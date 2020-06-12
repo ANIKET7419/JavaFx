@@ -1,20 +1,30 @@
 package Comp_P;
 import java.util.Scanner;
 class Solution {
-    public double myPow(double x, int n) {
-        if(n==0)
+    int hit=0;
+    public double myPow(double x, long n) {
+
+        if(n<0)
         {
-            return 1;
+                n = -n;
+            x=1/x;
         }
-        double temp=myPow(x,n/2);
-        if(n%2==0)
+            if (n == 0) {
+                return 1;
+            }
+            double temp = myPow(x, n / 2);
+            if (n % 2 == 0) {
+                return temp * temp;
+            } else {
+                return x * temp * temp;
+            }
+
+       /* else
         {
-            return temp*temp;
-        }
-        else
-        {
-            return x*temp*temp;
-        }
+            hit++;
+            return 1/(myPow(x,-n));
+
+        }*/
     }
 }
 public class Main_1
@@ -22,12 +32,14 @@ public class Main_1
     public static void main(String argc[])
     {
         double x;
-        int n;
+        long n;
         Scanner scanner=new Scanner(System.in);
         x=scanner.nextDouble();
         n=scanner.nextInt();
         Solution object=new Solution();
-        System.out.println(object.myPow(x,n));
+
+
+            System.out.println(object.myPow(x, n));
         System.out.println(Math.pow(x,n));
 
     }
