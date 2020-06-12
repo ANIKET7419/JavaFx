@@ -1,7 +1,4 @@
 package Comp_P;
-
-import java.sql.Array;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
 
 class Solution_Set {
