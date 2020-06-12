@@ -19,12 +19,7 @@ class Solution {
                 return x * temp * temp;
             }
 
-       /* else
-        {
-            hit++;
-            return 1/(myPow(x,-n));
 
-        }*/
     }
 }
 public class Main_1
