@@ -10,6 +10,18 @@ class merging_handler
         this.first=first;
         this.second=second;
     }
+    void display()
+    {
+        for (int i=0;i<first.length;i++)
+        {
+            System.out.print(first[i]+" , ");
+        }
+        for (int i=0;i<second.length;i++)
+        {
+            System.out.print(second[i]+ " , ");
+        }
+        System.out.println();
+    }
     void merging()
     {
         boolean flag=true;  //it is for the turn of array if it is true then it represents first otherwise second
@@ -91,14 +103,6 @@ public class merging_withoutextraspace {
         }
         handler.input(first,second);
         System.out.println("Result After Merging");
-        for (int i=0;i<m;i++)
-        {
-            System.out.print(first[i]+" , ");
-        }
-        for (int i=0;i<n;i++)
-        {
-            System.out.print(second[i]+ " , ");
-        }
-        System.out.println();
+        handler.display();
     }
 }
