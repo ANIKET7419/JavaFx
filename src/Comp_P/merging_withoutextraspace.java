@@ -24,25 +24,9 @@ class merging_handler
     }
     void merging()
     {
-        boolean flag=true;  //it is for the turn of array if it is true then it represents first otherwise second
-        for(int i=1;i<first.length+second.length;i++)
+        for(int i=0;i<second.length;i++)
         {
-            if(i>=first.length)
-                flag=false;
-            if(flag)
-            {
                 int j=i;
-                int key=first[j];
-                while (j>0&&key<first[j-1])
-                {
-                    first[j]=first[j-1];
-                    j--;
-                }
-                first[j]=key;
-            }
-            else
-            {
-                int j=i-first.length;
                 int key=second[j];
                 boolean general_flag=true;
                 if(key<second[first.length+j-1])
@@ -63,16 +47,35 @@ class merging_handler
 
                     }
                     j--;
+                    if(j<0)
+                    {
+                        first[first.length+j-1]=key;
+                        if(key<first[first.length+j-1])
+                        {
+                            general_flag=true;
+                        }
+                        else
+                        {
+                            general_flag=false;
+                        }
+                    }
+                    else
+                    {
+                        second[j]=key;
+                        if(key<second[j-1])
+                        {
+                            general_flag=true;
+                        }
+                        else
+                        {
+                            general_flag=false;
+                        }
+
+                    }
+
                 }
-                if(j<0)
-                {
-                    first[first.length+j-1]=key;
-                }
-                else
-                {
-                    second[j]=key;
-                }
-            }
+
+
         }
     }
 }
