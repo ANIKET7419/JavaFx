@@ -42,11 +42,6 @@ class sliding_window_handler
 
 
 }
-
-
-
-
-
 public class sliding_window_technique_for_longest_substring {
 
 
