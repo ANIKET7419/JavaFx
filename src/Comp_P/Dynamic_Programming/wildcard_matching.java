@@ -30,7 +30,7 @@ class handler
             }
             else
             {
-                return true;
+                return true&&ismatched(i-1,j-1);
             }
 
 
