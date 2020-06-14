@@ -29,48 +29,59 @@ class merging_handler
                 int j=i;
                 int key=second[j];
                 boolean general_flag=true;
-                if(key<second[first.length+j-1])
-                    general_flag=false;
-                while (j>1-first.length&&general_flag)
+                if(i==0) {
+                    if (key > first[first.length + j - 1])
+                        general_flag = false;
+                }
+                else
                 {
-                    if(j==0)
+                    if(key>second[j-1])
                     {
-                        first[first.length-1]=second[0];
+                        general_flag=false;
                     }
-                    else if (j>0)
-                    {
-                        second[j]=second[j-1];
-                    }
-                    else
-                    {
-                        first[first.length+j-1]=first[first.length+j];
+                }
+                while (j>1-first.length&&general_flag) {
+                    if (j == 0) {
+                        second[0] = first[first.length-1];
+                    } else if (j > 0) {
+                        second[j] = second[j - 1];
+                    } else {
+                        first[first.length + j]=first[first.length + j - 1];
 
                     }
                     j--;
-                    if(j<0)
+                    if(j<0) {
+                        if (key < first[first.length + j - 1]) {
+                            general_flag = true;
+                        } else {
+                            general_flag = false;
+                        }
+                    }
+                    else if(j==0)
                     {
-                        first[first.length+j-1]=key;
-                        if(key<first[first.length+j-1])
+                        if(key<second[0])
                         {
                             general_flag=true;
                         }
-                        else
-                        {
-                            general_flag=false;
+                    }
+                    else {
+                        if (key < second[j - 1]) {
+                            general_flag = true;
+                        } else {
+                            general_flag = false;
                         }
+                    }
+
+
+                }
+                if(j<0)
+                    {
+                        first[first.length+j]=key;
+
                     }
                     else
                     {
                         second[j]=key;
-                        if(key<second[j-1])
-                        {
-                            general_flag=true;
-                        }
-                        else
-                        {
-                            general_flag=false;
-                        }
-
                     }
 
                 }
@@ -78,7 +89,7 @@ class merging_handler
 
         }
     }
-}
+
 
 
 
@@ -105,6 +116,7 @@ public class merging_withoutextraspace {
             second[i]=scanner.nextInt();
         }
         handler.input(first,second);
+        handler.merging();
         System.out.println("Result After Merging");
         handler.display();
     }
