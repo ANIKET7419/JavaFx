@@ -30,8 +30,8 @@ class handler
              }
          }
         }
-        if(pattern.charAt(j-1)!='*'&&pattern.charAt(j-1)!='?') {
-            if (data.charAt(i-1) == pattern.charAt(j-1)) {
+        if(pattern.charAt(i-1)!='*'&&pattern.charAt(i-1)!='?') {
+            if (data.charAt(j-1) == pattern.charAt(i-1)) {
                 return ismatched(i - 1, j - 1);
             } else {
                 return false;
@@ -39,7 +39,7 @@ class handler
         }
         else
         {
-            if(pattern.charAt(j-1)=='?')
+            if(pattern.charAt(i-1)=='?')
             {
                 return ismatched(i - 1, j - 1);
             }
