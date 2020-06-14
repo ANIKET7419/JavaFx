@@ -13,8 +13,23 @@ class handler
     }
     boolean ismatched(int i,int j)
     {
-        if(i<0||j<0)
-            return false;
+        if(i==0||j==0)
+        {
+         if(i==0&&j==0)
+             return true;
+         else
+         {
+             if (i==0)
+                 return false;
+             else if (j==0)
+             {
+                 if(pattern.charAt(i)=='*')
+                 {
+                     return ismatched(i-1,j);
+                 }
+             }
+         }
+        }
         if(pattern.charAt(j)!='*'&&pattern.charAt(j)!='?') {
             if (data.charAt(i) == pattern.charAt(j)) {
                 return ismatched(i - 1, j - 1);
@@ -30,7 +45,7 @@ class handler
             }
             else
             {
-                return true&&ismatched(i-1,j-1);
+                return ismatched(i - 1, j) || ismatched(i, j - 1);
             }
 
 
@@ -52,6 +67,6 @@ public class wildcard_matching {
         System.out.println("Enter Pattern");
         pattern=scanner.nextLine();
         object.input(data,pattern);
-        System.out.println("Valid or Not "+object.ismatched(data.length()-1,pattern.length()-1));
+        System.out.println("Valid or Not "+object.ismatched(pattern.length(),data.length()));
     }
 }
