@@ -51,25 +51,14 @@ class merging_handler
                     }
                     j--;
                     if(j<0) {
-                        if (key < first[first.length + j - 1]) {
-                            general_flag = true;
-                        } else {
-                            general_flag = false;
-                        }
+                        general_flag = key < first[first.length + j - 1];
                     }
                     else if(j==0)
                     {
-                        if(key<second[0])
-                        {
-                            general_flag=true;
-                        }
+                        general_flag= key < first[first.length-1];
                     }
                     else {
-                        if (key < second[j - 1]) {
-                            general_flag = true;
-                        } else {
-                            general_flag = false;
-                        }
+                        general_flag = key < second[j - 1];
                     }
 
 
