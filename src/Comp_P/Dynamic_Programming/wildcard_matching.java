@@ -23,15 +23,15 @@ class handler
                  return false;
              else if (j==0)
              {
-                 if(pattern.charAt(i)=='*')
+                 if(pattern.charAt(i-1)=='*')
                  {
                      return ismatched(i-1,j);
                  }
              }
          }
         }
-        if(pattern.charAt(j)!='*'&&pattern.charAt(j)!='?') {
-            if (data.charAt(i) == pattern.charAt(j)) {
+        if(pattern.charAt(j-1)!='*'&&pattern.charAt(j-1)!='?') {
+            if (data.charAt(i-1) == pattern.charAt(j-1)) {
                 return ismatched(i - 1, j - 1);
             } else {
                 return false;
@@ -39,7 +39,7 @@ class handler
         }
         else
         {
-            if(pattern.charAt(j)=='?')
+            if(pattern.charAt(j-1)=='?')
             {
                 return ismatched(i - 1, j - 1);
             }
