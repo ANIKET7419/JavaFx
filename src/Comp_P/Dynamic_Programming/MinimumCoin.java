@@ -12,9 +12,9 @@ class MiniMumCoin
     {
         this.n=n;
         storage=new int[n+1][data.length+1];
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n+1;i++)
         {
-            for(int j=0;j<data.length;j++)
+            for(int j=0;j<data.length+1;j++)
             {
                 storage[i][j]=-1;
             }
