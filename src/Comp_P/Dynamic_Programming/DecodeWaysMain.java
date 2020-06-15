@@ -30,10 +30,12 @@ class DecodeWays
             else
             {
                 Integer k = Integer.parseInt(data.substring(0, 1));
-                if (k >= 10 && k < 27) {
-                    return 2;
-                } else {
-
+                if (k == 10 || k == 20) {
+                    return 1;
+                }
+                else if(k>0&&k<27)
+                {
+                    return 3;
                 }
             }
         }
