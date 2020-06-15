@@ -58,7 +58,7 @@ class BST {
                            {
                                l=true;
                                String temp = result;
-                               result += values[i];
+                               result = result.substring(0,result.length()-9)+values[i]+"nullnullnull";
                                isexplored[i] = true;
                                backtracking(depth + 1, true, values[i]);
                                backtracking(depth + 1, false, values[i]);
@@ -77,7 +77,7 @@ class BST {
                            if (values[i] >= parent) {
                                l = true;
                                String temp = result;
-                               result += values[i];
+                               result = result.substring(0,result.length()-5)+values[i]+"nullnull";
                                isexplored[i] = true;
                                backtracking(depth + 1, true, values[i]);
                                backtracking(depth + 1, false, values[i]);
