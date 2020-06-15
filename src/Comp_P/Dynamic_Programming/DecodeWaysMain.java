@@ -19,14 +19,12 @@ class DecodeWays
         }
         else
         {
-           if(Integer.parseInt(data.substring(0,1))==10||Integer.parseInt(data.substring(0,1))==20)
+           total=totalWays(data.substring(1,data.length()-1));
+           if(data.length()>2&&Integer.parseInt(data.substring(1,2))>=10&&Integer.parseInt(data.substring(1,2))<27)
            {
-               total=totalWays(data.substring(2,data.length()-1))+1;
+               total+=totalWays(data.substring(2,data.length()-1));
            }
-           else
-           {
-              total= totalWays(data.substring(2,data.length()-1))+2;
-           }
+
         }
         return total;
     }
