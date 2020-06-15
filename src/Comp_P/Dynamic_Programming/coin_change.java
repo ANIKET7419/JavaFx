@@ -5,13 +5,13 @@ import java.util.Scanner;
 class coin_handler
 {
     int n;
-    int data[]={1,2,3,4,5,6};
+    int data[]={1,2,5};
     int storage[][];
     int counter=0;
  void input(int n)
  {
      this.n=n;
-     storage=new int[n][data.length];
+     storage=new int[n+1][data.length+1];
      for(int i=0;i<n;i++)
      {
          for(int j=0;j<data.length;j++)
@@ -25,6 +25,7 @@ class coin_handler
 
      if(total_sum==n)
      {
+         storage[total_sum][index]=1;
          return 1;
      }
      if(total_sum>n)
