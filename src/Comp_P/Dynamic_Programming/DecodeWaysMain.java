@@ -17,27 +17,25 @@ class DecodeWays
         {
             return 0;
         }
+        else if(data.length()==2)
+        {
+            Integer k = Integer.parseInt(data.substring(0, 1));
+            if (k == 10 || k == 20) {
+                return 1;
+            }
+            else if(k>0&&k<27)
+            {
+                return 2;
+            }
+        }
         else
         {
-            if(data.length()!=2) {
                 Integer k = Integer.parseInt(data.substring(0, 1));
-                if (k > 0 && k < 27) {
+                if (k >=10 && k < 27) {
                     total = totalWays(data.substring(1, data.length() - 1) + totalWays(data.substring(2, data.length() - 1)));
                 } else {
                     total = totalWays(data.substring(1, data.length() - 1));
                 }
-            }
-            else
-            {
-                Integer k = Integer.parseInt(data.substring(0, 1));
-                if (k == 10 || k == 20) {
-                    return 1;
-                }
-                else if(k>0&&k<27)
-                {
-                    return 3;
-                }
-            }
         }
         return total;
     }
