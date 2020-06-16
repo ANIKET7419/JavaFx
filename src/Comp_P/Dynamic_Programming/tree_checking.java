@@ -14,6 +14,12 @@ class TreeNode {
           this.left = left;
           this.right = right;
       }
+      @Override
+      public String toString()
+      {
+
+          return " "+ this.val;
+      }
   }
 class Solution {
 
@@ -67,6 +73,6 @@ class Solution {
 public class tree_checking {
     public static void main(String[] args) {
         Solution object=new Solution();
-        object.generateTrees(3);
+        System.out.println(object.generateTrees(3));
     }
 }
