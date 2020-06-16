@@ -41,7 +41,21 @@ class Solution {
                     TreeNode curr = new TreeNode(i);
                     curr.left=l;
                     curr.right=r;
-                    System.out.println(curr.val+" "+curr.left + " "+curr.right);
+                    if(curr.left==null&&curr.right==null) {
+                        System.out.println(curr.val + " "+curr.left + " " + curr.right);
+                    }
+                    else if(curr.left!=null&&curr.right==null)
+                    {
+                        System.out.println(curr.val+" "+curr.left.val+" "+curr.right);
+                    }
+                    else if(curr.left==null&&curr.right!=null)
+                    {
+                        System.out.println(curr.val+" "+curr.left+" "+curr.right.val);
+
+                    }
+                    else {
+                        System.out.println(curr.val+" "+curr.left.val+" "+curr.right.val);
+                    }
                     result.add(curr);
                 }
             }
