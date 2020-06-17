@@ -43,7 +43,7 @@ public class InterLeaving {
      word3=scanner.nextLine();
      handler.input(word1,word2,word3);
      System.out.println("InterLeaving ???? "+handler.isInterLeaving(0,0,0));
-        System.out.println(handler.counter);
+     System.out.println(handler.counter);
 
     }
 }
