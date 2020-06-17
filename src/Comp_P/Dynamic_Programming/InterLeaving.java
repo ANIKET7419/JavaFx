@@ -15,6 +15,7 @@ class InterLeaving_Handler
     }
     boolean isInterLeaving(int index1,int index2,int index3)
     {
+        counter++;
         if(index1==word1.length()&&index2==word2.length()&&index3==word3.length())
             return true;
       boolean condition=false;
