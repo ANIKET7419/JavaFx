@@ -3,7 +3,7 @@ package Comp_P.Dynamic_Programming.Tree;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
-
+/* It is not correct way*/
 class Tree
 {
     Tree left,right,parent;
