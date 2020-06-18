@@ -32,26 +32,35 @@ class WordBreak2Handler
         else
             return false;
     }
-    boolean isBreakable(int i,int j)
+    List<String>isBreakable(int i,int j)
     {
+        List<String> result=new ArrayList<String>();
         if (isinList(i,j)) {
-            storage[i][j]=1;
-            return true;
+            result.add(data.substring(i,j+1));
+            return result;
         }
         if(i>=j) {
-            storage[i][j]=0;
-            return false;
+            return null;
         }
-
-        if(storage[i][j]!=-1)
-            return storage[i][j]==1?true:false;
-        boolean result=false;
         for(int k=i;k<j;k++)
         {
-            result=result || (isBreakable(i,k) && isBreakable(k+1,j));
+            List <String>left=isBreakable(i,k);
+            List<String> right=isBreakable(k+1,j);
+            if( left!=null&&right!=null)
+            {
+              String temp="";
+              for(String t:left)
+              {
+                  temp+=" "+t;
+              }
+              for (String t:right)
+              {
+                  temp+=" "+t;
+              }
+              result.add(temp);
+            }
         }
-        storage[i][j]=result==false?0:1;
-        return result;
+        return result.size()==0?null:result;
     }
 }
 public class WordBreak2 {
