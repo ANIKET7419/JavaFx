@@ -57,7 +57,8 @@ class WordBreak2Handler
               {
                   temp+=" "+t;
               }
-              result.add(temp);
+              if(!result.contains(temp.trim()))
+              result.add(temp.trim());
             }
         }
         return result.size()==0?null:result;
