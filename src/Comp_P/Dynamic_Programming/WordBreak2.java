@@ -2,10 +2,11 @@ package Comp_P.Dynamic_Programming;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-import java.util.*;
-
-class WordBreakHandler
+class WordBreak2Handler
 {
     String data=null;
     List<String> dict=null;
@@ -42,22 +43,22 @@ class WordBreakHandler
             return false;
         }
 
-         if(storage[i][j]!=-1)
-             return storage[i][j]==1?true:false;
+        if(storage[i][j]!=-1)
+            return storage[i][j]==1?true:false;
         boolean result=false;
         for(int k=i;k<j;k++)
         {
-        result=result || (isBreakable(i,k) && isBreakable(k+1,j));
+            result=result || (isBreakable(i,k) && isBreakable(k+1,j));
         }
         storage[i][j]=result==false?0:1;
         return result;
     }
-
 }
+public class WordBreak2 {
 
-public class WordBreak {
+
     public static void main(String[] args) {
-        WordBreakHandler handler = new WordBreakHandler();
+        WordBreak2Handler handler = new WordBreak2Handler();
         String data;
         List<String> dict = new ArrayList<String>();
         System.out.println("Enter Dictionary Size");
@@ -70,9 +71,9 @@ public class WordBreak {
             dict.add(temp);
         }
         System.out.println("Enter Word");
-         data=scanner.nextLine();
-         handler.input(data,dict);
-         System.out.println("Result :-> "+handler.isBreakable(0,data.length()-1) );
+        data=scanner.nextLine();
+        handler.input(data,dict);
+        System.out.println("Result :-> "+handler.isBreakable(0,data.length()-1) );
 
     }
 }
