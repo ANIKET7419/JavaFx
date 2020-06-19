@@ -1,18 +1,20 @@
 package Comp_P.BruteForce;
+import java.util.Scanner;
+
 /*
 * Longest/shortest _____  Subsequence Format Based Questions With Brute Force Approach
-*
-*
-* In this problem we take if it satisfy the constraint
-* we don't take whether it satisfy constraint or not
 * Format For Longest ->
 *
 * int lps(int index)
     {
         if(index==data.length())
-            return 0;
-        int taken=0;
-        int nontaken=0;
+            {
+            *
+            * //check whether statisfy constraint or not if yes return length otherwise 0
+            *
+             }
+        int taken=lps(--);
+        int nontaken=lps(--);
 
         return Math.max(taken,nontaken);
     }
@@ -21,9 +23,13 @@ package Comp_P.BruteForce;
 * int lps(int index)
     {
         if(index==data.length())
-            return 0;
-        int taken=0;
-        int nontaken=0;
+            {
+            *
+            * //check whether statisfy constraint or not if yes return length otherwise 0
+            *
+             }
+        int taken=lps(--);
+        int nontaken=lps(--);
 
         return Math.min(taken,nontaken);
     }
@@ -49,17 +55,27 @@ class LPSHandler
     int lps(String temp,int index)
     {
         if(index==data.length())
-            return 0;
-        int taken=0;
-        if(ispalindromic(temp+data.charAt(index),0,temp.length()))
-            taken=lps(temp+data.charAt(index),index+1);
-        int nontaken=lps(temp,index+1);
+        {
+            if (ispalindromic(temp,0,temp.length()-1))
+             return temp.length();
+            else
+                return 0;
 
+        }
+        int taken=lps(temp+data.charAt(index),index+1);
+        int nontaken=lps(temp,index+1);
         return Math.max(taken,nontaken);
     }
 }
 public class LongestPalindromicSubsequence {
     public static void main(String[] args) {
+       LPSHandler handler=new LPSHandler();
+       String data;
+       System.out.println("Enter Data");
+      Scanner scanner=new Scanner(System.in);
+      data=scanner.nextLine();
+        handler.input(data);
 
+        System.out.println("The Maximum Palindromic Length is "+handler.lps("",0));
     }
 }
