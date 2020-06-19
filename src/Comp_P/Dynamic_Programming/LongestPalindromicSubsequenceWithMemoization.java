@@ -20,18 +20,15 @@ class LPSHandler
     int lps(int i,int j)
     {
 
-        if(i>=j)
+        if(i>j)
+            return 0;
+        if(i==j)
         {
             storage[i][j]=1;
                 return 1;
         }
         if (storage[i][j]!=-1)
             return storage[i][j];
-        if(i+1==j&&data.charAt(i)==data.charAt(j))
-        {
-            storage[i][j]=2;
-            return 2;
-        }
         if(data.charAt(i)==data.charAt(j))
         {
             storage[i][j]=lps(i+1,j-1)+2;
