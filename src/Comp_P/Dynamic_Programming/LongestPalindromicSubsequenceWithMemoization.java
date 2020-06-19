@@ -1,40 +1,42 @@
 package Comp_P.Dynamic_Programming;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class LPSHandler
 {
+
     String data;
+    int storage[][];
     void input(String data)
     {
         this.data=data;
-
-
-    }
-    boolean ispalindromic(String temp,int i,int j)
-    {
-        if(i>=j)
-            return true;
-        if(temp.charAt(i)==temp.charAt(j))
-            return ispalindromic(temp,i+1,j-1);
-        else
-            return false;
-
-    }
-    int lps(String temp,int index)
-    {
-
-        if(index==data.length())
+        storage=new int[data.length()][data.length()];
+        for (int k[]:storage)
         {
-            if (ispalindromic(temp,0,temp.length()-1)) {
-                return temp.length();
-            }
-            else
-                return 0;
-
+            Arrays.fill(k,-1);
         }
-        int taken=lps(temp+data.charAt(index),index+1);
-        int nontaken=lps(temp,index+1);
-        return Math.max(taken,nontaken);
+    }
+    int lps(int i,int j)
+    {
+
+        if(i>=j)
+        {
+            storage[i][j]=1;
+                return 1;
+        }
+        if (storage[i][j]!=-1)
+            return storage[i][j];
+        if(data.charAt(i)==data.charAt(j))
+        {
+            storage[i][j]=lps(i+1,j-1)+2;
+            return storage[i][j];
+        }
+        else
+        {
+            storage[i][j]=  Math.max(lps(i+1,j),lps(i,j-1));
+            return storage[i][j];
+        }
     }
 }
 public class LongestPalindromicSubsequenceWithMemoization {
@@ -45,6 +47,6 @@ public class LongestPalindromicSubsequenceWithMemoization {
         Scanner scanner=new Scanner(System.in);
         data=scanner.nextLine();
         handler.input(data);
-        System.out.println("The Maximum Palindromic Length is "+handler.lps("",0));
+        System.out.println("The Maximum Palindromic Length is "+handler.lps(0,data.length()-1));
     }
 }
