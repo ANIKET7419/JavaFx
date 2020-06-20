@@ -1,5 +1,4 @@
-package Comp_P.Dynamic_Programming;
-import java.util.ArrayList;
+package Comp_P.Dynamic_Programming.LCS_FORMAT;
 import java.util.Arrays;
 import java.util.Scanner;
 
