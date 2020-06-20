@@ -34,13 +34,46 @@ class LCSHandler
             return storage[i][j];
         }
     }
+    String print(int i,int j)
+    {
+        if(storage[s1.length()][s2.length()]==-1) {
+            System.out.println("Traverse First ");
+            return null;
+        }
+        else
+        {
+
+            if(i==0||j==0)
+                return "";
+
+            if(s1.charAt(i-1)==s2.charAt(j-1))
+            {
+                return print(i-1,j-1)+s1.charAt(i-1);
+            }
+            else
+            {
+                String temp1=print(i-1,j);
+                String temp2=print(i,j-1);
+                if(temp1.length()>temp2.length())
+                {
+                    return temp1;
+                }
+                else
+                {
+                    return temp2;
+                }
+            }
+
+        }
+
+    }
 
 }
 public class LongestCommonSubsequence {
 
     public static void main(String[] args) {
-     LCSHandler handler=new LCSHandler();
-     String s1,s2;
+        LCSHandler handler=new LCSHandler();
+        String s1,s2;
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter String 1");
         s1=scanner.nextLine();
@@ -48,6 +81,8 @@ public class LongestCommonSubsequence {
         s2=scanner.nextLine();
         handler.input(s1,s2);
         System.out.println("The Longest Common Subsequence Length is "+handler.lcs(s1.length(),s2.length()));
+        System.out.println("The Longest Common Subsequence is "+handler.print(s1.length(),s2.length()));
+
 
     }
 }
