@@ -12,7 +12,7 @@ class LongestCommonStringHandler
     {
         this.s1=s1;
         this.s2=s2;
-        storage=new int[s1.length()][s2.length()];
+        storage=new int[s1.length()+1][s2.length()+1];
         for (int temp[]:storage)
         {
             Arrays.fill(temp,-1);
@@ -28,7 +28,7 @@ class LongestCommonStringHandler
         {
 
             counter=counter+1;
-            storage[i][j]=lcs(i+1,j+1)+1;
+            storage[i][j]=lcs(i-1,j-1)+1;
         }
         else
             counter=0;
