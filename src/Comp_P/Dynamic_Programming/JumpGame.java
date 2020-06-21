@@ -29,13 +29,14 @@ class JumpGameHandler
                         min=storage[j];
                     }
                 }
-                if(min==Integer.MAX_VALUE)
-                {
-                    storage[i]=0;
-                }
-                else {
-                    storage[i]=min+1;
-                }
+
+            }
+            if(min==Integer.MAX_VALUE)
+            {
+                storage[i]=0;
+            }
+            else {
+                storage[i]=min+1;
             }
         }
 
