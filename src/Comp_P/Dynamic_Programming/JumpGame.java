@@ -57,7 +57,8 @@ public class JumpGame {
             data[i]=scanner.nextInt();
         }
         handler.input(data);
-        System.out.println("The Minimum steps is "+handler.minimumjump());
+        int result=handler.minimumjump();
+        System.out.println("The Minimum steps is "+(result==0&&data.length>1?-1:result));
 
 
     }
