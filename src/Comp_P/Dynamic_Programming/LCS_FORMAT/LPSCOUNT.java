@@ -7,38 +7,27 @@ class LPScount
 
 
     String data;
-    int storage[][];
+    int storage[];
     void input(String data)
     {
         this.data=data;
-        storage=new int[data.length()][data.length()];
-        for (int k[]:storage)
-        {
-            Arrays.fill(k,-1);
-        }
+        storage=new int[data.length()];
     }
-    int lps(int i,int j)
+    int lps()
     {
 
-        if(i>j)
-            return 0;
-        if(i==j)
-        {
-            storage[i][j]=1;
-            return 1;
-        }
-        if (storage[i][j]!=-1)
-            return storage[i][j];
-        if(data.charAt(i)==data.charAt(j))
-        {
-            storage[i][j]=lps(i+1,j-1)+2;
-            return storage[i][j];
-        }
-        else
-        {
-            storage[i][j]=  Math.max(lps(i+1,j),lps(i,j-1));
-            return storage[i][j];
-        }
+        storage[0]=1;
+      for (int i=1;i<data.length();i++)
+      {
+          if(data.charAt(i)!=data.charAt(0))
+              storage[i]=storage[i-1]+1;
+          else
+          {
+              storage[i]=storage[i-1]+1;
+          }
+      }
+
+        return 0;
     }
 
 
