@@ -115,6 +115,27 @@ class ITRHandler
                 for (int j=0;j<value;j++)
                 result+='I';
             }
+            else if (value>50&&value<100)
+            {
+                int times=(value-50)/10;
+                result+='L';
+                for (int j=0;j<times;j++)
+                    result+='X';
+            }
+            else if (value>500&&value<1000)
+            {
+                int times=(value-500)/100;
+                result+='D';
+                for (int j=0;j<times;j++)
+                    result+='C';
+            }
+            else if (value>5&&value<10)
+            {
+                int times=(value-5);
+                result+='V';
+                for (int j=0;j<times;j++)
+                    result+='C';
+            }
 
 
         }
@@ -131,6 +152,7 @@ public class IntegerToRoman {
         ITRHandler handler=new ITRHandler();
         handler.input(integer);
         handler.converstion();
+        System.out.println("The Result is "+handler.result);
 
     }
 }
