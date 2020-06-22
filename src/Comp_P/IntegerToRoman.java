@@ -134,7 +134,7 @@ class ITRHandler
                 int times=(value-5);
                 result+='V';
                 for (int j=0;j<times;j++)
-                    result+='C';
+                    result+='I';
             }
 
 
