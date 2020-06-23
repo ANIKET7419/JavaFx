@@ -41,14 +41,31 @@ class FrogJumpHandler
     {
         this.data=data;
     }
-    boolean ispossible(int prev,int index)
+    boolean ispossible(int jump,int index)
     {
         if(index>=data.length-1)
             return true;
-        else if(prev+data[index]!=data[index+1])
-            return false;
-        else
-        return ispossible(prev-1,index+1)||ispossible(prev,index+1)||ispossible(prev+1,index+1);
+        else {
+
+            boolean flag=false;
+            int index_to_jump=-1;
+            for (int j=index+1;j<data.length;j++)
+            {
+                if(data[index]+jump==data[j])
+                {
+                    index_to_jump=j;
+                    flag=true;
+                }
+                if (data[index]+jump<data[j])
+                {
+                    break;
+                }
+            }
+            if (!flag)
+                return false;
+            else
+            return ispossible(jump - 1, index_to_jump) || ispossible(jump, index_to_jump) || ispossible(jump + 1, index_to_jump);
+        }
     }
 
 
