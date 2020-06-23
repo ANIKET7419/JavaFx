@@ -39,7 +39,7 @@ class MinimumWindowSubstringHandler
             k=0;
             map.put(j,s1.charAt(j));
             j++;
-            for (int l=0;j<s2.length();j++)
+            for (int l=0;l<s2.length();l++)
                 if (map.containsValue(s2.charAt(l)))
                     k++;
             if(k==s2.length())
