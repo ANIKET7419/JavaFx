@@ -31,22 +31,25 @@ class MinimumWindowSubstringHandler
     {
       int i=0;
       int j=0;
-      int k=0;
+      int k;
         HashMap map=new HashMap();
         int minimum_begin=-1,minimum_end=-1;
-        while (j<s1.length())
+        while (j!=s1.length())
         {
             k=0;
-            map.put(j,s1.charAt(j));
-            j++;
             for (int l=0;l<s2.length();l++)
                 if (map.containsValue(s2.charAt(l)))
                     k++;
             if(k==s2.length())
             {
                 minimum_begin=i;
-                minimum_end=j-1;
+                minimum_end=j;
                 map.remove(i++);
+            }
+            else if(j<s1.length())
+            {
+                map.put(j,s1.charAt(j));
+                j++;
             }
         }
 
