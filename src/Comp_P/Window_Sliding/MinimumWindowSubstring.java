@@ -52,9 +52,24 @@ class MinimumWindowSubstringHandler
                 j++;
             }
         }
+        while (true)
+        {
+            k=0;
+            for (int l=0;l<s2.length();l++)
+                if (map.containsValue(s2.charAt(l)))
+                    k++;
+            if(k==s2.length())
+            {
+                minimum_begin=i;
+                minimum_end=j;
+                map.remove(i++);
+            }
+            else
+                break;
+        }
 
 
-        return minimum_begin==-1&&minimum_end==-1?"":s1.substring(minimum_begin,minimum_end+1);
+        return minimum_begin==-1&&minimum_end==-1?"":s1.substring(minimum_begin,minimum_end);
     }
 
 }
