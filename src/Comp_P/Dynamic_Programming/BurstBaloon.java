@@ -6,6 +6,7 @@ import java.util.Scanner;
 class BurstBaloonHandler{
     int data[];
     int storage[][];
+    int counter=0;
     void input(int data[])
     {
         this.data=data;
@@ -40,9 +41,10 @@ class BurstBaloonHandler{
         else
         {
 
-            if (storage[i][j]!=-1)
+            if (storage[i][j]!=-1) {
+                counter++;
                 return storage[i][j];
-
+            }
           for (int k=i;k<=j;k++)
           {
               int temp;
@@ -80,5 +82,6 @@ public class BurstBaloon {
             data[i]=scanner.nextInt();
         handler.input(data);
         System.out.println("The Maximum profit is "+handler.maximumprofit(0,data.length-1));
+        System.out.println("The Total Call Escaped "+handler.counter);
     }
 }
