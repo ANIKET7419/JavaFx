@@ -1,12 +1,17 @@
 package Comp_P.Dynamic_Programming;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class BurstBaloonHandler{
     int data[];
+    int storage[][];
     void input(int data[])
     {
         this.data=data;
+        storage=new int[data.length+1][data.length+1];
+        for (int temp[]:storage)
+            Arrays.fill(temp,-1);
     }
     int maximumprofit(int i,int j)
     {
@@ -17,22 +22,27 @@ class BurstBaloonHandler{
 
             if (i+1==data.length)
             {
-                return data[i]*data[i-1];
+               return storage[i][j]=data[i]*data[i-1];
             }
             else if (i==0)
             {
-                return data[i]*data[i+1];
+                return storage[i][j]=data[i]*data[i+1];
             }
             else
-                return data[i]*data[i+1]*data[i-1];
+                return storage[i][j]=data[i]*data[i+1]*data[i-1];
 
         }
         else if (i>j)
         {
+
             return 0;
         }
         else
         {
+
+            if (storage[i][j]!=-1)
+                return storage[i][j];
+
           for (int k=i;k<=j;k++)
           {
               int temp;
@@ -52,6 +62,7 @@ class BurstBaloonHandler{
                   profit=temp;
           }
         }
+        storage[i][j]=profit;
         return profit;
     }
 }
