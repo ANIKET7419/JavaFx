@@ -1,68 +1,40 @@
 
-/*
-
-
-
-
-
-Under Processing wrong till then
-
-
-
- */
-
-
-
-
-
-
-
 package Comp_P.Dynamic_Programming;
-
-
-import com.sun.webkit.dom.XPathResultImpl;
-
-import javax.swing.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class PerfectSquareHandler
 {
     int n;
+    int storage[];
+    int counter=0;
     void input(int n)
     {
+
         this.n=n;
+        storage=new int[n+1];
+        Arrays.fill(storage,-1);
     }
     int  perfectsquare(int k)
     {
-        if (k==0||k==1)
-            return 0;
+        if (storage[k]!=-1) {
+            counter++;
+            return storage[k];
+        }
+        double root=Math.sqrt(k);
+        if(root==((int)root))
+            return storage[k]=1;
+        int end=(k-1)%2==0?(k-1)/2:((k-1)/2)+1;
         int counter=Integer.MAX_VALUE;
-        if (k==n)
-        for (int l=k-1;l>=1;l--)
+        for (int l=k-1;l>=end;l--)
         {
-            double root=Math.sqrt(l);
-            if (root==((int)root)) {
-                int temp=perfectsquare(k-l);
-                if (counter<temp+1)
-                {
-                    counter=temp+1;
-                }
-            }
+            int temp=perfectsquare(l)+perfectsquare(k-l);
+            if (temp<counter)
+                counter=temp;
         }
-        else{
-            for (int l=k;l>=0;l--)
-            {
-                double root=Math.sqrt(l);
-                if (root==((int)root)) {
-                    int temp=perfectsquare(k-l);
-                    if (counter<temp+1)
-                    {
-                        counter=temp+1;
-                    }
-                }
-            }
-        }
-        return counter==Integer.MAX_VALUE?0:counter;
+
+
+        return storage[k]=counter;
     }
 
 }
@@ -74,7 +46,7 @@ public class PerfectSquare {
         Scanner scanner=new Scanner(System.in);
         n=scanner.nextInt();
         handler.input(n);
-
         System.out.println("The Result is "+handler.perfectsquare(n));
+        System.out.println("Total Call Escaped "+handler.counter);
     }
 }
