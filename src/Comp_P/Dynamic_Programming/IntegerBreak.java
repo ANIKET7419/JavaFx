@@ -1,6 +1,5 @@
 package Comp_P.Dynamic_Programming;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
