@@ -21,7 +21,18 @@ class RaceCarHandler
         }
         else if (position<0)
             return;
-        else if (position<target || position>target)
+        if (target>position)
+        {
+            if (speed<0)
+                speed=1;
+            else
+                speed=-1;
+            String temp=result;
+            result+="R";
+            minimuminstruction(position,speed);
+            result=temp;
+        }
+        if (position<target || position>target)
         {
            position+=speed;
            speed*=2;
@@ -30,17 +41,7 @@ class RaceCarHandler
            minimuminstruction(position,speed);
            result=temp;
         }
-        if (target>position)
-        {
-            if (speed<0)
-                speed=1;
-            else
-            speed=-1;
-            String temp=result;
-            result+="R";
-            minimuminstruction(position,speed);
-            result=temp;
-        }
+
 
     }
 }
