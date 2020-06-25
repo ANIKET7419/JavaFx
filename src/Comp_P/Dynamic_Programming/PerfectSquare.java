@@ -20,6 +20,9 @@ Under Processing wrong till then
 package Comp_P.Dynamic_Programming;
 
 
+import com.sun.webkit.dom.XPathResultImpl;
+
+import javax.swing.*;
 import java.util.Scanner;
 
 class PerfectSquareHandler
@@ -31,49 +34,33 @@ class PerfectSquareHandler
     }
     int  perfectsquare(int k)
     {
-        if (k<=0)
-            return 0;
-        if (k==1)
-            return 1;
-        if (k==2)
-            return 2;
-        if (k==3)
+        if (k==0||k==1)
             return 0;
         int counter=Integer.MAX_VALUE;
-        int end;
-        if ((k-1)%2==0)
-            end=(k-1)/2;
-        else
-            end=((k-1)/2)+1;
-        for (int l=k-1;l>=end;l--)
+        if (k==n)
+        for (int l=k-1;l>=1;l--)
         {
             double root=Math.sqrt(l);
-            double root1=Math.sqrt(k-l);
-            if (root==((int)root))
-            {
-
-               int temp= perfectsquare(k-l+1);
-               if (temp>=1)
-               {
-                if (temp+1<counter){
+            if (root==((int)root)) {
+                int temp=perfectsquare(k-l);
+                if (counter<temp+1)
+                {
                     counter=temp+1;
                 }
-
-               }
             }
-            else if (root1==((int)root1)&&root1!=1)
+        }
+        else{
+            for (int l=k;l>=0;l--)
             {
-                int temp= perfectsquare(l+1);
-                if (temp>=1)
-                {
-                    if (temp+1<counter){
+                double root=Math.sqrt(l);
+                if (root==((int)root)) {
+                    int temp=perfectsquare(k-l);
+                    if (counter<temp+1)
+                    {
                         counter=temp+1;
                     }
-
                 }
             }
-            else if (root1==((int)root1)&&root1==1)
-                counter++;
         }
         return counter==Integer.MAX_VALUE?0:counter;
     }
@@ -87,6 +74,7 @@ public class PerfectSquare {
         Scanner scanner=new Scanner(System.in);
         n=scanner.nextInt();
         handler.input(n);
+
         System.out.println("The Result is "+handler.perfectsquare(n));
     }
 }
