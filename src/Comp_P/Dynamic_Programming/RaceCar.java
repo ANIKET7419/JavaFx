@@ -11,7 +11,7 @@ class RaceCarHandler
     {
         this.target=target;
     }
-    void minimuminstruction(int position,int speed)
+    void minimuminstruction(int position,int speed,boolean called)
     {
         if (position==target)
         {
@@ -21,26 +21,29 @@ class RaceCarHandler
         }
         else if (position<0)
             return;
-        if (target>position)
+        if (target<position&&(!called))
         {
+
+            System.out.println("Okay");
             if (speed<0)
                 speed=1;
             else
                 speed=-1;
             String temp=result;
             result+="R";
-            minimuminstruction(position,speed);
+            minimuminstruction(position,speed,true);
             result=temp;
         }
-        if (position<target || position>target)
-        {
-           position+=speed;
+        position+=speed;
+        System.out.println(position);
            speed*=2;
            String temp=result;
            result+="A";
-           minimuminstruction(position,speed);
+           if (called==true)
+               called=false;
+           minimuminstruction(position,speed,called);
            result=temp;
-        }
+
 
 
     }
@@ -53,6 +56,6 @@ public class RaceCar {
         Scanner scanner=new Scanner(System.in);
         n=scanner.nextInt();
         handler.input(n);
-        handler.minimuminstruction(0,1);
+        handler.minimuminstruction(0,1,false);
     }
 }
