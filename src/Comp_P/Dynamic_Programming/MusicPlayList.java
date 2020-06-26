@@ -30,7 +30,7 @@ class MusicPlayListHandler
             tempN--;
         }
 
-        for (int i=1;i<L;i++)
+        for (int i=1;i<L+1;i++)
         {
             ways*=dp[i];
         }
