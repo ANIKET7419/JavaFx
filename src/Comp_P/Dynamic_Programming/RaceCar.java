@@ -2,7 +2,7 @@ package Comp_P.Dynamic_Programming;
 
 import java.net.SecureCacheResponse;
 import java.util.Scanner;
-
+//Not COrrect at this time
 class RaceCarHandler
 {
     int target;
@@ -11,39 +11,36 @@ class RaceCarHandler
     {
         this.target=target;
     }
-    void minimuminstruction(int position,int speed,boolean called)
+    void minimuminstruction(int position,int speed)
     {
         if (position==target)
         {
-            System.out.println(result);
+            System.out.println(result + result.length());
             return;
 
         }
-        else if (position<0)
+        if(position<0)
             return;
-        if (target<position&&(!called))
+        if (target<position)
         {
 
-            System.out.println("Okay");
-            if (speed<0)
-                speed=1;
-            else
+
                 speed=-1;
+            position+=speed;
             String temp=result;
-            result+="R";
-            minimuminstruction(position,speed,true);
+            result+="RA";
+            minimuminstruction(position,speed);
             result=temp;
         }
-        position+=speed;
-        System.out.println(position);
-           speed*=2;
-           String temp=result;
-           result+="A";
-           if (called==true)
-               called=false;
-           minimuminstruction(position,speed,called);
-           result=temp;
-
+        else {
+            position += speed;
+            System.out.println(position);
+            speed *= 2;
+            String temp = result;
+            result += "A";
+            minimuminstruction(position, speed);
+            result = temp;
+        }
 
 
     }
@@ -56,6 +53,6 @@ public class RaceCar {
         Scanner scanner=new Scanner(System.in);
         n=scanner.nextInt();
         handler.input(n);
-        handler.minimuminstruction(0,1,false);
+        handler.minimuminstruction(0,1);
     }
 }
