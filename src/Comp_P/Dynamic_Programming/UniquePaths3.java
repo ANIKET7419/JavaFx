@@ -6,7 +6,7 @@ On a 2-dimensional grid, there are 4 types of squares:
 2 represents the ending square.  There is exactly one ending square.
 0 represents empty squares we can walk over.
 -1 represents obstacles that we cannot walk over.
-Return the number of 4-directional walks from the starting square to the ending square, that walk over every non-obstacle square exactly once( This part is not implemented).
+Return the number of 4-directional walks from the starting square to the ending square, that walk over every non-obstacle square exactly once.
  */
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,25 +14,36 @@ import java.util.Scanner;
 class UniquePaths3Handler
 {
     int data[][];
-    int storage[][];
     boolean traversed[][];
-    int counter=0;
+
     void input(int data[][])
     {
         this.data=data;
-        storage=new int[data.length][data[0].length];
+
         traversed=new boolean[data.length][data[0].length];
-        for (int temp[]:storage)
-        {
-            Arrays.fill(temp,-1);
-        }
         for (boolean temp[]:traversed)
         {
             Arrays.fill(temp,false);
         }
 
     }
+   boolean allcovered()
+   {
+       boolean flag=true;
+       for (int i=0;i<data.length;i++)
+       {
+           for (int j=0;j<data[0].length;j++)
+           {
+               if (data[i][j]==0&&(traversed[i][j]==false))
+               {
+                   flag=false;
+                   break;
+               }
+           }
 
+       }
+       return flag;
+   }
     boolean issafe(int i,int j)
     {
         if (data[i][j]==-1||i<0||i>=data.length||j<0||j>=data[0].length||traversed[i][j])
@@ -47,13 +58,12 @@ class UniquePaths3Handler
             return -1;
         if (i==endx&&j==endy)
         {
-            storage[i][j]=1;
-            return 1;
+            if (allcovered()) {
+                return 1;
+            }
+            return 0;
         }
-        if (storage[i][j]!=-1) {
-            counter++;
-            return storage[i][j];
-        }
+
         int paths=0;
         if (issafe(i,j))
         {
@@ -62,6 +72,7 @@ class UniquePaths3Handler
             int temp2=uniquepaths(i,j+1,endx,endy);
             int temp3=uniquepaths(i-1,j,endx,endy);
             int temp4=uniquepaths(i,j-1,endx,endy);
+            traversed[i][j]=false;
             if (temp1!=-1)
                 paths+=temp1;
             if (temp2!=-1)
@@ -72,7 +83,7 @@ class UniquePaths3Handler
                 paths+=temp4;
 
         }
-        return storage[i][j]= paths;
+        return  paths;
     }
 
 }
@@ -124,7 +135,7 @@ public class UniquePaths3 {
             System.exit(100);
         }
         System.out.println("Total Paths "+ handler.uniquepaths(startX,startY,endX,endY));
-        System.out.println("Total Call Escaped are "+handler.counter);
+
     }
 }
 
