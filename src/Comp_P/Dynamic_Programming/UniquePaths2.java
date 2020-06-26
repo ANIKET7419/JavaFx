@@ -1,5 +1,6 @@
 package Comp_P.Dynamic_Programming;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -79,11 +80,17 @@ public class UniquePaths2 {
 class UniquePaths2Handler
 {
     int data[][];
-    int solution[][];
+    int storage[][];
+    int counter=0;
     void input(int data[][])
     {
         this.data=data;
-        solution=new int[data.length][data[0].length];
+        storage=new int[data.length][data[0].length];
+        for (int temp[]:storage)
+        {
+            Arrays.fill(temp,-1);
+        }
+
     }
 
     boolean issafe(int i,int j)
@@ -93,33 +100,33 @@ class UniquePaths2Handler
         else
             return true;
     }
-    void uniquepaths(int i,int j)
+    int  uniquepaths(int i,int j)
     {
 
         if (i>=data.length||j>=data[0].length)
-            return;
+            return -1;
         if (i==data.length-1&&j==data[0].length-1)
         {
-            solution[i][j]=1;
-            for (int k=0;k<i+1;k++)
-            {
-                for (int m=0;m<j+1;m++)
-                {
-                    System.out.print(solution[k][m]+" ");
-                }
-                System.out.println();
-            }
-            System.out.println();
-            return;
+            storage[i][j]=1;
+            return 1;
         }
+        if (storage[i][j]!=-1) {
+            counter++;
+            return storage[i][j];
+        }
+        int paths=0;
         if (issafe(i,j))
         {
-            solution[i][j]=1;
-            uniquepaths(i+1,j);
-            uniquepaths(i,j+1);
-            solution[i][j]=0;
-        }
 
+            int temp1=uniquepaths(i+1,j);
+            int temp2=uniquepaths(i,j+1);
+            if (temp1!=-1)
+                paths+=temp1;
+            if (temp2!=-1)
+                paths+=temp2;
+
+        }
+        return storage[i][j]= paths;
     }
 
 }
@@ -142,6 +149,7 @@ public class UniquePaths2 {
             }
         }
         handler.input(data);
-        handler.uniquepaths(0,0);
+       System.out.println("Total Paths "+ handler.uniquepaths(0,0));
+       System.out.println("Total Call Escaped are "+handler.counter);
     }
 }
