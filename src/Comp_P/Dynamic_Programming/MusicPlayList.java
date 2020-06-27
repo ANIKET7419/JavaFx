@@ -1,6 +1,17 @@
 package Comp_P.Dynamic_Programming;
 
+/*
+Your music player contains N different songs and she wants to listen to L (not necessarily different) songs during your trip.  You create a playlist so that:
 
+Every song is played at least once
+A song can only be played again only if K other songs have been played
+Return the number of possible playlists.  As the answer can be very large, return it modulo 10^9 + 7.
+
+
+
+
+But in this i showed all permutations
+ */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -36,7 +47,6 @@ class MusicPlayListHandler
                 if (result.get(i)==data[k])
                 {
                     flag=true;
-                    break;
                 }
             }
             if (flag==false)
@@ -55,20 +65,6 @@ class MusicPlayListHandler
             }
             return;
         }
-
-        for (int i=0;i<data.length;i++)
-        {
-            if (!isvisitedfornotreuse[i])
-            {
-                result.add(data[i]);
-                isvisitedfornotreuse[i]=true;
-                whichvisited[depth]=i;
-                permutation(KPositioner,depth+1);
-                whichvisited[depth]=-1;
-                isvisitedfornotreuse[i]=false;
-                result.remove(result.size()-1);
-            }
-        }
         if ((depth-KPositioner)==K+1) {
 
             int m=0;
@@ -86,7 +82,7 @@ class MusicPlayListHandler
                     }
                 }
                 if (!flag&&whichvisited[i]!=-1)
-                   reusedata[m++]=whichvisited[i];
+                    reusedata[m++]=whichvisited[i];
             }
             KPositioner++;
             for (int k = 0; k < m; k++) {
@@ -97,6 +93,20 @@ class MusicPlayListHandler
                 result.remove(result.size()-1);
             }
         }
+        for (int i=0;i<data.length;i++)
+        {
+            if (!isvisitedfornotreuse[i])
+            {
+                result.add(data[i]);
+                isvisitedfornotreuse[i]=true;
+                whichvisited[depth]=i;
+                permutation(KPositioner,depth+1);
+                whichvisited[depth]=-1;
+                isvisitedfornotreuse[i]=false;
+                result.remove(result.size()-1);
+            }
+        }
+
     }
 }
 public class MusicPlayList {
