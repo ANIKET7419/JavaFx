@@ -3,7 +3,7 @@ package Comp_P.Dynamic_Programming;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-//This DP solution is not working yet
+//This DP solution is not working yet please use only backtracking solution
 class MusicPlayListHandlerDP
 {
     int N,K,L;
