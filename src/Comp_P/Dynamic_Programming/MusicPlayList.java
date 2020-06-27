@@ -1,41 +1,79 @@
 package Comp_P.Dynamic_Programming;
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class MusicPlayListHandler
 {
     int N,K,L;
+    int data[];
+    String result="";
+    int whichvisited[];
+    boolean isvisitedfornotreuse[];
     void input(int N,int K,int L)
     {
         this.N=N;
         this.K=K;
         this.L=L;
+        data=new int[N];
+        for (int i=0;i<N;i++)
+            data[i]=i+1;
+        whichvisited=new int[L];
+        Arrays.fill(whichvisited,-1);
+        isvisitedfornotreuse=new boolean[N];
+        Arrays.fill(isvisitedfornotreuse,false);
     }
-    int totalways()
+    void permutation(int KPositioner,int depth)
     {
-        int ways=1;
-        int dp[]=new int[L+1];
-        dp[0]=0;
-        int tempN=N;
-        int KpositionerS=1;
-        dp[1]=tempN;
-        tempN--;
-        for (int i=2;i<L+1;i++)
+        if (result.length()==L)
         {
-            if (i-KpositionerS==(K+1))
+            System.out.println(result);
+            return;
+        }
+        for (int i=0;i<data.length;i++)
+        {
+            if (!isvisitedfornotreuse[i])
             {
-                KpositionerS+=1;
-                tempN+=1;
+                String temp=result;
+                result+=data[i];
+                isvisitedfornotreuse[i]=true;
+                whichvisited[depth]=i;
+                permutation(KPositioner,depth+1);
+                whichvisited[depth]=-1;
+                isvisitedfornotreuse[i]=false;
+                result=temp;
             }
-            dp[i]=tempN;
-            tempN--;
         }
+        if ((depth-KPositioner)==K+1) {
 
-        for (int i=1;i<L+1;i++)
-        {
-            ways*=dp[i];
+
+            int m=0;
+            int reusedata[]=new int[L];
+            for (int i=0;i<=KPositioner;i++)
+            {
+                boolean flag=false;
+                for (int p=0;p<L;p++)
+                {
+                    if (whichvisited[i]==reusedata[p])
+                    {
+                        flag=true;
+                        break;
+                    }
+                }
+                if (!flag&&whichvisited[i]!=-1)
+                   reusedata[m++]=whichvisited[i];
+            }
+            KPositioner++;
+            for (int k = 0; k < m; k++) {
+                String temp=result;
+                result+=data[reusedata[k]];
+                whichvisited[depth]=reusedata[k];
+                permutation(KPositioner,depth+1);
+                whichvisited[depth]=-1;
+                result=temp;
+            }
         }
-        return ways;
     }
 }
 public class MusicPlayList {
@@ -50,6 +88,7 @@ public class MusicPlayList {
         K=scanner.nextInt();
         MusicPlayListHandler handler =new MusicPlayListHandler();
         handler.input(N,K,L);
-        System.out.println("The Total  Ways "+handler.totalways());
+        handler.permutation(0,0);
+
     }
 }
