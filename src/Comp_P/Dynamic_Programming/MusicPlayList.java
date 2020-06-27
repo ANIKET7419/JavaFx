@@ -11,6 +11,7 @@ Return the number of possible playlists.  As the answer can be very large, retur
 
 
 But in this i showed all permutations
+it is not dp it is backtracking
  */
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,8 +59,6 @@ class MusicPlayListHandler
     {
         if (result.size()==L)
         {
-
-
             if (allavailable()) {
                 System.out.println(result);
             }
@@ -76,6 +75,14 @@ class MusicPlayListHandler
                 for (int p=0;p<L;p++)
                 {
                     if (whichvisited[i]==reusedata[p])
+                    {
+                        flag=true;
+                        break;
+                    }
+                }
+                for (int p=KPositioner+1;p<depth;p++)
+                {
+                    if (whichvisited[i]==whichvisited[p])
                     {
                         flag=true;
                         break;
