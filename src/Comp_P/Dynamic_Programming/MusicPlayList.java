@@ -12,6 +12,7 @@ Return the number of possible playlists.  As the answer can be very large, retur
 
 But in this i showed all permutations
 it is not dp it is backtracking
+Dp solution is also being tried  named as MusicPlayerListDP
  */
 import java.util.ArrayList;
 import java.util.Arrays;
