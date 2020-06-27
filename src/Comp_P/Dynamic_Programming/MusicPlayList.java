@@ -24,6 +24,7 @@ class MusicPlayListHandler
         {
             if (i-KpositionerS==(K+1))
             {
+                KpositionerS+=1;
                 tempN+=1;
             }
             dp[i]=tempN;
