@@ -15,8 +15,8 @@ Answer ->
 
      s1=bbb
      s2=bb
-     1. agar s2 ka b s1 ke b se fix hota hai to remaining b of s2 have options for 2 after that if we fix s2 first b with second b of s1 then s2 have option only one
-      so the answer is 1+2=3
+     1. agar s2 ka b s1 ke b se fix hota hai to remaining b of s2 have options for 2 after that if we fix s2 first b with second b of s1 then s2 last b have option only one
+      so the answer is 2+1=3
        Main point it is only if there is continuity in s2 string
 
        s1=bbbab
