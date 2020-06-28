@@ -42,18 +42,15 @@ class DistinctSubsequenceHandler
                 {
                     if (s1.charAt(k)==s2.charAt(i-1))
                     {
+
                         index=k;
-                        break;
+                        ans+=compute(i-1,index);
                     }
                 }
-                if (index==-1)
-                {
-                    ans=compute(i-1,j-1);
-                }
-                else
-                {
-                    ans=compute(i-1,j-1)+compute(i-1,index);
-                }
+
+                    ans+=compute(i-1,j-1);
+
+
             }
             if (!flag)
                 ans=compute(i-1,j)+compute(i,j-1);
