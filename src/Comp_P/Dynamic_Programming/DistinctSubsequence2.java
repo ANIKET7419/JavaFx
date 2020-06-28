@@ -1,4 +1,6 @@
 package Comp_P.Dynamic_Programming;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /*
 Question:
@@ -10,7 +12,7 @@ Since the result may be large, return the answer modulo 10^9 + 7.
 Answer ->
 
 As we know if there is no any duplicate element then answer is 2^n-1
-if there is duplicate we will remove all those values appended till previous last same character
+if there is duplicate we will remove all those values appended before  previous  last same character means for example aaa for third a we remove till first a
 
 
 Explanation->
@@ -34,9 +36,39 @@ index 2 : because it is duplicate value so the result will be now
  */
 class DistinctSubsequenceHandler2
 {
-
-
-
+ String data;
+ int traversed[];
+ void input(String data)
+ {
+     this.data=data;
+     int max=Character.MAX_VALUE;
+     traversed=new int[max+1];
+     Arrays.fill(traversed,-1);
+ }
+ int totalways(int i)
+ {
+     // i  represents length
+     if (i==0||i<0)
+         return 1;//"" string
+     int result;
+     result=totalways(i-1)*2;
+     //traversed[(int)data.charAt(i-1)]<i is used to prevent stack overflow error
+     if (traversed[(int)data.charAt(i-1)]!=-1&&traversed[(int)data.charAt(i-1)]<i)
+         result-=totalways(traversed[(int)data.charAt(i-1)]-1);
+     traversed[(int)data.charAt(i-1)]=i;
+  return result;
+ }
 }
 public class DistinctSubsequence2 {
+
+
+    public static void main(String[] args) {
+        DistinctSubsequenceHandler2 handler2=new DistinctSubsequenceHandler2();
+        String data;
+        System.out.println("Enter String ");
+        Scanner scanner=new Scanner(System.in);
+        data=scanner.nextLine();
+        handler2.input(data);
+        System.out.println("The Total ways are "+(handler2.totalways(data.length())-1));
+    }
 }
