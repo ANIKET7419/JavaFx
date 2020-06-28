@@ -1,5 +1,7 @@
 package Comp_P.Dynamic_Programming;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 /*
 
@@ -15,9 +17,16 @@ class DistinctSubsequenceHandler
 {
 
     String s1,s2;
+    int storage[][];
+    int counter=0;
     void input(String s1,String s2){
         this.s1=s1;
         this.s2=s2;
+        storage=new int[s2.length()+1][s1.length()+1];
+        for (int temp[]:storage)
+        {
+            Arrays.fill(temp,-1);
+        }
     }
     int compute(int i,int j)
     {
@@ -29,6 +38,10 @@ class DistinctSubsequenceHandler
                 return 0;
         }
 
+        if (storage[i][j]!=-1) {
+            counter++;
+            return storage[i][j];
+        }
         int ans=0;
         if (s2.charAt(i-1)==s1.charAt(j-1))
         {
@@ -59,7 +72,7 @@ class DistinctSubsequenceHandler
         {
             ans=compute(i,j-1);
         }
-        return ans;
+        return storage[i][j]=ans;
     }
 
 }
@@ -76,5 +89,6 @@ public class DistinctSubsequence {
         s2=scanner.nextLine();
         handler.input(s1,s2);
         System.out.println("The Total Ways "+handler.compute(s2.length(),s1.length()));
+        System.out.println("Total Call Escaped "+handler.counter);
     }
 }
