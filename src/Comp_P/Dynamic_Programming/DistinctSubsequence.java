@@ -1,6 +1,4 @@
 package Comp_P.Dynamic_Programming;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 /*
@@ -11,6 +9,20 @@ A subsequence of a string is a new string which is formed from the original stri
 
 It's guaranteed the answer fits on a 32-bit signed integer.
 
+
+Answer ->
+
+
+     s1=bbb
+     s2=bb
+     1. agar s2 ka b s1 ke b se fix hota hai to remaining b of s2 have options for 2 after that if we fix s2 first b with second b of s1 then s2 have option only one
+      so the answer is 1+2=3
+       Main point it is only if there is continuity in s2 string
+
+       s1=bbbab
+       s2=bab
+    2. otherwise option is
+     ignore karo current character of s1+ ignore karo current character of s2
 
  */
 class DistinctSubsequenceHandler
