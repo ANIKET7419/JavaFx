@@ -1,5 +1,6 @@
 package Comp_P.Dynamic_Programming;
 import javax.swing.plaf.synth.SynthLookAndFeel;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -35,33 +36,45 @@ index 2 : because it is duplicate value so the result will be now
           result-> ("","a","b","ab" + "a","aa","ba","aba") - result of before last a ("")  this condition is for quantity not actually for combination string
           result -> ("b","ab","a","aa","ba","aba","a")
           value returned will be result.length-1;
+
+
+
+          it is possible with dp if we use simple recursive then it may cause problem examplem bebeb
+          when last e is evaluated call will go for first b then its posisition will be 1 and when last b is executed it wanted previous value of b and  it get wrong position
+
  */
 class DistinctSubsequenceHandler2
 {
  String data;
  int traversed[];
+ int storage[];
  void input(String data)
  {
      this.data=data;
      int max=Character.MAX_VALUE;
      traversed=new int[max+1];
+     storage=new int[data.length()+1];
      Arrays.fill(traversed,-1);
+     Arrays.fill(storage,-1);
  }
  int totalways(int i)
  {
      // i  represents length
-     if (i==0||i<0)
+     if (i==0)
          return 1;//"" string
+     if (storage[i]!=-1)
+         return storage[i];
      int result;
      result=totalways(i-1)*2;
      //traversed[(int)data.charAt(i-1)]<i is used to prevent stack overflow error
      if (traversed[(int)data.charAt(i-1)]!=-1&&traversed[(int)data.charAt(i-1)]<i) {
+
          int temp= totalways(traversed[(int) data.charAt(i - 1)] - 1);
-         System.out.println(temp+" "+i);
          result-=temp;
      }
      traversed[(int)data.charAt(i-1)]=i;
-  return result;
+     System.out.println(i+ " "+traversed[(int)data.charAt(i-1)]+" "+(int)data.charAt(i-1)+" "+data.charAt(i-1)); //for demo
+  return storage[i]=result;
  }
 }
 public class DistinctSubsequence2 {
