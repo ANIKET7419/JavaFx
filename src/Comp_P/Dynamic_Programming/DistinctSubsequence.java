@@ -32,7 +32,31 @@ class DistinctSubsequenceHandler
         int ans=0;
         if (s2.charAt(i-1)==s1.charAt(j-1))
         {
-            ans=compute(i-1,j)+compute(i,j-1);
+            boolean flag=false;
+            if (i>=2)
+            if (s2.charAt(i-1)==s2.charAt(i-2))
+            {
+               int  index=-1;
+                flag=true;
+                for (int k=j-2;k>=0;k--)
+                {
+                    if (s1.charAt(k)==s2.charAt(i-1))
+                    {
+                        index=k;
+                        break;
+                    }
+                }
+                if (index==-1)
+                {
+                    ans=compute(i-1,j-1);
+                }
+                else
+                {
+                    ans=compute(i-1,j-1)+compute(i-1,index);
+                }
+            }
+            if (!flag)
+                ans=compute(i-1,j)+compute(i,j-1);
         }
         else
         {
