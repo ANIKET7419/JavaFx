@@ -31,8 +31,9 @@ for string aba
 index 0: result -> "","a"
 index 1 : result ->"","a"+ "b","ab"
 index 2 : because it is duplicate value so the result will be now
-          result-> ("","a","b","ab" + "a","aa","ba","aba") - result of last a ("","a")
-          result -> ("b","ab","a","aa","ba","aba")
+          result-> ("","a","b","ab" + "a","aa","ba","aba") - result of before last a ("")  this condition is for quantity not actually for combination string
+          result -> ("b","ab","a","aa","ba","aba","a")
+          value returned will be result.length-1;
  */
 class DistinctSubsequenceHandler2
 {
