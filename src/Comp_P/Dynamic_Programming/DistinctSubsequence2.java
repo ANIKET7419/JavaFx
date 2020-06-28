@@ -1,4 +1,5 @@
 package Comp_P.Dynamic_Programming;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -54,8 +55,11 @@ class DistinctSubsequenceHandler2
      int result;
      result=totalways(i-1)*2;
      //traversed[(int)data.charAt(i-1)]<i is used to prevent stack overflow error
-     if (traversed[(int)data.charAt(i-1)]!=-1&&traversed[(int)data.charAt(i-1)]<i)
-         result-=totalways(traversed[(int)data.charAt(i-1)]-1);
+     if (traversed[(int)data.charAt(i-1)]!=-1&&traversed[(int)data.charAt(i-1)]<i) {
+         int temp= totalways(traversed[(int) data.charAt(i - 1)] - 1);
+         System.out.println(temp+" "+i);
+         result-=temp;
+     }
      traversed[(int)data.charAt(i-1)]=i;
   return result;
  }
