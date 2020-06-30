@@ -46,9 +46,10 @@ public class practice {
 
 
     public static void main(String[] args) {
-
-        int val=1;
-        int c=100;
+      Integer array[][]=new Integer[10][10];
+      for (Integer  v[]:array)
+          for (Integer v1:v)
+          System.out.println(v1);
 
 
 
