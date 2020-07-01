@@ -38,6 +38,7 @@ class CanIWinHandler
                     boolean flag1=false;
                     for (int n=k+1;n<=j;n++)
                     {
+                        System.out.println(difference+ "" +n);
                         if (difference<=n)
                         {
                             flag1=true;
@@ -45,9 +46,15 @@ class CanIWinHandler
                         }
 
                     }
+                    if (k==j)
+                    {
+                        if (difference<=j-1)
+                        {
+                            flag1=true;
+                        }
+                    }
                     if (flag1==false)
                     {
-                        System.out.println(difference + " "+target+ " "+k);
                         seperator=k;
                         break;
                     }
