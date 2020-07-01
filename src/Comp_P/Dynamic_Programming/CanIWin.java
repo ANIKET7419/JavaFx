@@ -55,25 +55,28 @@ class CanIWinHandler
                     }
                     if (flag1==false)
                     {
+
                         seperator=k;
-                        break;
+                        byte first[]=caniwin(i,seperator-1,complement(turn),target-seperator);
+                        byte second[]=caniwin(seperator+1,j,complement(turn),target-seperator);
+                        if (first[1]==1||second[1]==1) {
+                            result[0] = turn;
+                            result[1] = 0;
+                        }
+                        else
+                        {
+
+                             result[0]=turn;
+                             result[1]=1;
+                             break;
+                        }
                     }
                 }
 
                 if (seperator!=-1)
                 {
 
-                    byte first[]=caniwin(i,seperator-1,complement(turn),target-seperator);
-                    byte second[]=caniwin(seperator+1,j,complement(turn),target-seperator);
-                    if (first[1]==1||second[1]==1) {
-                        result[0] = turn;
-                        result[1] = 1;
-                    }
-                    else
-                    {
-                        result[0]=turn;
-                        result[1]=0;
-                    }
+
 
                 }
                 else
@@ -87,6 +90,7 @@ class CanIWinHandler
 
     }
 }
+
 public class CanIWin {
     public static void main(String[] args) {
         CanIWinHandler handler=new CanIWinHandler();
