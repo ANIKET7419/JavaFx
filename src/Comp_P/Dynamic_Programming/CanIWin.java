@@ -17,11 +17,10 @@ class CanIWinHandler
         if (i>j)
             return new byte[]{turn,0};
         else {
-
             boolean flag=false;
             for (int k=i;k<=j;k++)
             {
-                if(k<=target)
+                if(k>=target)
                 {
                     flag=true;
                     result[0]=turn;
@@ -36,21 +35,21 @@ class CanIWinHandler
                 for (int k=i;k<=j;k++)
                 {
                     difference=target-k;
-                    for (int o=i;o<k;k++)
+                    boolean flag1=false;
+                    for (int n=k+1;n<=j;n++)
                     {
-                        if (difference>o)
+                        if (difference<=n)
                         {
-                            seperator=o;
+                            flag1=true;
                             break;
                         }
+
                     }
-                    for (int o=k+1;o<=j;o++)
+                    if (flag1==false)
                     {
-                        if (difference>o)
-                        {
-                            seperator=o;
-                            break;
-                        }
+                        System.out.println(difference + " "+target+ " "+k);
+                        seperator=k;
+                        break;
                     }
                 }
 
