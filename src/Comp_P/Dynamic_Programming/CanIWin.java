@@ -15,7 +15,7 @@ class CanIWinHandler
     }
     byte caniwin(int i,int j,int target)
     {
-        System.out.println(i+" "+j);
+
         byte  result=0;
         if (i>j)
             return -1;
