@@ -1,17 +1,32 @@
 package Comp_P.Dynamic_Programming;
-
-import com.sun.prism.shader.DrawEllipse_LinearGradient_REFLECT_AlphaTest_Loader;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+/*
+
+Bit Masking is also used
+
+where we need to choose only one at a time there we can use bit masking it is simple to implement
+
+
+for example
+initial state : 0000000
+when we use 0 index value then 1<<j = 1<<0 = 0000001
+when we use 1 index value then 1 <<j = 1<<1 = 00000010
+to check whether it is usable then do and of current state and previous state
+for example if currently we use 1 index then current state is 0000010
+   previous is 000110100100
+   we do and the result is 0 it means we can use otherwise we can not use
+     after using give state to another call  previous state | current state
+
+
+
+
+ */
 class CanIWinHandler
 {
 
-    int target,maximum;
-    void input(int target,int maximum)
+    private int maximum;
+    void input(int maximum)
     {
-        this.target=target;
         this.maximum=maximum;
     }
     boolean caniwin(int  state,int target)
@@ -47,6 +62,7 @@ public class CanIWin {
         target=scanner.nextInt();
         System.out.println("Enter Maximum Value");
         maximumvalue=scanner.nextInt();
+        handler.input(maximumvalue);
         System.out.println("Will I Win ? "+handler.caniwin(0,target));
     }
 }
