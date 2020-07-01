@@ -1,5 +1,7 @@
 package Comp_P.Dynamic_Programming;
 
+import com.sun.prism.shader.DrawEllipse_LinearGradient_REFLECT_AlphaTest_Loader;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,83 +13,58 @@ class CanIWinHandler
             return 1;
         else return 0;
     }
-    byte[] caniwin(int i,int j,byte turn,int target)
+    byte caniwin(int i,int j,int target)
     {
-        byte[]result=new byte[2];
+        System.out.println(i+" "+j);
+        byte  result=0;
         if (i>j)
-            return new byte[]{turn,0};
-        else {
-            boolean flag=false;
+            return -1;
+        else if (i==j)
+        {
+            if (target<=i)
+                return 1;
+            else
+                return 0;
+        }
+        else
+        {
+
+            int sum=0;
+            for (int k=i;k<=j;k++)
+                sum+=k;
+            if (sum<target)
+                return 0;
+
             for (int k=i;k<=j;k++)
             {
-                if(k>=target)
+                if (target-k<=0)
                 {
-                    flag=true;
-                    result[0]=turn;
-                    result[1]=1;
-                    break;
+                    return 1;
+                }
+                else {
+                    byte temp1 = caniwin(i, k - 1, target - k);
+                    byte temp2 = caniwin(k + 1, j, target - k);
+                    if (temp1 != -1 && temp2 != -1) {
+                        if (temp1 == 0 && temp2 == 0) {
+                            result = 1;
+
+                        }
+                    } else if (temp1 == -1) {
+                        if (temp2 == 0) {
+                            result = 1;
+
+                        }
+                    } else {
+                        if (temp1 == 0) {
+                            result = 1;
+
+                        }
+                    }
                 }
             }
-            if (!flag)
-            {
-                int difference;
-                int seperator=-1;
-                for (int k=i;k<=j;k++)
-                {
-                    difference=target-k;
-                    boolean flag1=false;
-                    for (int n=k+1;n<=j;n++)
-                    {
 
-                        if (difference<=n)
-                        {
-                            flag1=true;
-                            break;
-                        }
-
-                    }
-                    if (k==j)
-                    {
-                        if (difference<=j-1)
-                        {
-                            flag1=true;
-                        }
-                    }
-                    if (flag1==false)
-                    {
-
-                        seperator=k;
-                        byte first[]=caniwin(i,seperator-1,complement(turn),target-seperator);
-                        byte second[]=caniwin(seperator+1,j,complement(turn),target-seperator);
-                        if (first[1]==1||second[1]==1) {
-                            result[0] = turn;
-                            result[1] = 0;
-                        }
-                        else
-                        {
-
-                             result[0]=turn;
-                             result[1]=1;
-                             break;
-                        }
-                    }
-                }
-
-                if (seperator!=-1)
-                {
-
-
-
-                }
-                else
-                {
-                    result[0]=turn;
-                    result[1]=0;
-                }
-            }
-            return result;
         }
-
+        return result;
     }
 }
 
@@ -101,12 +78,6 @@ public class CanIWin {
         target=scanner.nextInt();
         System.out.println("Enter Maximum Value");
         maximumvalue=scanner.nextInt();
-        byte []result=handler.caniwin(1,maximumvalue,(byte)1,target);
-        if (result[0]==1&&result[1]==1)
-        {
-            System.out.println("I will Win");
-        }
-        else
-            System.out.println("I Will not Win");
+        System.out.println("Will I Win ? "+(handler.caniwin(1,maximumvalue,target)==1?true:false));
     }
 }
