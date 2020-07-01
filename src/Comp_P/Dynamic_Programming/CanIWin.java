@@ -1,4 +1,5 @@
 package Comp_P.Dynamic_Programming;
+import java.util.Arrays;
 import java.util.Scanner;
 /*
 
@@ -25,21 +26,45 @@ class CanIWinHandler
 {
 
     private int maximum;
+    byte storage[];
     void input(int maximum)
     {
         this.maximum=maximum;
+       storage=new byte[1<<maximum];
+        Arrays.fill(storage,(byte)-1);
     }
     boolean caniwin(int  state,int target)
     {
+
+
+        if (storage[state]!=-1)
+            return storage[state]==1?true:false;
         boolean result1=false;
+        int sum=0;
         for (int i=0;i<maximum;i++)
         {
             int currentstate=1<<i;
             int result=currentstate & state;
             if (result==0)
             {
-                if (target<=i+1)
+                sum+=i+1;
+            }
+        }
+        if (sum<target) {
+            storage[state]=0;
+            return false;
+        }
+        for (int i=0;i<maximum;i++)
+        {
+            int currentstate=1<<i;
+            int result=currentstate & state;
+            if (result==0)
+            {
+                if (target<=i+1) {
+
+                    storage[state]=1;
                     return true;
+                }
                boolean temp=caniwin(currentstate|state,target-(i+1));
                if (!temp)
                {
@@ -47,8 +72,8 @@ class CanIWinHandler
                }
             }
         }
-        return result1;
-
+        storage[state]=result1==true?(byte)1:(byte)0;
+      return result1;
     }
 }
 
