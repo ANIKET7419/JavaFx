@@ -1,39 +1,79 @@
 package Comp_P.Dynamic_Programming;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-//Under Process
 class CanIWinHandler
 {
-    int maximum;
-    boolean istraversed[];
+    byte complement(byte value)
+    {
+        if(value==0)
+            return 1;
+        else return 0;
+    }
     byte[] caniwin(int i,int j,byte turn,int target)
     {
-        byte[]result=new byte[]{0,1};
+        byte[]result=new byte[2];
         if (i>j)
             return new byte[]{turn,0};
-        else if (target<=maximum&&!(istraversed[maximum]))
-            return new byte[]{turn,1};
         else {
 
-
+            boolean flag=false;
             for (int k=i;k<=j;k++)
             {
-                istraversed[k]=true;
-                byte first[],second[];
-                if (turn==1) {
-                    first=caniwin(i, k-1, (byte) 0,target-k );
-                    second=caniwin(k+1,j,(byte)0,target-k);
-                }
-                else {
-                    first=caniwin(i, k-1, (byte) 1,target-k );
-                    second=caniwin(k+1,j,(byte)1,target-k);
-                }
-                istraversed[k]=false;
-                if ((first[0]==1&&first[1]==1)&&(second[0]==1&&second[1]==1))
+                if(k<=target)
                 {
-                    result[0]=1;
+                    flag=true;
+                    result[0]=turn;
                     result[1]=1;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                int difference;
+                int seperator=-1;
+                for (int k=i;k<=j;k++)
+                {
+                    difference=target-k;
+                    for (int o=i;o<k;k++)
+                    {
+                        if (difference>o)
+                        {
+                            seperator=o;
+                            break;
+                        }
+                    }
+                    for (int o=k+1;o<=j;o++)
+                    {
+                        if (difference>o)
+                        {
+                            seperator=o;
+                            break;
+                        }
+                    }
+                }
+
+                if (seperator!=-1)
+                {
+
+                    byte first[]=caniwin(i,seperator-1,complement(turn),target-seperator);
+                    byte second[]=caniwin(seperator+1,j,complement(turn),target-seperator);
+                    if (first[1]==1||second[1]==1) {
+                        result[0] = turn;
+                        result[1] = 1;
+                    }
+                    else
+                    {
+                        result[0]=turn;
+                        result[1]=0;
+                    }
+
+                }
+                else
+                {
+                    result[0]=turn;
+                    result[1]=0;
                 }
             }
             return result;
@@ -51,14 +91,12 @@ public class CanIWin {
         target=scanner.nextInt();
         System.out.println("Enter Maximum Value");
         maximumvalue=scanner.nextInt();
-        handler.maximum=maximumvalue;
-        handler.istraversed=new boolean[maximumvalue+1];
-        Arrays.fill(handler.istraversed,false);
         byte []result=handler.caniwin(1,maximumvalue,(byte)1,target);
         if (result[0]==1&&result[1]==1)
         {
             System.out.println("I will Win");
         }
-        else System.out.println("I Will not Win");
+        else
+            System.out.println("I Will not Win");
     }
 }
