@@ -1,6 +1,5 @@
 package Comp_P.BruteForce;
-
-import javafx.scene.control.skin.CellSkinBase;
+//This  approach is not useful for long input there it may cause  stack overflow error because of recursion
 
 import java.util.Scanner;
 
