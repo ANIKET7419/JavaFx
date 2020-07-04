@@ -1,7 +1,6 @@
 package Comp_P.Dynamic_Programming;
 import Comp_P.Reusable.SegmentTree;
 import java.util.Scanner;
-
 public class BuildMaximumNumber {
     public static void main(String[] args) {
           SegmentTree tree=new SegmentTree();
