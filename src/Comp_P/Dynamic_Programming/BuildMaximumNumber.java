@@ -14,16 +14,15 @@ public class BuildMaximumNumber {
             data[i]=scanner.nextInt();
         tree.input(data);
         tree.construct();
-        System.out.println("Enter -1 To Exit");
-        int k=1;
-        while (k!=-1)
+        while (true)
         {
             System.out.println("Start");
             int start=scanner.nextInt();
             System.out.println("End");
             int end=scanner.nextInt();
             int result=tree.queryMax(start,end);
-            System.out.print("The Result is "+result);
+            System.out.println("The Result is "+result);
+
         }
 
     }

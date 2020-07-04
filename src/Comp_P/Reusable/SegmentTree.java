@@ -3,8 +3,8 @@ public class SegmentTree {
 
     int data[];
     int treesize=0;
-    int result[];
-    boolean isbuilt=false;
+  public   int result[];
+
     public  void input(int data[])
     {
         this.data=data;
@@ -16,17 +16,15 @@ public class SegmentTree {
     {
         buildTree(0,data.length-1,0);
     }
-    private void buildTree(int start,int end,int index) {
+    int  buildTree(int start,int end,int index) {
 
         if (start == end) {
-            isbuilt=true;
-            result[start] = data[start];
-            return;
+            return result[index]=data[start];
         }
         int mid = (start + end) / 2;
-        buildTree(start, mid, 2 * index + 1);
-        buildTree(mid+1, end, 2 * index + 2);
-        result[index] = Math.max(result[2 * index + 1], result[2 * index + 2]);
+       int temp= buildTree(start, mid, 2 * index + 1);
+        int temp2=buildTree(mid+1, end, 2 * index + 2);
+      return   result[index] = Math.max(temp,temp2);
     }
     private int  query(int start,int end,int position,int querystart,int queryend)
     {
@@ -39,7 +37,7 @@ public class SegmentTree {
             return Integer.MIN_VALUE;
         }
         int mid=(start+end)/2;
-        return Integer.max(query(start,mid,2*position+1,querystart,queryend),query(mid+1,end,2*position+2,querystart,queryend));
+        return Math.max(query(start,mid,2*position+1,querystart,queryend),query(mid+1,end,2*position+2,querystart,queryend));
     }
  public    int queryMax(int startIndex,int endIndex)
     {
