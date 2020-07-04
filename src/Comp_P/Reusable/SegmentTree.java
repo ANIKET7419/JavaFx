@@ -5,14 +5,14 @@ public class SegmentTree {
     int treesize=0;
     int result[];
     boolean isbuilt=false;
-    void input(int data[])
+    public  void input(int data[])
     {
         this.data=data;
         treesize=2*data.length;
         result=new int[treesize];
 
     }
-    void construct()
+  public   void construct()
     {
         buildTree(0,data.length-1,0);
     }
@@ -41,7 +41,7 @@ public class SegmentTree {
         int mid=(start+end)/2;
         return Integer.max(query(start,mid,2*position+1,querystart,queryend),query(mid+1,end,2*position+2,querystart,queryend));
     }
-    int queryMax(int startIndex,int endIndex)
+ public    int queryMax(int startIndex,int endIndex)
     {
         return query(0,data.length-1,0,startIndex,endIndex);
     }
