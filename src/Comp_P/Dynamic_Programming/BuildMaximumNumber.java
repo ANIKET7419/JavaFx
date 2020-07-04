@@ -20,8 +20,8 @@ public class BuildMaximumNumber {
             int start=scanner.nextInt();
             System.out.println("End");
             int end=scanner.nextInt();
-            int result=tree.queryMax(start,end);
-            System.out.println("The Result is "+result);
+            int result[]=tree.queryMax(start,end);
+            System.out.println("The Result is "+result[0]+"  of Index "+result[1]);
 
         }
 
