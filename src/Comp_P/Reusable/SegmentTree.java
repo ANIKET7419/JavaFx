@@ -2,14 +2,11 @@ package Comp_P.Reusable;
 public class SegmentTree {
 
     int data[];
-    int treesize=0;
-  public   int result[];
-
+    int result[];
     public  void input(int data[])
     {
         this.data=data;
-        treesize=2*data.length;
-        result=new int[treesize];
+        result=new int[ 2*data.length];
 
     }
   public   void construct()
