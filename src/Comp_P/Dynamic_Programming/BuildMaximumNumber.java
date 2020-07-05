@@ -33,16 +33,30 @@ class BuildMaximumNumberHandler
          {
              return true;
          }
+         if (start1>end1&&start2>end2)
+             return false;
+         else if (start1>end1) {
 
-         if (start1>end1||start2>end2)
-             return false;
-         else if ((data1.length-start1)+(data2.length-start2)<k)
-             return false;
+
+             if (data2.length-start2<k)
+                 return false;
+
+         }
+         else if (start2>end2)
+         {
+             if (data1.length-start1<k)
+                 return false;
+         }
+         else
+         {
+             if (data1.length-start1+data2.length-start2<k)
+                 return false;
+         }
 
 
          int maximum1[]=tree1.queryMax(start1,end1);
          int maximum2[]=tree2.queryMax(start2,end2);
-        if (maximum1[0]>maximum1[0])
+        if (maximum1[0]>maximum2[0])
         {
             result[length-k]=maximum1[0];
             if(maximumNumber(maximum1[1]+1,end1,start2,end2,k-1))
@@ -91,9 +105,11 @@ public class BuildMaximumNumber {
                   System.out.print(handler.result[i]+"  , ");
 
           }
-          else
+          else {
               System.out.print("There is no solution found ");
-
+              for (int i=0;i<handler.result.length;i++)
+                  System.out.print(handler.result[i]+"  , ");
+          }
 
 
 
