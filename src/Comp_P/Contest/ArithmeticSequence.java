@@ -2,7 +2,7 @@ package Comp_P.Contest;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
 public class ArithmeticSequence {
     int data[];
     ArrayList<Integer> result;
@@ -72,3 +72,35 @@ public class ArithmeticSequence {
         System.out.println("Result "+sequence.canMake());
     }
 }
+
+*/
+
+public class ArithmeticSequence {
+    int data[];
+    void input(int data[])
+    {
+        this.data=data;
+    }
+    boolean canMake()
+    {
+     // sort all data  because unsorted data can not be Ap
+     //if descending order is not AP then ascending order must not be AP
+     return true||false;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Enter Data Size");
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        int data[]=new int[n];
+        for (int i=0;i<n;i++)
+            data[i]=scanner.nextInt();
+        ArithmeticSequence sequence =new ArithmeticSequence();
+        sequence.input(data);
+        System.out.println("Result "+sequence.canMake());
+    }
+}
+
+
+
