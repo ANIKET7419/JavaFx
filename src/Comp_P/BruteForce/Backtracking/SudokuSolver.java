@@ -42,11 +42,11 @@ class SudokuSolverHandler
     {
 
 
-        if (i==data.length-1&&j==data[0].length)
+        if (i==8&&j==9)
         {
             return true;
         }
-        if (j==9)
+       else  if (j==9)
         {
             i=i+1;
             j=0;
@@ -97,6 +97,7 @@ public class SudokuSolver {
                 data[i][j]=scanner.nextLine().charAt(0);
             }
         }
+        handler.input(data.clone());
         handler.solver(0,0);
     }
 }
