@@ -1,6 +1,5 @@
 package Comp_P.Dynamic_Programming;
 import java.util.Scanner;
-//Under Progress  the best way to do is https://web.archive.org/web/20160120093629/http://algobox.org/create-maximum-number/
 class BuildMaximumNumberHandler
 {
 
@@ -30,9 +29,21 @@ class BuildMaximumNumberHandler
          int r=0;
          int i=0,j=0;
          int result[]=new int[data1.length+data2.length];
-           while (r<data1.length+data2.length&&i<data1.length&&j<data2.length)
+           while (r<data1.length+data2.length)
            {
-             result[r++]= forfirst_or_not(data1,i,data2,j)?data1[i++]:data2[j++];
+               if (i<data1.length&&j<data2.length)
+               {
+                   result[r++]= forfirst_or_not(data1,i,data2,j)?data1[i++]:data2[j++];
+               }
+               else if (i<data1.length)
+               {
+                result[r++]=data1[i++];
+               }
+               else if (j<data2.length)
+               {
+                   result[r++]=data2[j++];
+               }
+
            }
            return result;
      }
@@ -53,7 +64,12 @@ class BuildMaximumNumberHandler
                 return false;
             }
         }
-        return true;
+        if(i==data1.length)
+        {
+            return false;
+        }
+        else
+            return true;
 
 
     }
