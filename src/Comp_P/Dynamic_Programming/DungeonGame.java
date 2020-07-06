@@ -32,8 +32,10 @@ class DungeonGameHandler
                    result[0]=temp2[0]+(1-value);
                    result[1]=1;
                }
-               else
-               result[1]=value;
+               else {
+                   result[0]=temp2[0];
+                   result[1] = value;
+               }
            }
            if (temp1[0]!=-1)
            {
@@ -43,8 +45,10 @@ class DungeonGameHandler
                    result2[0]=temp1[0]+(1-value);
                    result2[1]=1;
                }
-               else
-               result2[1]=value;
+               else {
+                   result2[0]=temp1[0];
+                   result2[1] = value;
+               }
            }
            if (result[0]==0)
                return result2;
@@ -79,7 +83,7 @@ public class DungeonGame {
             }
         }
         handler.input(data);
-        int result[]=handler.minimumHp(data.length,data[0].length);
+        int result[]=handler.minimumHp(data.length-1,data[0].length-1);
         System.out.println("The Minimum Initial Hp should be "+result[0]);
     }
 }
