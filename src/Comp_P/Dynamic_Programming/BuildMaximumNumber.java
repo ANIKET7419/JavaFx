@@ -1,18 +1,16 @@
 package Comp_P.Dynamic_Programming;
 import java.util.Scanner;
-//Under Progress best way to do is https://web.archive.org/web/20160120093629/http://algobox.org/create-maximum-number/
+//Under Progress  the best way to do is https://web.archive.org/web/20160120093629/http://algobox.org/create-maximum-number/
 class BuildMaximumNumberHandler
 {
 
     int data1[],data2[];
-    int result[];
     int k;
      void input(int data1[],int data2[],int k)
      {
          this.data1=data1;
          this.data2=data2;
          this.k=k;
-         result=new int[k];
      }
 
      int [] one_d_array(int data1[],int k)
@@ -32,7 +30,7 @@ class BuildMaximumNumberHandler
          int r=0;
          int i=0,j=0;
          int result[]=new int[data1.length+data2.length];
-           while (r!=data1.length+data2.length)
+           while (r<data1.length+data2.length)
            {
              result[r++]= forfirst_or_not(data1,i,data2,j)?data1[i++]:data2[j++];
            }
@@ -77,7 +75,7 @@ class BuildMaximumNumberHandler
               }
            }
 
-    return ans;
+         return ans;
      }
 
 
@@ -101,7 +99,7 @@ public class BuildMaximumNumber {
               data2[i]=scanner.nextInt();
           System.out.println("Enter the value of k");
           int k=scanner.nextInt();
-          handler.input(data1,data2,k);
+          handler.input(data1.clone(),data2.clone(),k);
         int result[]= handler.maximumNumber();
         for (int i=0;i<result.length;i++)
         {
@@ -111,87 +109,3 @@ public class BuildMaximumNumber {
 
     }
 }
-/*
-
-
-          if (data1.length+data2.length<k)
-              return new int[]{};
-          SegmentTree tree1=new SegmentTree();
-          SegmentTree tree2=new SegmentTree();
-          tree1.input(data1);
-          tree2.input(data2);
-          tree1.construct();
-          tree2.construct();
-          int data1start=0;
-          int data1end=data1.length-1;
-          int data2start=0;
-          int data2end=data2.length-1;
-         while (k!=0&&data1start<data1end&&data2start<data2end)
-         {
-             int temp1[]=tree1.queryMax(data1start,data1end);
-             int temp2[]=tree2.queryMax(data2start,data2end);
-             if (temp1[0]>temp2[0])
-             {
-                int remaining_elements= data1end-temp1[1];
-                int others=data2end-data2start+1;
-                if (remaining_elements+others>=k)
-                {
-
-                    result[length-k]=temp1[0];
-                    k--;
-
-                    data1start=temp1[1]+1;
-
-                }
-                else
-                {
-                    data1end=temp1[1]-1;
-                }
-             }
-             else if (temp1[0]==temp2[0])
-             {
-                 int remaining_elements= data1end-temp1[1];
-                 int others=data2end-data2start+1;
-                 if (remaining_elements+others>=k)
-                 {
-                     result[length-k]=temp1[0];
-                     k--;
-                     data1start=temp1[1]+1;
-
-                 }
-                 else
-                 {
-                  int remaining=data2end-temp2[1];
-                  int other=data1end-data1start+1;
-                  if (remaining+other>=k)
-                  {
-                      result[length-k]=temp2[0];
-                      k--;
-                      data2start=temp2[1]+1;
-
-                  }
-                  else {
-
-                      data1end=temp1[1]-1;
-                  }
-                 }
-             }
-             else {
-
-                 int remaining_elements= data2end-temp2[1];
-                 int others=data1end-data1start+1;
-                 if (remaining_elements+others>=k)
-                 {
-                     result[length-k]=temp2[0];
-                     k--;
-                     data2start=temp2[1]+1;
-
-                 }
-                 else
-                 {
-                     data2end=temp2[1]-1;
-                 }
-             }
-         }
-
- */
