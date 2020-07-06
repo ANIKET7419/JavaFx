@@ -1,63 +1,50 @@
 package Comp_P.BruteForce.Backtracking;
-import javafx.util.Pair;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
-
-
-
-//Under Progress
 class SudokuSolverHandler
 {
     char data[][];
-     HashMap<Character,Integer> row[],column[],grid[][];
+    HashSet<Character>[] row;
+    HashSet<Character>[] column;
+    HashSet<Character>[][] grid;
     void input(char data[][])
     {
-        row=new HashMap[9];
-        column=new HashMap[9];
-        grid=new HashMap[3][3];
+        row=new HashSet[9];
+        column=new HashSet[9];
+        grid=new HashSet[3][3];
         this.data=data;
-    }
-    boolean isSafe(int i,int j)
-    {
-        if (row[i].containsKey(data[i][j])) {
-            row[i].put(data[i][j], row[i].get(data[i][j]) + 1);
-            return false;
-        }
-        else
+        for(int i=0;i<9;i++)
         {
-            row[i].put(data[i][j], 1);
+            row[i]=new HashSet();
+            column[i]=new HashSet();
+
         }
-        if(column[j].containsKey(data[i][j])) {
-            column[j].put(data[i][j], column[j].get(data[i][j]) + 1);
-            return false;
-        }
-        else {
-            column[j].put(data[i][j],  1);
-        }
-        if (grid[i/3][j/3].containsKey(data[i][j])) {
-            grid[i / 3][j / 3].put(data[i][j], grid[i / 3][j / 3].get(data[i][j]) + 1);
-            return false;
-        }
-        else
-        {
-            grid[i / 3][j / 3].put(data[i][j],  1);
-        }
-        return true;
+        for(int i=0;i<3;i++)
+            for(int j=0;j<3;j++)
+                grid[i][j]=new HashSet();
     }
-    void  solver(int i,int j)
+
+
+    void  put(int i,int j)
     {
+        row[i].add(data[i][j]);
+        column[j].add(data[i][j]);
+        grid[i / 3][j / 3].add(data[i][j]);
+    }
+    void remove(int i,int j)
+    {
+
+        row[i].remove(data[i][j]);
+        column[j].remove(data[i][j]);
+        grid[i/3][j/3].remove(data[i][j]);
+    }
+    boolean  solver(int i,int j)
+    {
+
+
         if (i==data.length-1&&j==data[0].length)
         {
-            for(int i1=0;i1<10;i1++)
-            {
-                for(int j1=0;j1<10;j1++)
-                {
-                    System.out.print(data[i1][j1]);
-                }
-                System.out.println();
-            }
-            System.out.println();
-            return;
+            return true;
         }
         if (j==9)
         {
@@ -66,19 +53,32 @@ class SudokuSolverHandler
         }
         if(data[i][j]!='.')
         {
-            solver(i,j+1);
+
+            if (row[i].contains(data[i][j])||column[j].contains(data[i][j])||grid[i/3][j/3].contains(data[i][j]))
+                return false;
+            put(i,j);
+            if(solver(i,j+1))
+                return true;
+            remove(i,j);
         }
-        else  if (isSafe(i,j))
-        {
-            for(int value=1;value<=9;value++)
-            {
-                data[i][j]=(char)(value+48);
-                solver(i,j+1);
-                data[i][j]='.';
+        else {
+            for (int value = 1; value <= 9; value++) {
+
+                char temp = (char) (value + 48);
+                if (!row[i].contains(temp)&& !column[j].contains(temp)&&!grid[i / 3][j / 3].contains(temp))
+                {
+
+                    data[i][j] =temp;
+                    put(i,j);
+                    if(solver(i, j + 1))
+                        return true;
+                    remove(i,j);
+                    data[i][j] = '.';
+                }
+
             }
         }
-
-
+        return false;
     }
 
 
