@@ -1,5 +1,4 @@
 package Comp_P.Dynamic_Programming;
-import Comp_P.Reusable.SegmentTree;
 import java.util.Scanner;
 //Under Progress best way to do is https://web.archive.org/web/20160120093629/http://algobox.org/create-maximum-number/
 class BuildMaximumNumberHandler
@@ -8,72 +7,77 @@ class BuildMaximumNumberHandler
     int data1[],data2[];
     int result[];
     int k;
-    int length;
-    SegmentTree tree1,tree2;
      void input(int data1[],int data2[],int k)
      {
          this.data1=data1;
          this.data2=data2;
-         tree1=new SegmentTree();
-         tree1.input(data1);
-         tree1.construct();
-         tree2=new SegmentTree();
-         tree2.input(data2);
-         tree2.construct();
-         result=new int[k];
          this.k=k;
-         length=k;
-
+         result=new int[k];
      }
-     boolean maximumNumber(int start1,int end1,int start2,int end2,int k)
+
+     int [] one_d_array(int data1[],int k)
      {
-
-
-         if (k==0)
-         {
-             return true;
+         int result[]=new int[k];
+         int j=0;
+         for (int i=0;i<data1.length;i++) {
+             while (j > 0 && result[j - 1] < data1[i] && data1.length - i + j > k)
+                 j--;
+             if (j < k)
+                 result[j++] = data1[i];
          }
-         if (start1>end1&&start2>end2)
-             return false;
-         else if (start1>end1) {
-
-
-             if (data2.length-start2<k)
-                 return false;
-
-         }
-         else if (start2>end2)
-         {
-             if (data1.length-start1<k)
-                 return false;
-         }
-         else
-         {
-             if (data1.length-start1+data2.length-start2<k)
-                 return false;
-         }
-
-
-         int maximum1[]=tree1.queryMax(start1,end1);
-         int maximum2[]=tree2.queryMax(start2,end2);
-        if (maximum1[0]>maximum2[0])
+         return result;
+     }
+     int [] merge(int[] data1, int data2[])
+     {
+         int r=0;
+         int i=0,j=0;
+         int result[]=new int[data1.length+data2.length];
+           while (r!=data1.length+data2.length)
+           {
+             result[r++]= forfirst_or_not(data1,i,data2,j)?data1[i++]:data2[j++];
+           }
+           return result;
+     }
+    boolean forfirst_or_not(int[] data1,int i, int data2[],int j)
+    {
+        while (i<data1.length&&j<data2.length)
         {
-            result[length-k]=maximum1[0];
-            if(maximumNumber(maximum1[1]+1,end1,start2,end2,k-1))
+            if (data1[i]==data2[j]) {
+                i++;
+                j++;
+            }
+            else if (data1[i]>data2[j])
+            {
                 return true;
-            if (maximumNumber(start1,maximum1[1]-1,start2,end2,k))
-                return true;
-
+            }
+            else
+            {
+                return false;
+            }
         }
-       else {
-            result[length-k]=maximum2[0];
-            if (maximumNumber(start1,end1,maximum2[1]+1,end2,k-1))
-                return true;
-            if (maximumNumber(start1,end1,start2,maximum2[1]-1,k))
-                return true;
+        return true;
 
-       }
-       return false;
+
+    }
+
+     int [] maximumNumber(){
+
+           if (data1.length+data2.length<k)
+               return new int[]{};
+
+
+
+            int ans[]=new int[k];
+           for (int i=Math.max(0,k-data2.length);i<k&&i<data1.length;i++)
+           {
+              int candidate[]= merge(one_d_array(data1,i),one_d_array(data2,k-i));
+              if (forfirst_or_not(candidate,0,ans,0))
+              {
+                  ans=candidate;
+              }
+           }
+
+    return ans;
      }
 
 
@@ -98,20 +102,12 @@ public class BuildMaximumNumber {
           System.out.println("Enter the value of k");
           int k=scanner.nextInt();
           handler.input(data1,data2,k);
-          boolean result=handler.maximumNumber(0,data1.length-1,0,data2.length-1,k);
-          if (result)
-          {
-              for (int i=0;i<handler.result.length;i++)
-                  System.out.print(handler.result[i]+"  , ");
-
-          }
-          else {
-              System.out.print("There is no solution found ");
-              for (int i=0;i<handler.result.length;i++)
-                  System.out.print(handler.result[i]+"  , ");
-          }
-
-
+        int result[]= handler.maximumNumber();
+        for (int i=0;i<result.length;i++)
+        {
+            System.out.print(result[i]+"  ");
+        }
+         System.out.println();
 
     }
 }
