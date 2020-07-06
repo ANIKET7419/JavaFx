@@ -97,7 +97,16 @@ public class SudokuSolver {
                 data[i][j]=scanner.nextLine().charAt(0);
             }
         }
-        handler.input(data.clone());
+        handler.input(data);
         handler.solver(0,0);
+        for (char data1[]:data)
+        {
+            for (char data2:data1)
+            {
+                System.out.print(data2+"  ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
