@@ -30,7 +30,7 @@ class BuildMaximumNumberHandler
          int r=0;
          int i=0,j=0;
          int result[]=new int[data1.length+data2.length];
-           while (r<data1.length+data2.length)
+           while (r<data1.length+data2.length&&i<data1.length&&j<data2.length)
            {
              result[r++]= forfirst_or_not(data1,i,data2,j)?data1[i++]:data2[j++];
            }
@@ -62,11 +62,8 @@ class BuildMaximumNumberHandler
 
            if (data1.length+data2.length<k)
                return new int[]{};
-
-
-
             int ans[]=new int[k];
-           for (int i=Math.max(0,k-data2.length);i<k&&i<data1.length;i++)
+           for (int i=Math.max(0,k-data2.length);i<=k&&i<=data1.length;i++)
            {
               int candidate[]= merge(one_d_array(data1,i),one_d_array(data2,k-i));
               if (forfirst_or_not(candidate,0,ans,0))
