@@ -1,5 +1,6 @@
 package Comp_P.Dynamic_Programming;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 /*
@@ -20,17 +21,22 @@ class TriangleHandler
 {
 
     List<List<Integer>> triangle;
-    void input(List<List<Integer>> triangle)
-    {
-        this.triangle=triangle;
+    int storage[][];
+    void input(List<List<Integer>> triangle) {
+        this.triangle = triangle;
+        storage = new int[triangle.size()][triangle.size() + 1];
+        for (int t[] : storage)
+            Arrays.fill(t, -1);
     }
     int minimumPathSum(int index,int row)
     {
         if (row==triangle.size()-1)
             return triangle.get(row).get(index);
+        if (storage[row][index]!=-1)
+            return storage[row][index];
        int temp= minimumPathSum(index,row+1)+triangle.get(row).get(index);
        int temp1= minimumPathSum(index+1,row+1)+triangle.get(row).get(index);
-       return Math.min(temp,temp1);
+       return storage[row][index]=Math.min(temp,temp1);
     }
 }
 public class Triangle {
