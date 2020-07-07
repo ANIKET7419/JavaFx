@@ -40,6 +40,7 @@ public class Triangle {
         Scanner scanner=new Scanner(System.in);
         int rows=scanner.nextInt();
         List<List<Integer>> triangle=new ArrayList();
+        System.out.println("Enter Data ");
         for (int i=0;i<rows;i++)
         {
             List<Integer> row=new ArrayList<Integer>();
