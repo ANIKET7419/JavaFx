@@ -61,33 +61,53 @@ make a list of all character with their indexes
  */
 
 
-
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 class FreedomTrailHandler
 {
     String ring,key;
+    List<Integer>characters[];
     void input(String ring,String key)
     {
         this.key=key;
         this.ring=ring;
+        characters=new List[26];
+        for (int i=0;i<26;i++)
+            characters[i]=new ArrayList<Integer>();
+        for (int i=0;i<ring.length();i++)
+            characters[ring.charAt(i)-'a'].add(i);
     }
-    int minimumSteps(int index1,int index2,boolean clockwise)
+    int minimumSteps(int current_at_12_00_ring,int keyIndex)
     {
-        if (clockwise&&index1==key.length()||!clockwise&&index1==-1)
-        {
+
+        if (keyIndex==key.length())
             return 0;
-        }
-        else
+        int minimum=Integer.MAX_VALUE;
+        for(int i:characters[key.charAt(keyIndex)-'a'])
         {
-  return 10;
+            minimum=Math.min(minimum,1+distance(current_at_12_00_ring,i)+minimumSteps(i,keyIndex+1));
         }
+        return minimum;
+    }
+    int distance(int current_index,int going_index)
+    {
+        return Math.min(Math.abs(current_index-going_index),ring.length()-current_index+going_index);
     }
 
 
 }
 public class FreedomTrail {
     public static void main(String[] args) {
+           String key,ring;
+           System.out.println("Enter Key ");
+           Scanner scanner=new Scanner(System.in);
+           key=scanner.nextLine();
+           System.out.println("Enter Ring Code");
+           ring=scanner.nextLine();
+           FreedomTrailHandler handler=new FreedomTrailHandler();
+           handler.input(ring,key);
 
     }
 }
