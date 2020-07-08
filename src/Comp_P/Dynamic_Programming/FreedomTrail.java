@@ -89,7 +89,7 @@ class FreedomTrailHandler
         {
             minimum=Math.min(minimum,1+distance(current_at_12_00_ring,i)+minimumSteps(i,keyIndex+1));
         }
-        return minimum;
+        return minimum==Integer.MAX_VALUE?0:minimum;
     }
     int distance(int current_index,int going_index)
     {
@@ -108,6 +108,7 @@ public class FreedomTrail {
            ring=scanner.nextLine();
            FreedomTrailHandler handler=new FreedomTrailHandler();
            handler.input(ring,key);
+           System.out.println(handler.minimumSteps(0,0));
 
     }
 }
