@@ -62,6 +62,7 @@ make a list of all character with their indexes
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -69,10 +70,14 @@ class FreedomTrailHandler
 {
     String ring,key;
     List<Integer>characters[];
+    int storage[][];
     void input(String ring,String key)
     {
         this.key=key;
         this.ring=ring;
+        storage=new int[ring.length()+1][key.length()+1];
+        for (int temp[]:storage)
+            Arrays.fill(temp,-1);
         characters=new List[26];
         for (int i=0;i<26;i++)
             characters[i]=new ArrayList<Integer>();
@@ -84,16 +89,19 @@ class FreedomTrailHandler
 
         if (keyIndex==key.length())
             return 0;
+        if (storage[current_at_12_00_ring][keyIndex]!=-1)
+            return storage[current_at_12_00_ring][keyIndex];
         int minimum=Integer.MAX_VALUE;
         for(int i:characters[key.charAt(keyIndex)-'a'])
         {
             minimum=Math.min(minimum,1+distance(current_at_12_00_ring,i)+minimumSteps(i,keyIndex+1));
         }
-        return minimum==Integer.MAX_VALUE?0:minimum;
+        return storage[current_at_12_00_ring][keyIndex]=minimum==Integer.MAX_VALUE?0:minimum;
     }
     int distance(int current_index,int going_index)
     {
-        return Math.min(Math.abs(current_index-going_index),ring.length()-current_index+going_index);
+        int d=Math.abs(current_index-going_index);
+        return Math.min(d,ring.length()-d);
     }
 
 
