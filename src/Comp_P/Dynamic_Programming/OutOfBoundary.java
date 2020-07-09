@@ -12,14 +12,6 @@ class OutOfBoundaryHandler
         for (int temp[]:places)
             Arrays.fill(temp,0);
     }
-    boolean safe(int currentx,int currenty)
-    {
-
-        if (places[currentx][currenty]==1)
-            return false;
-        else
-            return true;
-    }
 
     int paths(int currentx,int currenty,int moves)
     {
@@ -28,16 +20,12 @@ class OutOfBoundaryHandler
            return 1;
        if (moves==0)
            return 0;
-       int result=0;
-       if (safe(currentx,currenty))
-       {
-           places[currentx][currenty]=1;
+           int result=0;
            result+=paths(currentx+1,currenty,moves-1);
            result+=paths(currentx,currenty+1,moves-1);
            result+=paths(currentx-1,currenty,moves-1);
            result+=paths(currentx,currenty-1,moves-1);
-       }
-       return result;
+          return result;
     }
 }
 public class OutOfBoundary {
