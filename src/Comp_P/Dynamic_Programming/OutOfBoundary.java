@@ -6,11 +6,17 @@ import java.util.Scanner;
 class OutOfBoundaryHandler
 {
     int places[][];
-    void input(int m,int n)
+    int storage[][][];
+    int counter=0;
+    void input(int m,int n,int moves)
     {
         places=new int[m][n];
         for (int temp[]:places)
             Arrays.fill(temp,0);
+        storage=new int[m][n][moves+1];
+        for (int temp[][]:storage)
+            for (int temp1[]:temp)
+                Arrays.fill(temp1,-1);
     }
 
     int paths(int currentx,int currenty,int moves)
@@ -20,12 +26,16 @@ class OutOfBoundaryHandler
            return 1;
        if (moves==0)
            return 0;
+         if (storage[currentx][currenty][moves]!=-1) {
+             counter++;
+             return storage[currentx][currenty][moves];
+         }
            int result=0;
            result+=paths(currentx+1,currenty,moves-1);
            result+=paths(currentx,currenty+1,moves-1);
            result+=paths(currentx-1,currenty,moves-1);
            result+=paths(currentx,currenty-1,moves-1);
-          return result;
+          return storage[currentx][currenty][moves]=result;
     }
 }
 public class OutOfBoundary {
@@ -43,8 +53,9 @@ public class OutOfBoundary {
         int y=scanner.nextInt();
         System.out.println("Enter Total Moves");
         int moves=scanner.nextInt();
-        handler.input(m,n);
+        handler.input(m,n,moves);
         System.out.println("The Total Paths are "+handler.paths(x,y,moves));
+        System.out.println("Total Call Escaped "+handler.counter);
 
     }
 }
