@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 class OutOfBoundaryHandler
 {
-    int places[][];
     int storage[][][];
     int counter=0;
+    int m,n;
+    final static int mod=1_00_00_00_00_7;
     void input(int m,int n,int moves)
     {
-        places=new int[m][n];
-        for (int temp[]:places)
-            Arrays.fill(temp,0);
+        this.m=m;
+        this.n=n;
         storage=new int[m][n][moves+1];
         for (int temp[][]:storage)
             for (int temp1[]:temp)
@@ -22,22 +22,23 @@ class OutOfBoundaryHandler
     int paths(int currentx,int currenty,int moves)
     {
 
-       if (currentx>=places.length||currenty>=places[0].length||currentx<0||currenty<0)
-           return 1;
-       if (moves==0)
-           return 0;
-         if (storage[currentx][currenty][moves]!=-1) {
-             counter++;
-             return storage[currentx][currenty][moves];
-         }
-           int result=0;
-           result+=paths(currentx+1,currenty,moves-1);
-           result+=paths(currentx,currenty+1,moves-1);
-           result+=paths(currentx-1,currenty,moves-1);
-           result+=paths(currentx,currenty-1,moves-1);
-          return storage[currentx][currenty][moves]=result;
+        if (currentx>=m||currenty>=n||currentx<0||currenty<0)
+            return 1;
+        if (moves==0)
+            return 0;
+        if (storage[currentx][currenty][moves]!=-1) {
+            counter++;
+            return storage[currentx][currenty][moves];
+        }
+        int result=0;
+        result=(result+paths(currentx+1,currenty,moves-1))%mod;
+        result=(result+paths(currentx,currenty+1,moves-1))%mod;
+        result=(result+paths(currentx-1,currenty,moves-1))%mod;
+        result=(result+paths(currentx,currenty-1,moves-1))%mod;
+        return storage[currentx][currenty][moves]=result%mod;
     }
 }
+
 public class OutOfBoundary {
 
     public static void main(String[] args) {
