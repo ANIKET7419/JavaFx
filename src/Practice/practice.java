@@ -46,10 +46,9 @@ public class practice {
 
 
     public static void main(String[] args) {
-      Integer array[][]=new Integer[10][10];
-      for (Integer  v[]:array)
-          for (Integer v1:v)
-          System.out.println(v1);
+        List<List<Integer>> list=new ArrayList<>();
+        list.add(0,new ArrayList<Integer>(20));
+        list.add(0,new ArrayList<Integer>(20));
 
 
 
