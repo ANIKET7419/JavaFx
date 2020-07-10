@@ -50,7 +50,5 @@ public class practice {
         list.add(0,new ArrayList<Integer>(20));
         list.add(0,new ArrayList<Integer>(20));
 
-
-
     }
 }
