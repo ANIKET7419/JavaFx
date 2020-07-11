@@ -15,5 +15,93 @@ repeat same process
 in the last see if all nodes are traversed if yes return true else return false
 
  */
+
+
+import java.util.*;
+
+class CourseScheduleHandler
+{
+    int courses;
+    int pre[][];
+    boolean isvisited[];
+    HashMap<Integer, ArrayList<Integer>> indexes=new HashMap<Integer,ArrayList<Integer>>();
+    HashSet<Integer> nodes=new HashSet<>();  // contains that have prerequisite
+    Queue<Integer> queue=  new LinkedList();
+    void input(int courses,int pre[][])
+    {
+        this.courses=courses;
+        this.pre=pre;
+        isvisited=new boolean[courses];
+        Arrays.fill(isvisited,false);
+    }
+    boolean willBeFinished()
+    {
+        for (int i=0;i<pre.length;i++) {
+            nodes.add(pre[i][0]);
+            if(indexes.containsKey(pre[i][1]))
+            {
+                indexes.get(pre[i][1]).add(i);
+            }
+            else
+            {
+                ArrayList <Integer>set=new ArrayList<>();
+                set.add(i);
+                indexes.put(pre[i][1],set);
+            }
+        }
+        for (int i=0;i<isvisited.length;i++)
+        {
+            if (!nodes.contains(i))
+            {
+                queue.add(i);
+                while (!queue.isEmpty())
+                {
+                    int n=queue.poll();
+                    isvisited[n]=true;
+                    if(indexes.containsKey(n)) {
+                        while (indexes.get(n).size() != 0) {
+                            int index = indexes.get(n).get(indexes.get(n).size() - 1);
+                            indexes.get(n).remove(indexes.get(n).size() - 1);
+                            if (!isvisited[pre[index][0]])
+                                queue.add(pre[index][0]);
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        for (int i=0;i<courses;i++)
+            if (!isvisited[i])
+                return false;
+
+        return true;
+    }
+}
 public class CourseSchedulling {
+
+
+    public static void main(String[] args) {
+
+
+
+        CourseScheduleHandler handler=new CourseScheduleHandler();
+        System.out.println("Enter Number Of Courses ");
+        Scanner scanner=new Scanner(System.in);
+        int courses=scanner.nextInt();
+        System.out.println("Enter Number Of Courses that have prerequisite ");
+        int m=scanner.nextInt();
+        int pre[][]=new int[m][2];
+        System.out.println("Enter their prerequisite ");
+        for (int i=0;i<courses;i++)
+        {
+            for (int j=0;j<2;j++)
+            {
+                pre[i][j]=scanner.nextInt();
+            }
+        }
+        handler.input(courses,pre);
+        System.out.println("Possible to Finish ? "+handler.willBeFinished());
+    }
 }
