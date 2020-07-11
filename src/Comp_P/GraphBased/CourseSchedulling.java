@@ -25,7 +25,7 @@ class CourseScheduleHandler
     int pre[][];
     boolean isvisited[];
     HashMap<Integer, ArrayList<Integer>> indexes=new HashMap<Integer,ArrayList<Integer>>();
-    HashSet<Integer> nodes=new HashSet<>();  // contains that have prerequisite
+    HashMap<Integer,ArrayList<Integer>> nodes=new HashMap<>();  // contains that have prerequisite
     Queue<Integer> queue=  new LinkedList();
     void input(int courses,int pre[][])
     {
@@ -37,7 +37,15 @@ class CourseScheduleHandler
     boolean willBeFinished()
     {
         for (int i=0;i<pre.length;i++) {
-            nodes.add(pre[i][0]);
+            if (nodes.containsKey(pre[i][0]))
+            {
+                nodes.get(pre[i][0]).add(pre[i][1]);
+            }
+            else {
+                ArrayList <Integer> list=new ArrayList<>();
+                list.add(pre[i][1]);
+                nodes.put(pre[i][0],list);
+            }
             if(indexes.containsKey(pre[i][1]))
             {
                 indexes.get(pre[i][1]).add(i);
@@ -51,7 +59,7 @@ class CourseScheduleHandler
         }
         for (int i=0;i<isvisited.length;i++)
         {
-            if (!nodes.contains(i))
+            if (!nodes.containsKey(i))
             {
                 queue.add(i);
                 while (!queue.isEmpty())
@@ -63,7 +71,22 @@ class CourseScheduleHandler
                             int index = indexes.get(n).get(indexes.get(n).size() - 1);
                             indexes.get(n).remove(indexes.get(n).size() - 1);
                             if (!isvisited[pre[index][0]])
+                            {
+
+
+                                boolean flag=true;
+                                for(int j=0;j<nodes.get(pre[index][0]).size()-1;j++)
+                                {
+                                    if (!isvisited[nodes.get(pre[index][0]).get(j)])
+                                    {
+                                        flag=false;
+                                        break;
+                                    }
+                                }
+                                if (flag)
                                 queue.add(pre[index][0]);
+                            }
+
                         }
                     }
                 }
@@ -94,7 +117,7 @@ public class CourseSchedulling {
         int m=scanner.nextInt();
         int pre[][]=new int[m][2];
         System.out.println("Enter their prerequisite ");
-        for (int i=0;i<courses;i++)
+        for (int i=0;i<m;i++)
         {
             for (int j=0;j<2;j++)
             {
