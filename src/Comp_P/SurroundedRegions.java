@@ -50,9 +50,7 @@ class SurroundedRegionsHandler
         if (board[x][y]=='X')
             return 1;
         if (isvisited[x][y])
-        {
             return -1;
-        }
         isvisited[x][y]=true;
         byte t1= needtoflip(x+1,y);
         byte t2=needtoflip(x,y+1);
@@ -61,15 +59,15 @@ class SurroundedRegionsHandler
         isvisited[x][y]=false;
         if (t1==-1||t2==-1||t3==-1||t4==-1)
         {
-             byte result=0;
+             byte result=-1;
             if(t1!=-1)
-               result= t1!=1?(byte )0:(byte)1;
+               result= t1==1&&result!=0?(byte)1:0;
             if (t2!=-1)
-                result= t2!=1?(byte )0:(byte)1;
+                result= t2==1&&result!=0?(byte)1:0;
              if (t3!=-1)
-                result= t3!=1?(byte )0:(byte)1;
+                result=t3==1&&result!=0?(byte)1:0;
             if (t4!=-1)
-                result= t4!=1?(byte )0:(byte)1;
+                result= t4==1&&result!=0?(byte)1:0;
             return result;
         }
         else
