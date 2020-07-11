@@ -18,7 +18,6 @@ in the last see if all nodes are traversed if yes return true else return false
 
 
 import java.util.*;
-
 class CourseScheduleHandler
 {
     int courses;
@@ -75,7 +74,7 @@ class CourseScheduleHandler
 
 
                                 boolean flag=true;
-                                for(int j=0;j<nodes.get(pre[index][0]).size()-1;j++)
+                                for(int j=0;j<nodes.get(pre[index][0]).size();j++)
                                 {
                                     if (!isvisited[nodes.get(pre[index][0]).get(j)])
                                     {
@@ -84,7 +83,7 @@ class CourseScheduleHandler
                                     }
                                 }
                                 if (flag)
-                                queue.add(pre[index][0]);
+                                    queue.add(pre[index][0]);
                             }
 
                         }
@@ -124,28 +123,6 @@ public class CourseSchedulling {
                 pre[i][j]=scanner.nextInt();
             }
         }
-
-        int unionfind[]=new int[courses];
-        for (int i=0;i<courses;i++)
-            unionfind[i]=i;
-        for (int i=0;i<pre.length;i++)
-        {
-            if (unionfind[pre[i][0]]==unionfind[pre[i][1]])
-            {
-               System.out.println("False ");
-               System.exit(10);
-            }
-            else
-            {
-                for (int k=0;k<courses;k++)
-                {
-                    if(unionfind[k]==unionfind[pre[i][1]])
-                        unionfind[k]=unionfind[pre[i][0]];
-                }
-            }
-        }
-
-
         handler.input(courses,pre);
         System.out.println("Possible to Finish ? "+handler.willBeFinished());
     }
