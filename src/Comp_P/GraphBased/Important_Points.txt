@@ -21,12 +21,12 @@ For Example :->
   5 ->2 ->1 -> 3-> 7
   6 -> 3 ->7
 
-   It is not necessary that root must include in longest path.
 
 
 
- MHT (Minimum Height Trees Problem ) :->
 
+     MHT (Minimum Height Trees Problem ) :->
+    Remember we do not know root node that's we need to find we only know leaf node
    In this problem we have to find the root nodes that form minimum height tree .
    For an undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree. Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). Given such a graph, write a function to find all the MHTs and return a list of their root labels.
 
@@ -43,7 +43,7 @@ For Example :->
 
 
 
- Important : -> if the length of the longest path is even we have two MHT otherwise 1
+ Important : -> If the length of the longest path is even we have two MHT otherwise 1
 
 
   That is why leaf cutting approach is best for MHT that follow same diameter pattern
@@ -75,9 +75,9 @@ For Example :->
          1
          1
 
-       Now remaining node is only 1 that is not greater than 2
+       Now remaining number of  node is only 1 that is not greater than 2
        so we need to stop cutting so our answer is 1
 
 If a tree have all nodes having degree 1 then all nodes are answer for MHT again maximum is 2
-Otherwise leaf node can not be treated as root for MHT problem.
+Leaf nodes can not be treated as root for MHT problem .
 
