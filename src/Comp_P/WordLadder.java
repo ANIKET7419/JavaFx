@@ -1,6 +1,8 @@
 package Comp_P;
-import java.util.Scanner;
+import com.sun.scenario.effect.impl.state.AccessHelper;
 
+import java.util.Scanner;
+//Under Process
 class WordLadderHandler
 {
     char start_word[];
@@ -12,9 +14,19 @@ class WordLadderHandler
         this.end_word=end_word.toCharArray();
         this.list=list;
     }
+    String coversion(char data[])
+    {
+        String temp="";
+        for (int i=0;i<data.length;i++)
+            temp+=data[i];
+        return temp;
+    }
+
+
     int search(char data[],int index)
     {
-        String word=data.toString();
+        String word=coversion(data);
+        System.out.println(word);
         for (int o=index;o<list.length;o++)
             if (word.equals(list[o]))
                 return o;
@@ -25,23 +37,28 @@ class WordLadderHandler
 
         if (list_index>=list.length)
             return 0;
-        if (list[list_index].equals(end_word))
-            return depth;
-        int result=Integer.MAX_VALUE;
+        boolean flag=true;
         for (int i=0;i<start_word.length;i++)
-        {
             if (start_word[i]!=end_word[i])
-            {
-                start_word[i]=end_word[i];
-                int index=search(start_word,list_index+1);
-                if (index!=-1)
-                {
-                    int temp=minimum_transformation(index,depth+1);
-                    if (temp!=0)
-                        result=Math.min(result,temp);
+            flag=false;
+            if (flag)
+                return depth;
+        int result=Integer.MAX_VALUE;
+        for (int k=list_index;k<list.length;k++) {
+            for (int i = 0; i < start_word.length; i++) {
+                if (start_word[i] != list[k].charAt(i)) {
+                    char temp1 = start_word[i];
+                    start_word[i] = list[k].charAt(i);
+                    int index = search(start_word, list_index);
+                    if (index != -1) {
+                        int temp = minimum_transformation(index + 1, depth + 1);
+                        if (temp != 0)
+                            result = Math.min(result, temp);
+                    }
+                    start_word[i] = temp1;
                 }
-            }
 
+            }
         }
         return result==Integer.MAX_VALUE?0:result;
     }
