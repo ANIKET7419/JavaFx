@@ -1,15 +1,20 @@
 package Comp_P;
 import com.sun.scenario.effect.impl.state.AccessHelper;
+import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
 //Under Process
 class WordLadderHandler
 {
     char start_word[];
     char end_word[];
-    String  list[];
-    void input(@NotNull String start_word, @NotNull String end_word, String list[])
+    boolean istraversed;
+    List<String > list;
+    void input(@NotNull String start_word, @NotNull String end_word,  List<String>list)
     {
         this.start_word=start_word.toCharArray();
         this.end_word=end_word.toCharArray();
@@ -22,46 +27,25 @@ class WordLadderHandler
             temp+=data[i];
         return temp;
     }
-
-
-    int search(char data[],int index)
+    List<String> wildcardMatch()
     {
-        String word=coversion(data);
-        System.out.println(word);
-        for (int o=index;o<list.length;o++)
-            if (word.equals(list[o]))
-                return o;
-            return -1;
+        //for ()
     }
-    int minimum_transformation(int list_index,int depth)
+    int minimum_transformation()
     {
-
-        if (list_index>=list.length)
+        Queue<String> queue=new LinkedList<>();
+        if (!list.contains(coversion(end_word)))
             return 0;
-        boolean flag=true;
-        for (int i=0;i<start_word.length;i++)
-            if (start_word[i]!=end_word[i])
-            flag=false;
-            if (flag)
-                return depth;
-        int result=Integer.MAX_VALUE;
-        for (int k=list_index;k<list.length;k++) {
-            for (int i = 0; i < start_word.length; i++) {
-                if (start_word[i] != list[k].charAt(i)) {
-                    char temp1 = start_word[i];
-                    start_word[i] = list[k].charAt(i);
-                    int index = search(start_word, list_index);
-                    if (index != -1) {
-                        int temp = minimum_transformation(index + 1, depth + 1);
-                        if (temp != 0)
-                            result = Math.min(result, temp);
-                    }
-                    start_word[i] = temp1;
-                }
-
+        queue.add(coversion(start_word));
+        while (!queue.isEmpty())
+        {
+            String word=queue.poll();
+            for (int i=0;i<word.length();i++) {
+                word = word.substring(0,i)+"*"+word.substring(i+1,word.length());
+                queue.addAll(wildcardMatch());
             }
         }
-        return result==Integer.MAX_VALUE?0:result;
+
     }
 }
 public class WordLadder {
