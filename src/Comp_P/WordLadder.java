@@ -1,5 +1,6 @@
 package Comp_P;
 import com.sun.scenario.effect.impl.state.AccessHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 //Under Process
@@ -8,13 +9,13 @@ class WordLadderHandler
     char start_word[];
     char end_word[];
     String  list[];
-    void input(String start_word,String end_word,String list[])
+    void input(@NotNull String start_word, @NotNull String end_word, String list[])
     {
         this.start_word=start_word.toCharArray();
         this.end_word=end_word.toCharArray();
         this.list=list;
     }
-    String coversion(char data[])
+    String coversion(@NotNull char data[])
     {
         String temp="";
         for (int i=0;i<data.length;i++)
