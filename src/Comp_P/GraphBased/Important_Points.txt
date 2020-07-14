@@ -81,3 +81,13 @@ For Example :->
 If a tree have all nodes having degree 1 then all nodes are answer for MHT again maximum is 2
 Leaf nodes can not be treated as root for MHT problem .
 
+
+Recursion Into Iteration :->
+
+It is obvious we will use stack but a hard  case here when
+if you do some work after recursion call then best way to do is maintain mapping for whether that call is returned or  not
+Because it is not tail recursion
+
+
+
+
