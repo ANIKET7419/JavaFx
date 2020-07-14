@@ -87,7 +87,48 @@ Recursion Into Iteration :->
 It is obvious we will use stack but a hard  case here when
 if you do some work after recursion call then best way to do is maintain mapping for whether that call is returned or  not
 Because it is not tail recursion
+Example :->  PostOrder Traversal
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        if(root==null)
+            return new ArrayList<>();
+        List<Integer> list=new ArrayList<>();
+        HashSet<TreeNode> map=new HashSet<>();
+        Stack<TreeNode> stack=new Stack<>();
+        stack.push(root);
+        map.add(root);
+        while(!stack.empty())
+        {
+            boolean flag=false;
+           TreeNode node= stack.peek();
+           if(node.left!=null)
+           {
+               if(!map.contains(node.left))
+               {
+                   flag=true;
+                 stack.push(node.left);
+                  map.add(node.left);
+               }
+           }
+                if(node.right!=null&&!flag)
+               {
+                   if(!map.contains(node.right))
+                   {
+                       flag=true;
+                     stack.push(node.right);
+                     map.add(node.right);
+                   }
+               }
+            if(!flag)
+            {
+            TreeNode n=  stack.pop();
+            list.add(n.val);
+            }
 
+        }
+        return list;
 
+    }
+}
 
 
