@@ -30,6 +30,7 @@ class WordLadderHandler
     List<String> wildcardMatch()
     {
         //for ()
+        return null;
     }
     int minimum_transformation()
     {
@@ -45,7 +46,7 @@ class WordLadderHandler
                 queue.addAll(wildcardMatch());
             }
         }
-
+return 0;
     }
 }
 public class WordLadder {
@@ -63,7 +64,7 @@ public class WordLadder {
         System.out.println("Enter Word list data ");
         for (int i=0;i<length;i++)
             list[i]=scanner.nextLine();
-        handler.input(start_word,end_word,list);
-        System.out.println("The Minimum Transformation is "+handler.minimum_transformation(0,0));
+
+
     }
 }

@@ -1,9 +1,6 @@
 package Practice;
 
-import java.lang.reflect.Array;
-import java.math.BigInteger;
-import java.sql.Time;
-import java.time.LocalDateTime;
+
 import java.util.*;
 
 class aniket<T extends String>
@@ -49,6 +46,12 @@ public class practice {
         List<List<Integer>> list=new ArrayList<>();
         list.add(0,new ArrayList<Integer>(20));
         list.add(0,new ArrayList<Integer>(20));
+
+        HashMap<Character,Boolean> map=new HashMap();
+        map.put('1',false);
+        System.out.println(map);
+        map.replace('1',true);
+        System.out.println(map);
 
     }
 }
