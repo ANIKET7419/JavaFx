@@ -44,17 +44,13 @@ public class practice {
     }*/
 
 
-    public static void main(String[] args) {
-        List<List<Integer>> list=new ArrayList<>();
-        list.add(0,new ArrayList<Integer>(20));
-        list.add(0,new ArrayList<Integer>(20));
+    public static void main(String[] args){
 
-        HashMap<Character,Boolean> map=new HashMap();
-        map.put('1',false);
-        System.out.println(map);
-        map.replace('1',true);
-        System.out.println(map);
-
+        double1 d=new double1();
+        double1  t=d;
+        System.out.println(d+"   "+t);
+        t.y=1000;
+        System.out.println(d+"   "+t);
 
 
     }
