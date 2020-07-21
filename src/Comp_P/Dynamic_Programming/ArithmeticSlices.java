@@ -34,48 +34,70 @@ Approach based on sum of 1 ---- n numbers approach
 
  */
 
-//Under Process
+import java.util.Arrays;
 
 class ArithmeticSlicesHandler
 {
     int data[];
- void input(int data[])
- {
-     this.data=data;
- }
-
- int totalSlices()
+    int storage[][];
+    int counter=0;
+    void input(int data[])
     {
-        if (data.length<3)
-            return 0;
-        int dp[]=new int[data.length];
-        dp[0]=0;
-        dp[1]=0;
-        int diff=-1;
-        if(data[1]-data[0]==data[2]-data[1]) {
-            dp[2] = 1;
-            diff=data[1]-data[0];
-        }
-        else
-            return 0;
-        int start=0;
-        for (int i=3;i<data.length;i++)
+        this.data=data;
+        storage=new int[data.length][data.length];
+        for(int temp[]:storage)
+            Arrays.fill(temp,-1);
+    }
+    boolean isArithmetic(int i,int j)
+    {
+
+        int diff=data[i+1]-data[i];
+        for (int k=i+2;k<=j;k++)
         {
-            if (diff==data[i]-data[i-1])
-           dp[i]= i-start-1+dp[i-1];
-            else {
-               dp[i]=dp[i-1];
-               start=i;
-            }
+            if(data[k]-data[k-1]!=diff)
+                return false;
         }
-        return dp[data.length-1];
+        return true;
+    }
+    int totalSlices(int i,int j)
+    {
 
-
-
+        if(j-i+1<=2)
+            return 0;
+        if(storage[i][j]!=-1)
+        {
+            counter++;
+            return storage[i][j];
+        }
+        if(isArithmetic(i,j))
+        {
+            int n=j-i+1;
+            return storage[i][j]=((n*(n+1))/2)-n-(n-2+1);
+        }
+        int max=Integer.MIN_VALUE;
+        for (int k=i;k<j;k++)
+        {
+            int t=totalSlices(i,k)+totalSlices(k+1,j);
+            max=Math.max(max,t);
+        }
+        return storage[i][j]=max;
     }
 
 
 
 }
-public class ArithmeticSlices {
+class ArithmeticSlices {
+    public int numberOfArithmeticSlices(int[] A) {
+        ArithmeticSlicesHandler handler =new ArithmeticSlicesHandler();
+        handler.input(A);
+        int result=handler.totalSlices(0,A.length-1);
+        System.out.println(handler.counter);
+        return result;
+    }
 }
+/*
+Other simple solution
+
+
+
+ */
