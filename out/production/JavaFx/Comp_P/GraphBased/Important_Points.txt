@@ -1,0 +1,134 @@
+Diameter of Tree: ->
+
+It is the longest path between two any leaf nodes among all leaf nodes pairs
+
+For Example :->
+
+     1
+    / \
+   2    3
+  / \  / \
+ 4  5  6  7
+
+  Options are :->
+  Paths between all pairs of leaf nodes
+  (4,5),(4,6),(4,7),(5,6),(5,7),(6,7)
+
+  4 -> 2 -> 5
+  4 -> 2 -> 1 -> 3->6
+  4 ->2 -> 1 -> 3 ->7
+  5 ->2 ->  1-> 3 ->6
+  5 ->2 ->1 -> 3-> 7
+  6 -> 3 ->7
+
+
+
+
+
+     MHT (Minimum Height Trees Problem ) :->
+    Remember we do not know root node that's we need to find we only know leaf node
+   In this problem we have to find the root nodes that form minimum height tree .
+   For an undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree. Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). Given such a graph, write a function to find all the MHTs and return a list of their root labels.
+
+   Format
+   The graph contains n nodes which are labeled from 0 to n - 1. You will be given the number n and a list of undirected edges (each edge is a pair of labels).
+
+   You can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1] is the same as [1, 0] and thus will not appear together in edges.
+
+
+
+  Remember :->  Number of root nodes for this problem will be MINIMUM - 1 AND MAXIMUM - 2
+                These root nodes are the center of the Diameter .
+                Why ?  Because height of any node depend on the longest path  of left side or  right side to last level leaf node under that subtree
+
+
+
+ Important : -> If the length of the longest path is even we have two MHT otherwise 1
+
+
+  That is why leaf cutting approach is best for MHT that follow same diameter pattern
+
+      4 -> 2 -> 5
+      4 -> 2 -> 1 -> 3->6
+      4 ->2 -> 1 -> 3 ->7
+      5 ->2 ->  1-> 3 ->6
+      5 ->2 ->1 -> 3-> 7
+      6 -> 3 ->7
+
+      Leaf Nodes are 4,5,6,7  because they have degree 1
+      Cut all these nodes
+
+      After that result is : ->
+
+             2
+            2 -> 1 -> 3
+            2 -> 1 -> 3
+            2 ->  1-> 3
+            2 ->1 -> 3
+             3
+      Nodes remaining in the original tree is 3
+
+      So cut again all leaf nodes
+
+         1
+         1
+         1
+         1
+
+       Now remaining number of  node is only 1 that is not greater than 2
+       so we need to stop cutting so our answer is 1
+
+If a tree have all nodes having degree 1 then all nodes are answer for MHT again maximum is 2
+Leaf nodes can not be treated as root for MHT problem .
+
+
+Recursion Into Iteration :->
+
+It is obvious we will use stack but a hard  case here when
+if you do some work after recursion call then best way to do is maintain mapping for whether that call is returned or  not
+Because it is not tail recursion
+Example :->  PostOrder Traversal
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        if(root==null)
+            return new ArrayList<>();
+        List<Integer> list=new ArrayList<>();
+        HashSet<TreeNode> map=new HashSet<>();
+        Stack<TreeNode> stack=new Stack<>();
+        stack.push(root);
+        map.add(root);
+        while(!stack.empty())
+        {
+            boolean flag=false;
+           TreeNode node= stack.peek();
+           if(node.left!=null)
+           {
+               if(!map.contains(node.left))
+               {
+                   flag=true;
+                 stack.push(node.left);
+                  map.add(node.left);
+               }
+           }
+                if(node.right!=null&&!flag)
+               {
+                   if(!map.contains(node.right))
+                   {
+                       flag=true;
+                     stack.push(node.right);
+                     map.add(node.right);
+                   }
+               }
+            if(!flag)
+            {
+            TreeNode n=  stack.pop();
+            list.add(n.val);
+            }
+
+        }
+        return list;
+
+    }
+}
+
+

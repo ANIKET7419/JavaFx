@@ -1,0 +1,30 @@
+Simple Approach :->
+
+Use Extra Space O(n) and time Complexity O(n)
+
+
+1.  put all elements in HashSet
+2.  Find  Maximum Element
+3. Check Whether set have elements from 1 to Maximum element if not return value
+
+
+
+Optimized Approach : ->
+
+With Constant Space and time Complexity O(n)
+
+1. Separate  all Negative Elements by swapping  and focus only on Positive Elements
+   Example [3,2,6,-1,-2,0,-5]  positive elements from 0 to 2  length is 3
+2. Array Consist only positive integers we need to find smallest missing number if there is no any element missing then there should be all elements
+   from 0+1 to last_index+1 and return result last_index+2
+
+   If it is not then it means there are duplicate elements and some missing number
+
+   Second Possibility is there are not duplicate elements but some elements of them are larger then last_index+1 it means there are some missing number
+
+   Hence we are using index to map number if number at any particular index is converted to negative it means element current_index+1 is present.
+
+
+
+
+
