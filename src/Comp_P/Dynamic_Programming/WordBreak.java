@@ -2,8 +2,9 @@ package Comp_P.Dynamic_Programming;
 
 import org.jetbrains.annotations.NotNull;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 class WordBreakHandler
 {

@@ -22,15 +22,19 @@ public class Bridge {
                 findBridge(i.value,source);
         }
         for(Node i:graph[source]) {
-            if(parent!=-1&&nodes[parent].value!=i.value)
+            if(parent==-1)
             nodes[source].min = Math.min(nodes[source].min, i.min);
+            else if (parent!=i.value)
+                nodes[source].min=Math.min(nodes[source].min,i.min);
         }
         if(parent!=-1&&nodes[parent].min<nodes[source].min)
             result.add(new int[]{source,parent});
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Number Of Nodes");
         int n = scanner.nextInt();
+        System.out.println("Enter Number of Edges");
         int e = scanner.nextInt();
         graph = new ArrayList[n];
        nodes=new Node[n];
@@ -38,9 +42,12 @@ public class Bridge {
             nodes[i] = new Node();
             nodes[i].value=i;
         }
+        System.out.println("Enter Edges ");
         for (int i = 0; i < e; i++) {
-            int a = scanner.nextInt();
-            int b = scanner.nextInt();
+            String temp=scanner.next();
+            String ui[]=temp.split(",");
+            int a = Integer.parseInt(ui[0]);
+            int b =Integer.parseInt(ui[1]);
             if (graph[a] == null)
                 graph[a] = new ArrayList<>();
             if (graph[b] == null)
@@ -49,10 +56,12 @@ public class Bridge {
             graph[a].add(nodes[b]);
             graph[b].add(nodes[a]);
         }
+        result=new ArrayList<>();
         isvisited=new boolean[n];
         findBridge(0,-1);
         System.out.println("Bridges Are : : -> ");
-        System.out.println(result);
+        for(int []temp:result)
+        System.out.println(temp[0]+" , "+temp[1]);
 
     }
 }

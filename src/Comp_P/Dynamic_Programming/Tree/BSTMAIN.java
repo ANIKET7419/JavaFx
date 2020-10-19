@@ -1,6 +1,5 @@
 package Comp_P.Dynamic_Programming.Tree;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 /* It is not correct way*/
@@ -13,7 +12,7 @@ class BST {
     int values[];
     boolean isexplored[];
     String result="";
-    void input(@NotNull int values[])
+    void input( int values[])
     {
         this.values=values;
         isexplored=new boolean[values.length];
