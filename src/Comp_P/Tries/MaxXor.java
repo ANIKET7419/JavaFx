@@ -1,4 +1,6 @@
 package Comp_P.Tries;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class MaxXor {
             insert(str,index+1,n);
         }
     }
-    static  long search(String binary,int index,Node current) {
+    static  long search(@NotNull String binary, int index, Node current) {
 
         if(binary.length()<=index)
             return 0;
@@ -68,9 +70,10 @@ public class MaxXor {
             int n1=scanner.nextInt();
             data[i]=n1;
             String temp=Integer.toBinaryString(n1);
-            binary.put(n1,temp);
+
             for(int j=temp.length();j<=32;j++)
                 temp="0" + temp;
+            binary.put(n1,temp);
             insert(temp,0,root);
         }
         for(int i:data)
