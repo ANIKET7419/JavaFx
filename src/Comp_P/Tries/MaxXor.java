@@ -30,7 +30,6 @@ public class MaxXor {
         }
     }
     static  long search(@NotNull String binary, int index, Node current) {
-
         if(binary.length()<=index)
             return 0;
         char chosen = ' ';
@@ -54,7 +53,6 @@ public class MaxXor {
                 chosen = '1';
             }
         }
-
             return (long)((chosen - 48) * Math.pow(2, 31 - index) + temp);
         }
 
@@ -72,7 +70,7 @@ public class MaxXor {
             data[i]=n1;
             String temp=Integer.toBinaryString(n1);
 
-            for(int j=temp.length();j<=32;j++)
+            for(int j=temp.length();j<=31;j++)
                 temp="0" + temp;
             binary.put(n1,temp);
             insert(temp,0,root);
