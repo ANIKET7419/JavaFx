@@ -1,6 +1,4 @@
 package Practice;
-import java.util.Date;
-import java.sql.Date;
 class b
 {
 static  int m=100;
@@ -18,6 +16,7 @@ static  int m=100;
 }
 public class practice {
     public static void main(String[] args){
-
+     float f=Float.NEGATIVE_INFINITY;
+     System.out.println(f);
     }
 }
