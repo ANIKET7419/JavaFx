@@ -1,0 +1,69 @@
+first:->
+
+javac packagename/pkg2/filename.java
+
+here the classpath will be default defined by environment variable or current working directory
+--> order is --->
+1st ENV
+2nd CWD
+
+the classpath is the path where compiler and jvm search for class loaded by application loader
+
+ Here filname.java is being compiled by javac so it will prefixed all class name defined in file with package name defined by package keyword
+
+ Note :
+ 1: We can not import two classes having same name  with  different absolute path
+ Example :-> import java.util.Date;
+             import java.sql.Date;
+             whether we use class name symbol in program or not
+
+ But
+ import java.util.Date;
+ import java.sql.*;
+ it is correct because of * it does not mean programmer give this path intentionally  and java.util.Date will be prefered
+
+ 2:
+
+  if class does not exist in location defined by absolute import will cause compile time error whether this class is used or not
+
+ 3:
+  if class is not found in current file then classname will be searched in the classpath/imported_same_class_path_name
+  then if it is not found then classname with the prefixed package name will be searched in the given classpath not if provided class name currently not
+  compiled but exist in filname_2.java then filename_2 should be as classname then filname_2 will be compiled if it contains that class otherwise error will be generated
+  other option is expilictally compile filname_2.java
+
+  4:
+   declared class should not also be part of any absolute import class path
+   ex:
+
+   import java.util.Date;
+   class Date
+   {
+ //Compile time error
+   }
+
+
+5:
+java pkg1/pkg2/classaname
+java pkg1.pkg2.classname
+both are correct
+
+but in java file we can  use
+only with .
+example
+java.util.Date date=new java.util.Date();
+Note : here compiler will not use any prefix but directly search in classpath/java/util/ for class Date note -> compiled class name should also have java.util.Date in bytecode
+It means
+
+file Date.class
+body
+{
+class java.util.Date
+{
+//Correctly it will be accessed
+}
+class Date
+{
+//it will not be accessed with classpath/java/util/ path
+}
+}

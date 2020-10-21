@@ -26,6 +26,7 @@ public class MaxXor {
             Node n=new Node();
             current.childs.put(str.charAt(index),n);
             insert(str,index+1,n);
+
         }
     }
     static  long search(@NotNull String binary, int index, Node current) {
