@@ -28,6 +28,7 @@ public class practice {
         Timestamp timestamp=new Timestamp(System.currentTimeMillis());
         LocalDateTime dat=timestamp.toLocalDateTime();
         System.out.println(dat.getHour());
+        System.out.println("aniket".substring(0,1));
 
     }
 }
