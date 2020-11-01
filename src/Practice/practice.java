@@ -30,11 +30,16 @@ public class practice {
         LocalDateTime dat=timestamp.toLocalDateTime();
         System.out.println(dat.getHour());
         System.out.println("aniket".substring(0,1));
-*/
+
         final int b;
         b=2378374;
         System.out.println(b);
         char d1='o';
-       // char op=d1+598;
+       // char op=d1+598;*/
+        int a=38993;
+        int b=3893;
+        b=(a=3899)+389393;
+        System.out.println(b);
+        System.out.println(a);
     }
 }
