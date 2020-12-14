@@ -1,0 +1,165 @@
+->  SERIALIZATION ONLY SAVE STATES OF NON STATIC AND NON TRANSIENT VARIABLES
+->  IF VARIABLE IS TRANSIENT IT WILL NOT NE SERIALIZED
+-> IF YOU WANT TO SERIALIZE A OBJECT IT'S ALL FIELD LIKE OTHER OBJECTS WITHIN THE OBJECT HAVE TO IMPLEMENT SERIALIZABLE interface  OR EXTERNAL..
+-> TO RESTORE STATE serialVersionUID and class name should be same
+-> After serialization we can  remove variables,methods  and add variables ,methods  but note that type of variable that is already serialized we can not change (Note : it must hold during deserialization )
+
+Example 1 :
+
+Before serialization
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int b=299;
+transient int op =9404;
+void hello()
+{
+
+}
+}
+
+if we change
+
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int k3=5859;
+
+transient int  op=9404;
+
+}
+
+it can used to restore the state
+
+
+
+EXAMPLE 2:
+
+
+
+
+Before serialization
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int b=299;
+transient int op=9404;
+void hello()
+{
+
+}
+}
+
+if we change
+
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+String a="20";
+int k3=5859;
+
+transient int op=9404;
+
+}
+
+it can not used to restore the state because of type change of a
+
+EXAMPLE 3 :
+
+
+
+Before serialization
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int b=299;
+transient int =9404;
+void hello()
+{
+
+}
+}
+
+if we change
+
+
+class aniket implements Serializable
+{
+public static final long serialVersionUID=189l;
+int a=20;
+int k3=5859;
+
+transient int op=9404;
+
+}
+
+it can NOT used to restore the state because of change in serialVersionUID
+
+
+EXAMPLE 4 :
+
+
+
+
+Before serialization
+class aniket implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int b=299;
+transient int =9404;
+void hello()
+{
+
+}
+}
+
+if we change
+
+
+class aniket10 implements Serializable
+{
+public static final long serialVersionUID=1893939l;
+int a=20;
+int k3=5859;
+
+transient int op=9404;
+
+}
+
+it can NOT used to restore the state BECAUSE OF CLASS NAME CHANGE
+
+
+
+EXAMPLE 5:
+
+
+
+class hello
+{
+
+}
+class aniket implements Serializable
+{
+
+hello obj;
+public static final long serialVersionUID=1893939l;
+int a=20;
+int b=299;
+transient int =9404;
+void hello()
+{
+
+}}
+
+
+aniket class object  can not be serialized because hello class did not implement Serializable interface
