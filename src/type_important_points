@@ -59,7 +59,7 @@ double - d (default suffix with all . number if f is not used )
 float  - f
 
 
-hexadecimal - 0xh1161;
+hexadecimal - 0xa1161;
 binary - 0b101010;
-octal 01819;
+octal 01717; 
 
