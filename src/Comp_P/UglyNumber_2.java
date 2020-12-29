@@ -18,17 +18,18 @@ public class UglyNumber_2 {
       int five=0;
       List<Integer> result=new ArrayList<>();
       result.add(1);
-      for(int i=0;i<n;i++)
+      for(int i=1;i<n;i++)
       {
          int min= Math.min(result.get(two)*2,Math.min(result.get(three)*3,result.get(five)*5));
-         result.add(min);
          if (min==result.get(two)*2)
              two++;
-         else if (min==result.get(three)*3)
+          if (min==result.get(three)*3)
              three++;
-         else
+         if (min==result.get(five)*5)
              five++;
+          result.add(min);
       }
+      System.out.println(result);
       System.out.println(n+" th Ugly number is "+result.get(n-1));
 
 
