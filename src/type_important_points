@@ -1,0 +1,65 @@
+As we know 
+byte - 1 byte 
+short - 2 bytes 
+char - 2 bytes 
+int - 4 bytes 
+long - 8 bytes 
+float - 4 bytes
+double - 8 bytes 
+boolean size varies according to jvm - 1 byte in most of the case
+Note : we can not convert boolean to any type and any type to boolean and  boolean is not 0 or 1 in java
+using implicit type conversions we can not do :
+ can not assign higher type value to lower type value except special cases mentioned later
+order is : byte < short != char < int < long < float < double it is not according to bytes it is according to their ranges 
+short represent -> -number to +number but char represent 0 to number
+
+         
+         
+
+using implicit type conversion we can do :
+
+
+higher type value = lower type  value
+but not hold with short and char bcz of their range if variable is used in the right hand side 
+long = int true
+float =long true
+double =float true
+int =long false
+float =double false
+char = byte true if does not contain variable bcz all byte , char , short automatically converted into integer type 
+short = char true if char is literal otherwise error
+char = short true if short is literal 
+
+Now there are some special case exist between short , byte , integer , char ->
+if higher  type is literal then we can assign to lower 
+for ex : char a= 20 (integer type );
+         byte b=20 integer type ;
+         short c= 90 (integer type)
+         byte d=567; it is error bcz it is not in range of byte
+         if right hand side include any variable (address) then this special case will not hold anymore 
+         for example:
+         int a=1;
+         char b=a; (error)
+         if the higher type of right hand side is any of char, byte , short it is always automatically converted into integer type ( literal if not contain any address otherwise simple integer type)
+         this special case is not hold with long , double , float 
+
+
+
+
+
+
+using explicit type convesion we can do anything except boolean conversions.
+
+
+note suffix for literal types : ->
+
+
+long - l 
+double - d (default suffix with all . number if f is not used )
+float  - f
+
+
+hexadecimal - 0xa1161;
+binary - 0b101010;
+octal 01717; 
+
