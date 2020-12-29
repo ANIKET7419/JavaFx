@@ -1,0 +1,6 @@
+ 1.    If it is a  jar file then -classpath should be -classpath -----.jar
+ 2.    If it is a class file then classpath should be location of directory of the file
+ 3.    If -classpath is used with javac or java or any tool then only the given value will be used neither env variable or not default - current working directory where command is executed
+ 4.    If -classpath is not used then only env variable will be preferred only not default
+ 5.    If env varible is not mentioned then only default option is available
+ Note : whether file is found or not ( applicable for 3,4,5)
