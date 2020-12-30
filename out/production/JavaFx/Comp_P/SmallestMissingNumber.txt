@@ -20,7 +20,7 @@ With Constant Space and time Complexity O(n)
 
    If it is not then it means there are duplicate elements and some missing number
 
-   Second Possibility is there are not duplicate elements but some elements of them are larger then last_index+1 it means there are some missing number
+   Second Possibility is there are not duplicate elements but some elements of them are larger than last_index+1 it means there are some missing number
 
    Hence we are using index to map number if number at any particular index is converted to negative it means element current_index+1 is present.
 

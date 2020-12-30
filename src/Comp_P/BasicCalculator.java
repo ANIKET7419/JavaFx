@@ -2,6 +2,7 @@ package Comp_P;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class BasicCalculator {
 
@@ -42,15 +43,56 @@ public class BasicCalculator {
      return list;
     }
 
+     static int getPrecedence(char op)
+     {
+       if (op=='/'||op=='*')
+           return 1;
+       else
+           return 2;
 
-    public static  ArrayList<String> converToPostfix(ArrayList<String> exp)
+
+     }
+    public static  ArrayList<String> convertToPostfix(ArrayList<String> exp)
     {
-     ArrayList<String> postfix=new ArrayList<>();
-
-
-
-
-
+        ArrayList<String> postfix=new ArrayList<>();
+        Stack<String> stack=new Stack<>();
+        for(String te:exp)
+        {
+            if (isOperand(te.charAt(0)))
+                postfix.add(te);
+            else if (te.charAt(0)=='(')
+            {
+                stack.push("(");
+            }
+            else if (te.charAt(0)==')')
+            {
+                while(!stack.peek().equals("("))
+                    postfix.add(stack.pop());
+                stack.pop();
+            }
+            else
+            {
+                if (stack.size()>=1)
+                {
+                    int t1=getPrecedence(te.charAt(0));
+                    int t2=getPrecedence(stack.peek().charAt(0));
+                    if (t1>t2)
+                        stack.push(te);
+                    else
+                    {
+                        while(stack.size()>=1&&t1<=getPrecedence(stack.peek().charAt(0)))
+                        {
+                            postfix.add(stack.pop());
+                        }
+                        stack.add(te);
+                    }
+                }
+                else
+                    stack.push(te);
+            }
+        }
+        while(!stack.isEmpty())
+            postfix.add(stack.pop());
 
         return postfix;
     }
@@ -59,7 +101,8 @@ public class BasicCalculator {
         System.out.println("Enter Expression ");
         String exp=scanner.nextLine();
         ArrayList<String> list=split(exp);
-        ArrayList<String> postfix=converToPostfix(list);
+        ArrayList<String> postfix=convertToPostfix(list);
+        System.out.println(postfix);
     }
 
 }
