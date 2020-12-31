@@ -3,10 +3,6 @@ package Comp_P;
 import java.util.Scanner;
 
 public class _123_Sub {
-    static class fine
-    {
-        static  int ok=190;
-    }
 
     public  static boolean result(int data[])
     {

@@ -6,6 +6,23 @@ import java.util.Scanner;
 public class _132 {
     public static  boolean isIt(int data[])
     {
+
+        int i[]=new int[data.length];
+        int j[]=new int[data.length];
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(int k=0;k<data.length;k++)
+        {
+            min=Math.min(min,data[k]);
+            max=Math.max(max,data[k]);
+            i[k]=min;
+            j[k]=max;
+        }
+        for(int k=0;k<data.length;k++)
+        {
+        }
+        // i will do it later
+        return true;
     }
 
     public static void main(String[] args) {
