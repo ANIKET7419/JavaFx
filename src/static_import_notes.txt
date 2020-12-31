@@ -1,0 +1,34 @@
+we can import static inner class using static import or simple import
+but we can import static variable and functions only using static import
+Note non static variable and function can not be imported in either way
+simple import is used only to import all classes whether it is static or non static
+Note : static class must be only inner class
+Example :
+Static inner class import ways : ->
+
+
+class okay
+{
+
+static int var;
+static int func(){
+}
+
+static class fine{
+
+}
+}
+
+ 1st way - > import okay.fine;
+ 2nd way ->  import static okay.fine;
+
+ static variable and function : ->
+
+ only one way -> import static okay.var;
+              -> import static okay.func;
+Non static variable or function can not be imported in any way only we can import their class whether it is static or non static
+
+
+Static import only works with static class, static variable and static function
+simple import only works with any type of class
+
