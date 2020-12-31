@@ -1,7 +1,6 @@
 package Comp_P;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class _24Game {
