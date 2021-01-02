@@ -2,7 +2,6 @@ package Comp_P;
 
 import java.util.Scanner;
 
-
 public class _132 {
     public static  boolean isIt(int data[])
     {
