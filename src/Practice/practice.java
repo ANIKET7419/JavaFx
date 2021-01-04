@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.Chronology;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 class b
@@ -41,5 +43,8 @@ public class practice {
         b=(a=3899)+389393;
         System.out.println(b);
         System.out.println(a);
+
+
+
     }
 }
