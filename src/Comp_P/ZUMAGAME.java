@@ -1,11 +1,9 @@
 package Comp_P;
-
-import java.util.IllegalFormatCodePointException;
 import java.util.Scanner;
 
 public class ZUMAGAME {
 
-
+// i will do it later
 
     public static  int dfs(String hand,String board)
     {
@@ -39,6 +37,7 @@ public class ZUMAGAME {
      int result=Integer.MAX_VALUE;
      char search=board.charAt(0);
      String temp=search+"";
+
      for (int i=1;i<board.length();i++)
      {
          if (board.charAt(i)==search)
