@@ -13,6 +13,34 @@ class aniket.hello.op
 {
 }
 
-
 jvm now search for aniket.hello.op class in the classpath/aniket/hello/
 where op.class is stored and  inside the bytes code class have name aniket.hello.op
+
+
+
+
+Note : Programmer can not use . symbol or / while defining a class name in source code
+. or / is used by javac.  javac convert
+package aniket;
+class a
+{
+
+}
+
+into
+class aniket.a
+{
+}
+
+For example in source code
+class a.b
+{
+
+} // it is illegal bcz we can not use . or / for identifier
+
+but in byte code
+class a.b
+{
+
+} it is legal .
+
