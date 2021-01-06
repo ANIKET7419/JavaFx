@@ -1,28 +1,53 @@
 package Practice;
-class b
+
+class c{
+    static{
+        System.out.println("Yes");
+    }
+}
+    class b extends c
 {
-static  int m=100;
+
+
+
     b()
     {
 
-        System.out.println("Constructor");
+
+        System.out.println("Constructor"+a);
     }
-   static  {
+    static int m=100;
+
+    {
+
+        System.out.println("Block");
+
+
+    }
+
+    static  {
+
         System.out.println(m);
         System.out.println("Block Outer");
     }
+    int a;
     {
-        System.out.println("Block");
+        a=8379475;
     }
+    void hello()
+    {
+
+    }
+
 }
 public class practice {
     public static void main(String[] args){
 
-        b a;
 
 
 
-
+        b a =new b();
+        b op=new b();
 
      /*float f=Float.NEGATIVE_INFINITY;
         System.out.println(f);

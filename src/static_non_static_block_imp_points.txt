@@ -1,0 +1,143 @@
+Note : static block or static variable initialization in java occur only once when it is loaded
+if it is unloaded and again loaded then again during loading static variable initialization and block execution occurs
+
+
+It is loaded  if it is not loaded yet and when any object is created or static variable accessed
+For example :->
+
+class a
+{
+static int a1=10;
+
+}
+class b
+{
+psvm...()  //invalid but just to show in few words i did this
+{
+a op;  // this statement will not cause class to be loaded
+any operation with a.a1  // it will cause class to be loaded it is not loaded yet
+//object creation will also cause class to be loaded it it is not loaded yet
+}
+}
+}
+
+
+
+Note : class is loaded only once during it's time period in method area  if it is removed from the method area  then
+
+class can be loaded
+
+Note : whenever a class is loaded first of all it's parent class is loaded then child class is loaded
+a->b->c->d
+here d is loaded in the last bcz a is the parent of b , b is the parent of c ,  c is the parent of d
+
+
+
+
+
+what happen when class is loaded :->
+
+
+
+all static variable and static block are executed according to their order
+
+
+
+whenever a object is created :->
+all non static variable and non static block are executed according to their order
+in the last constructor is called.
+
+
+class aniket
+{
+
+{
+
+System.out.println(a); // forward reference error compile time  bcz block will be executed before variable a  initialization bcz of their order
+}
+int a=930;
+
+
+} // there is an error
+
+
+correct version :->
+
+
+class aniket
+{
+
+int a=9203;
+{
+System.out.println(a);
+}
+} //correct
+
+
+
+class aniket
+{
+
+any function or constructor ()
+{
+ System.out.println(a);
+}
+int a=939;
+
+
+} //correct bcz first of all variable initialization will be executed according to their order
+
+
+
+
+Note : -> execution of blocks or variable initialization depends on the order in which they are specified in class
+Note : before object creation class is loaded if it is not loaded yet
+
+Same forward reference problem also occur in static case
+
+Note : in java it is not allowed to declare a variable static inside a function we can define static method and variable only in class body it means we can only define class variable and methods static only ....
+
+example :->
+class a
+{
+static int a;
+static void aniket()
+{
+}
+} //correct
+
+
+class a
+{
+static int c; //correct
+
+static void hello() // correct
+{
+static int a; //error
+}
+void h()
+{
+static int b; //error
+}
+}
+
+
+Note : -> as we can directly give java file to java command after particular jdk maybe afterwards 9 or 10 but we can not use . bcz then it will treat it as byte code not as java source code  may cause problem
+but we can use / symbol
+
+example :->
+
+
+java Practice.practice.java
+
+Error: Could not find or load main class Practice.practice.java
+Caused by: java.lang.ClassNotFoundException: Practice.practice.java
+
+
+Another example :->
+
+
+java Practice/practice.java
+Yes
+
+it is correct .....
