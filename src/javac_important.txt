@@ -1,0 +1,25 @@
+javac /.../.../.../___.java
+it will compile and store the all class byte codes in the same directory where .java file is stored
+But we can override it by using -d attribute d stands for directory now in this case it will stored bytes codes according to their package name
+but if we do not use -d then it will stored the bytes code in the same directory where .java file is stored irrespective their package name
+
+for example
+
+--->>>>. aniket.java stored in /op/bro directory  ---->>>>
+
+package uiop;
+class a
+{
+}
+
+javac /op/bro/aniket.java
+
+it will store  a.class in the location /op/bro/
+
+but if we use
+
+javac -d /op/op2/ /op/bro/aniket.java
+
+it will store uiop/a.class in location /op/op2/
+
+it means /op/op2/uiop/a.class

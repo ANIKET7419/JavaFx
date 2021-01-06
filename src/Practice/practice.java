@@ -1,14 +1,4 @@
 package Practice;
-
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.chrono.Chronology;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 class b
 {
 static  int m=100;
@@ -18,6 +8,7 @@ static  int m=100;
         System.out.println("Constructor");
     }
    static  {
+        System.out.println(m);
         System.out.println("Block Outer");
     }
     {
@@ -26,6 +17,13 @@ static  int m=100;
 }
 public class practice {
     public static void main(String[] args){
+
+        b a;
+
+
+
+
+
      /*float f=Float.NEGATIVE_INFINITY;
         System.out.println(f);
         Timestamp timestamp=new Timestamp(System.currentTimeMillis());
@@ -38,11 +36,11 @@ public class practice {
         System.out.println(b);
         char d1='o';
        // char op=d1+598;*/
-        int a=38993;
-        int b=3893;
-        b=(a=3899)+389393;
-        System.out.println(b);
-        System.out.println(a);
+  //      int a=38993;
+    //    int b=3893;
+      //  b=(a=3899)+389393;
+        //System.out.println(b);
+        //System.out.println(a);
 
 
 
