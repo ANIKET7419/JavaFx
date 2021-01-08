@@ -141,3 +141,27 @@ java Practice/practice.java
 Yes
 
 it is correct .....
+
+
+
+
+
+
+
+
+
+
+
+
+Note : array creation of class also does not cause class loading
+example :
+class aniket{}
+aniket op[]=new aniket[10]; //will not load aniket class
+Class.forName("[Laniket;") //will not load  aniket class
+
+Note :-> class for array objects are created runtime so they  are  already loaded if not present then they are created at same time in the jvm memory so again no need to load
+
+
+int [] -> class name: [I
+user_defined_name -> class name : [Luser_defined_name;
+etc ......
