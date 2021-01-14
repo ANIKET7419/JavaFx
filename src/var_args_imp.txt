@@ -99,7 +99,9 @@ static void okay(int y,int ... op)
     }
 
     public static void main(String[] args){
-  okay(20); // error bcz there is Class_name type that is not primitive
+  okay(20); // error bcz there is Class_name type that is not primitive so we can not compare int and Class_name
+  okay(20,null);   //Two
+  okay(89,90);     //One
   }
 
 -------------------------------------------------------------------------------------
