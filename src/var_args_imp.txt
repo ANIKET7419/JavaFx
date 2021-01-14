@@ -1,0 +1,169 @@
+
+-----------------------------------------------------------------------------
+ static void okay(float op1,int ...op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int  ...b)
+    {
+     System.out.println("Two");
+    }
+
+    public static void main(String[] args){
+
+
+  okay(10.90f,20);
+  }
+
+  output :-> one
+
+
+----------------------------------------------------------------------------
+   static void okay(int b,int ...op)
+      {
+
+          System.out.println("One");
+      }
+      static void okay(int  ...b)
+      {
+       System.out.println("Two");
+      }
+
+      public static void main(String[] args){
+
+
+    okay(10.90f,20);
+
+}
+
+Error
+
+-----------------------------------------------------------------
+
+
+
+static void okay(int y,int ... op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,float ...b)
+    {
+     System.out.println("Two");
+    }
+
+    okay(90); //correct output will contain from the lowest in size (output-> one) bcz int is smaller than float note : this case does not hold with char and short but apply to every primitive type except short and char
+    okay(90,9); //one
+    okay(90,9,9f) //two
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+ static void okay(int y,int ...op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,Class_name ...b)
+    {
+     System.out.println("Two");
+    }
+
+    public static void main(String[] args){
+  okay(20); // error bcz there is Class_name type that is not primitive
+  }
+
+-------------------------------------------------------------------------------------
+
+ static void okay(int y,char ...op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,short ...b)
+    {
+     System.out.println("Two");
+    }
+
+    public static void main(String[] args){
+  okay(20); //error
+  }
+------------------------------------------------------------------------------------------------------------
+
+###### no-vargs vs vargs
+
+static void okay(int y,int ...op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,int bn)
+    {
+     System.out.println("Two");
+    }
+
+    public static void main(String[] args){
+
+
+
+  okay(20);   // one
+  okay(90,78) //always two
+  okay(90,89,89) //always one
+
+  }
+
+
+
+
+  ----------------------------------------------------------------------------------------------------
+
+
+
+  static void okay(int y,int op)
+      {
+
+          System.out.println("One");
+      }
+      static void okay(int io,float bn)
+      {
+       System.out.println("Two");
+      }
+
+      public static void main(String[] args){
+
+
+
+    okay(20,20);
+    }
+    it will match to it's proper function
+    output ---> one
+
+
+-------------------------------------------------------------------------------------------------------
+ static void okay(int y,double op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,float bn)
+    {
+     System.out.println("Two");
+    }
+
+
+    public static void main(String[] args){
+
+
+
+  okay(20,20);
+  }
+
+  output -> Two because float is very nearest to integer
+
+  Reminder -> int < long <float <double
+
+
+ ----------------------------------------------------------------------------------------------------------

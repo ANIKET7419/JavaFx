@@ -44,11 +44,52 @@ for ex : char a= 20 (integer type );
          this special case is not hold with long , double , float 
 
 
+Note : this special case not hold in function parameter and argument case
+
+Example : ->
+ static void okay(int y,int op)
+    {
+
+        System.out.println("One");
+    }
+
+okay(90,90) ; //correct
+
+
+static void okay(int y,byte op)
+    {
+
+        System.out.println("One");
+    }
+
+okay(90,90) ; //error
+
+static void okay(int y,short op)
+    {
+
+        System.out.println("One");
+    }
+
+okay(90,90) ; //error
+
+
+static void okay(int y,char op)
+    {
+
+        System.out.println("One");
+    }
+
+okay(90,90) ; //error
+
+
+so to avoid this we have to explicitly type cast the value like (byte)90 .
 
 
 
 
-using explicit type convesion we can do anything except boolean conversions.
+
+
+using explicit type conversion we can do anything except boolean conversions.
 
 
 note suffix for literal types : ->

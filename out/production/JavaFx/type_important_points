@@ -26,12 +26,12 @@ float =long true
 double =float true
 int =long false
 float =double false
-char = byte true if does not contain variable bcz all byte , char , short automatically converted into integer type 
+char = byte true if does not contain variable bcz all byte , char , short automatically converted into integer type if expression is evaluated
 short = char true if char is literal otherwise error
 char = short true if short is literal 
 
 Now there are some special case exist between short , byte , integer , char ->
-if higher  type is literal then we can assign to lower 
+if higher  type is literal and within the range  then we can assign to lower
 for ex : char a= 20 (integer type );
          byte b=20 integer type ;
          short c= 90 (integer type)

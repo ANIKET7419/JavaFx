@@ -41,13 +41,28 @@ class c{
 
 }
 public class practice {
+
+
+
+    static void okay(int y,int op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,float bn)
+    {
+     System.out.println("Two");
+    }
+
+
     public static void main(String[] args){
 
 
 
+  okay(20,20);
 
-        b a =new b();
-        b op=new b();
+      //  b a =new b();
+        //b op=new b();
 
      /*float f=Float.NEGATIVE_INFINITY;
         System.out.println(f);
