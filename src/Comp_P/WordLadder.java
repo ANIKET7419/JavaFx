@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public  class WordLadder
 {
+
     static HashSet<String> set;
     static HashSet<String > traversed=new HashSet<>();
     static int minimum(String current,String end,int count)
@@ -12,10 +13,6 @@ public  class WordLadder
      if (current.equals(end)) {
          return 0;
      }
-        if (count>=set.size()+2) {
-            return count;
-        }
-
         traversed.add(current);
      int result=Integer.MAX_VALUE;
      for (int i=0;i<current.length();i++)
