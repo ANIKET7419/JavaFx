@@ -19,7 +19,33 @@
   output :-> one
 
 
-----------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+
+static void okay(float y,int... op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int ...io)
+    {
+     System.out.println("Two");
+    }
+
+
+    public static void main(String[] args){
+
+
+
+  okay(20);
+  }
+  output -> Two
+
+int is very close to int according to their size as compared to float
+
+
+
+
+------------------------------------------------------------------------------------------------------------
    static void okay(int b,int ...op)
       {
 
@@ -161,9 +187,16 @@ static void okay(int y,int ...op)
   okay(20,20);
   }
 
-  output -> Two because float is very nearest to integer
+  output -> Two because float is very nearest to integer as compared to double
 
   Reminder -> int < long <float <double
 
 
  ----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+

@@ -44,12 +44,12 @@ public class practice {
 
 
 
-    static void okay(int y,int op)
+    static void okay(float y,int... op)
     {
 
         System.out.println("One");
     }
-    static void okay(int io,float bn)
+    static void okay(int ...io)
     {
      System.out.println("Two");
     }
@@ -59,7 +59,7 @@ public class practice {
 
 
 
-  okay(20,20);
+  okay(20);
 
       //  b a =new b();
         //b op=new b();
