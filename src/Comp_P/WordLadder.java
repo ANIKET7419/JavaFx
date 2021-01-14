@@ -1,69 +1,57 @@
 package Comp_P;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.HashSet;
 import java.util.Scanner;
-//Under Process
-class WordLadderHandler
+
+public  class WordLadder
 {
-    char start_word[];
-    char end_word[];
-    boolean istraversed;
-    List<String > list;
-    void input(@NotNull String start_word, @NotNull String end_word,  List<String>list)
+    static HashSet<String> set;
+    static HashSet<String > traversed=new HashSet<>();
+    static int minimum(String current,String end,int count)
     {
-        this.start_word=start_word.toCharArray();
-        this.end_word=end_word.toCharArray();
-        this.list=list;
-    }
-    String coversion(@NotNull char data[])
-    {
-        String temp="";
-        for (int i=0;i<data.length;i++)
-            temp+=data[i];
-        return temp;
-    }
-    List<String> wildcardMatch()
-    {
-        //for ()
-        return null;
-    }
-    int minimum_transformation()
-    {
-        Queue<String> queue=new LinkedList<>();
-        if (!list.contains(coversion(end_word)))
-            return 0;
-        queue.add(coversion(start_word));
-        while (!queue.isEmpty())
-        {
-            String word=queue.poll();
-            for (int i=0;i<word.length();i++) {
-                word = word.substring(0,i)+"*"+word.substring(i+1,word.length());
-                queue.addAll(wildcardMatch());
-            }
+     if (current.equals(end)) {
+         return 0;
+     }
+        if (count>=set.size()+2) {
+            return count;
         }
-return 0;
+
+        traversed.add(current);
+     int result=Integer.MAX_VALUE;
+     for (int i=0;i<current.length();i++)
+     {
+        for (char j='a';j<='z';j++)
+        {
+        String temp=current.substring(0,i)+j+current.substring(i+1);
+        if (set.contains(temp)&&!traversed.contains(temp)) {
+            result = Math.min(minimum(temp, end, count + 1) + 1, result);
+        }
+        }
+     }
+     traversed.remove(current);
+    return  result==Integer.MAX_VALUE?set.size()+2:result;
+
     }
-}
-public class WordLadder {
     public static void main(String[] args) {
-        WordLadderHandler handler =new WordLadderHandler();
-        System.out.println("Enter Begin Word");
-        Scanner scanner=new Scanner( System.in);
-        String start_word,end_word;
-        start_word=scanner.nextLine();
-        System.out.println("Enter Ending Word");
-        end_word=scanner.nextLine();
-        System.out.println("Enter Word List Length ");
-        int length=Integer.parseInt(scanner.nextLine());
-        String []list=new String[length];
-        System.out.println("Enter Word list data ");
-        for (int i=0;i<length;i++)
-            list[i]=scanner.nextLine();
-
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter word list size");
+        int n = scanner.nextInt();
+        set = new HashSet<String>();
+        for (int i = 0; i < n; i++)
+            set.add(scanner.next());
+        System.out.println("Enter start word");
+        String start = scanner.next();
+        System.out.println("Enter end word");
+        String end = scanner.next();
+        if (!set.contains(end)) {
+            System.out.println("Result is 0");
+        } else {
+            int result = minimum(start, end, 0);
+            if (result >= set.size() + 2)
+                result = 0;
+            else
+                result+=1;
+            System.out.println("The minimum required transformation is -> " +result);
+        }
     }
 }
