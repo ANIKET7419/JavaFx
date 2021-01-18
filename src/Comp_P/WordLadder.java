@@ -1,5 +1,7 @@
 package Comp_P;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -8,7 +10,7 @@ public  class WordLadder
 
     static HashSet<String> set;
     static HashSet<String > traversed=new HashSet<>();
-    static int minimum(String current,String end,int count)
+    static int minimum(@NotNull String current, String end, int count)
     {
      if (current.equals(end)) {
          return 0;
