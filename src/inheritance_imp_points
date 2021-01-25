@@ -692,7 +692,49 @@ class TestClass implements a4,b1
 
 ==================================================================================================================================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+package Test;
+class a
+{
+  private void function()
+  {
+
+  }
+}
+class b extends a
+{
+    @Override
+    public void function()
+    {
+
+    }
+
+}
+public class Check2 {
+    public static void main(String[] args) {
+
+
+    }
+}
+It is an error bcz private method is not visible in child class so it can not be overridden
+
+
+====================================================================================
 
 
 
+package Test;
+class a
+{
+    private int okay=4849;
+  private void function()
+  {
+      a obj=new a();
+      obj.function();
+      obj.okay=38394;
+  }
+}
 
+
+----->>> ABSOLUTELY CORRECT   <----------------
+======================================================================================
+IMP :-> '' private members are invisible in child class so it means they can  not be  overridden or hidden simply means they are not inherited by child class ''
