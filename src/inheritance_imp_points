@@ -1,0 +1,620 @@
+1.
+class b
+{
+    int  a=190;
+
+}  //Correct
+
+
+2.
+
+class b
+{
+    int  a;
+    a=190; //incorrect
+
+}  // bcz in this area we can only declare or (declare and definition) we can perform
+
+
+3.   We can use Classname.this or Classname.super when clashes occurs classname can be interface or class or annotation or enum
+
+4-->
+
+
+
+
+class and{
+   public boolean equals (Object op)
+   {
+       System.out.println("first");
+       return true;
+   }
+}
+class or extends and {
+
+}
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		or obj=new or();
+		obj.equals(new or());
+	}
+}
+
+
+here output is :->
+Hello World
+first
+bcz as we know all class extends Object class internally but when i override a function equals in class and i extends and class (internally Object is also inherited)  then and class is given higher priority
+
+
+
+
+
+
+
+
+-----------------5----------------------->
+
+
+class a
+{
+  private   int a1=190;
+}
+class b extends a
+{
+
+    void  okay()
+    {
+        a1=189; // error bcz a is private variable in a class
+        super.a1=4894; //error we can not access directly please refer access modifier table
+    }
+
+}
+
+
+
+
+
+
+
+
+----------------6---------------->
+
+
+
+
+______________________________________________________________________________________________________________|
+| parent  class all data except private including its inherited data from parents ( not overrided by child)   | [  accessible through super and this both keywords]
+|_____________________________________________________________________________________________________________|
+| parent  class all data except private including its inherited data from parents (  overrided by child)      | [ accessible through this keyword ]
+|_____________________________________________________________________________________________________________|
+|
+| parent  class all data except private including its inherited data from parents (  overrided by child but you want parent data copy not new one) | [ accessible through super keyword ]
+______________________________________________________________________________________________________________
+| child class all data  of its own (personal not inherited from anyone)                                       | [accessible through this keyword ]
+|_____________________________________________________________________________________________________________|
+
+
+
+-------------7------------------------------>
+
+class a
+{
+      final int a1=190;
+}
+class b extends a
+{
+  final int a1=8990;
+}
+//correct
+
+-----------------------8--------------------->
+
+
+
+
+
+
+class a
+{
+    int a=190;
+     void hello()
+     {
+         System.out.println(a);
+     }
+
+}
+class b extends a
+{
+ int a=5950;
+ void op()
+ {
+     this.hello();
+ }
+
+
+// result is 190
+
+
+---------------------9----------------------------------------------->
+
+
+class a
+{
+    int a=190;
+     void hello()
+     {
+         System.out.println(a);
+     }
+
+}
+class b extends a
+{
+
+ void op()
+ {
+    this.a=90;
+    System.out.println(super.a);
+ }
+}
+
+
+Output -- 90
+
+
+--------------------------------10-------------------------------------->
+
+class a
+{
+    int a=190;
+     void hello()
+     {
+         System.out.println(a);
+     }
+
+}
+class b extends a
+{
+int a=9040;
+ void op()
+ {
+
+    System.out.println(super.a);
+    System.out.println(this.a);
+ }
+}
+
+output--->
+
+190
+9040
+
+
+----------------------------------10----------------------------->
+class a
+{
+    int a=190;
+     void hello()
+     {
+         System.out.println(a);
+     }
+
+}
+class b extends a
+{
+    int k=290;
+int a=9040;
+ void op()
+ {
+
+    System.out.println(super.k); //ERROR
+    System.out.println(this.k);
+ }
+}
+
+
+
+
+--------------IMPORTANT ---------------------------------------------------------------------------------------------------------------
+final static class field should be defined at its declared time [ But only once ]
+final non static class field should be defined at its declared time or in  constructor otherwise compile time error [ But only once ]
+simple local final variable can bew defined at its declared time or in any time [ But only once ]
+IN C++ and javascript const [ only declared time [only once]]
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+----------------- DIAMOND PROBLEM -------------
+
+THIS PROBLEM OCCURS IN C++ NOT IN JAVA BECAUSE JAVA DOES NOT SUPPORT MULTIPLE INHERITANCE BUT WHILE IMPLEMENTING MULTIPLE INTERFACES WE NEED TO TAKE CARE
+REFER MYSIRG CHANNEL FOR C++ DIAMOND PROBELM
+
+IN JAVA :-> ( IN INTERFACES )
+
+
+VARIABLES ARE ALWAYS PUBLIC STATIC FINAL
+int a; // in interface it is by default public static final
+static int a ; //   in interface it is by default public static final
+public int a; // in interface it is by default public static final
+final int a; // in interface it is by default public static final
+IN NEW SOME JDK RELEASE PRIVATE METHODS ARE ALLOWED IN INTERFACE [ DEFINITION IS COMPULSORY WITHOUT DEFAULT KEYWORD IS COMPULSORY OTHERWISE ERROR]
+PROTECTED METHODS ARE NOT ALLOWED  IN INTERFACES
+DEFAULT KEYWORD MUST BE USED FOR METHOD DEFINITION THAT IS NOT PRIVATE
+ALL METHODS BY DEFAULT ARE PUBLIC
+
+
+
+
+-----------------------------
+
+
+
+
+interface  okay
+{
+  default void okay1()
+  {
+     System.out.println("okay");
+  }
+}
+interface  op
+{
+ void okay1();
+}
+class a implements okay,op
+{
+
+}
+//ERROR MUST DEFINE okay1 of interface op
+
+-----------------------------------------------------------------------------------------------
+
+
+
+interface  op
+{
+ void okay1();
+}
+interface  okay extends op
+{
+    default void okay1()
+    {
+        System.out.println("okay");
+    }
+}
+class a implements okay,op
+{
+
+}
+
+// CORRECT
+
+
+--------------------------------------------------------------------------------------------------------
+
+interface  op
+{
+ default void okay1()
+ {
+
+ }
+}
+interface  okay extends op
+{
+    default void okay1()
+    {
+        System.out.println("okay");
+    }
+}
+class a implements okay,op
+{
+
+}
+
+// CORRECT
+
+
+---------------------------------------------------------------------------------------
+
+default keyword is allowed only in interface
+
+--------------------------------------------------------------------------------------
+
+
+interface  op
+{
+ default void okay1()
+ {
+
+ }
+}
+interface  okay extends op
+{
+    default void okay1()
+    {
+        System.out.println("okay");
+    }
+}
+class a implements okay
+{
+
+}
+
+// CORRECT
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+=========== MOST IMPORTANT THING ==============================================================
+
+
+interface  op
+{
+  void okay1();
+}
+interface  okay extends op
+{
+    default void okay1()
+    {
+        System.out.println("okay");
+    }
+}
+ class a implements okay,op
+{
+    public static void main(String[] args) {
+        a op=new a();
+        op.okay1();
+    }
+}
+
+//CORRECT BECAUSE op function is indirectly defined by okay interface by extending op [ Note the extends keyword if we remove this keyword there will be an error ]
+
+=================================================================================================================================
+
+
+
+interface  op
+{
+  default void okay1()
+  {
+
+  }
+}
+interface  okay
+{
+    default void okay1()
+    {
+        System.out.println("okay");
+    }
+}
+ class a implements okay,op
+{
+
+
+    public static void main(String[] args) {
+        a op=new a();
+        op.okay1(); //AMBIGUITY
+    }
+}
+
+//ERROR because there is ambiguity to avoid this we have to override the okay1 function in a class
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+interface GPI
+{
+    // default method
+    default void show()
+    {
+        System.out.println("Default GPI");
+    }
+}
+
+interface PI1 extends GPI {
+   default void show()
+    {
+        System.out.println("OP bro");
+    }
+
+}
+
+interface PI2 extends GPI {
+
+}
+
+class TestClass implements PI2, PI1
+{
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+// CORRECT ANSWER IS OP bro
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+interface GPI
+{
+   void show();
+}
+
+interface PI1 extends GPI {
+
+}
+
+interface PI2 extends GPI {
+
+}
+
+class TestClass implements PI2, PI1
+{
+    public  void show()
+    {
+
+    }
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+
+//CORRECT
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+======================ENUM IMPORTANT =====================================================================================================
+
+
+
+Every enum internally implemented by using Class.
+/* internally above enum Color is converted to
+class Color
+{
+     public static final Color RED = new Color();
+     public static final Color BLUE = new Color();
+     public static final Color GREEN = new Color();
+}*/
+Every enum constant represents an object of type enum.
+enum type can be passed as an argument to switch statement.
+filter_none
+edit
+play_arrow
+
+brightness_4
+// A Java program to demonstrate working on enum
+// in switch case (Filename Test. Java)
+import java.util.Scanner;
+
+// An Enum class
+enum Day
+{
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY;
+}
+
+// Driver class that contains an object of "day" and
+// main().
+public class Test
+{
+    Day day;
+
+    // Constructor
+    public Test(Day day)
+    {
+        this.day = day;
+    }
+
+    // Prints a line about Day using switch
+    public void dayIsLike()
+    {
+        switch (day)
+        {
+        case MONDAY:
+            System.out.println("Mondays are bad.");
+            break;
+        case FRIDAY:
+            System.out.println("Fridays are better.");
+            break;
+        case SATURDAY:
+        case SUNDAY:
+            System.out.println("Weekends are best.");
+            break;
+        default:
+            System.out.println("Midweek days are so-so.");
+            break;
+        }
+    }
+
+    // Driver method
+    public static void main(String[] args)
+    {
+        String str = "MONDAY";
+        Test t1 = new Test(Day.valueOf(str));
+        t1.dayIsLike();
+    }
+}
+
+=============================================================================================================================================
+
+
+
+implements keyword can not be used with interface
+can not implements and extends same class or interface multiple times [ compile time error ]
+
+
+==============================================================================================================================================
+
+
+
+
+
+
+
+interface a1
+{
+void hello();
+}
+interface c1 {
+    void hello();
+}
+interface b1 extends c1
+{
+
+}
+interface a2 extends a1
+{
+
+}
+interface a3 extends a2
+{
+
+}
+interface a4 extends a3
+{
+default void hello()
+{
+    System.out.println("OKay bro");
+}
+}
+
+class TestClass implements a4,b1
+{
+    public  void show()
+    {
+
+    }
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+//ERROR
+
+
+==============================================================================================================================
+
+
+
