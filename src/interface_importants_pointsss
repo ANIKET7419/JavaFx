@@ -63,4 +63,12 @@ C c = new D();
 c.foo();
 Output
 hello from B
+
 The static type of c is unimportant here; what really counts is that it is an instance of class D, whose most specific version of foo() is inherited from class B.
+
+Note : it is only for diamond problem
+LINK FOR SAME ARTICLE IS ->  https://www.javacodemonk.com/diamond-problem-of-inheritance-in-java-8-88faf6c9#:~:text=Java%208%20brought%20a%20major,while%20making%20this%20big%20change.&text=Any%20method%20inherited%20from%20a,method%20inherited%20from%20an%20interface
+
+==================================NOT DIAMOND PROBLEM =========================
+please refer image uploaded on github
+===============================================================================
