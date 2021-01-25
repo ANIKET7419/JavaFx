@@ -738,3 +738,67 @@ class a
 ----->>> ABSOLUTELY CORRECT   <----------------
 ======================================================================================
 IMP :-> '' private members are invisible in child class so it means they can  not be  overridden or hidden simply means they are not inherited by child class ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==================IMPO ---- INTERFACE --------------==========================
+
+
+
+package Test;
+
+interface a1
+{
+void hello();
+}
+interface c1  extends  a1{
+
+}
+interface b1 extends c1
+{
+
+}
+interface a2 extends a1
+{
+
+}
+interface a3 extends a2
+{
+
+}
+interface a4 extends a3
+{
+default void hello()
+{
+    System.out.println("OKay bro");
+}
+}
+interface d1 extends a4
+{
+
+}
+interface d5
+{
+    void hello();
+}
+class TestClass implements a4,b1,c1,d1,d5
+{
+    public static void main(String args[])
+    {
+    }
+}
+
+
+// Correct
+========================================================================================================

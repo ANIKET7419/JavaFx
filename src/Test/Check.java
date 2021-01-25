@@ -1,42 +1,33 @@
 package Test;
 
-interface a1
+interface d1
 {
-void hello();
-}
-interface c1  extends  a1{
-
-}
-interface b1 extends c1
-{
-
-}
-interface a2 extends a1
-{
-
-}
-interface a3 extends a2
-{
-
-}
-interface a4 extends a3
-{
-default void hello()
-{
-    System.out.println("OKay bro");
-}
-}
-
-class TestClass implements a4,b1
-{
-    public  void show()
+    default void hello()
     {
-
+        System.out.println("OP2");
     }
+}
+interface a1 extends d1
+{
+    default void hello()
+    {
+        System.out.println("OP");
+    }
+}
+interface c1 extends a1{
+
+}
+interface d2 extends c1{
+
+}
+interface b extends d1
+{
+}
+class TestClass implements d2,b
+{
     public static void main(String args[])
     {
-        TestClass d = new TestClass();
-        d.show();
+        new TestClass().hello();
     }
 }
 public class Check {

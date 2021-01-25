@@ -1,0 +1,66 @@
+What is diamond problem of Inheritance?
+Diamond Problem of inheritance is an ambiguity that can arise as a consequence of allowing multiple inheritance in language like C++.
+
+diamond problem
+Diamond Problem of Inheritance
+Consider the below classes in C++
+
+Diamond Problem of Inheritance
+class A {
+     void foo() { ... }
+}
+class B extends A {}
+class C extends A {}
+class D extends B, C {}
+In the code above, the implementation of method foo() inherited by class D is unambiguously that defined by class A. But as soon as class B and class C starts to provide its own implementation for method foo(), the ambiguity will arrive in method resolution by Class D. This trap is known as diamond problem of multiple inheritance.
+
+Since Java does not allow multiple inheritance for classes (only multiple interfaces are allowed), so diamond problem can not exist in Java. At any given point in time, a given Java class can extend from only one super class.
+
+How does Java 8 tackles diamond problem of multiple inheritance?
+Java 8 brought a major change where interfaces can provide default implementation for its methods. Java designers kept in mind the diamond problem of inheritance while making this big change. There are clearly defined conflict resolution rules while inheriting default methods from interfaces using Java 8.
+
+Rule 1
+Any method inherited from a class or a superclass is given higher priority over any default method inherited from an interface.
+
+rule 1
+class has higher precedence than interface default methods.
+In the diagram above, foo() method of class D will inherit from class C.
+
+Rule 2
+Derived interfaces or sub-interfaces take higher precedence than the interfaces higher-up in the inheritance hierarchy.
+
+rule 2
+sub-interface has higher priority
+In the above class diagram, foo() of class C will inherit from default method of interface B.
+
+Rule 3
+In case Rule 1 and Rule 2 are not able to resolve the conflict then the implementing class has to specifically override and provide a method with the same method definition.
+
+rule 3
+class C must override foo method
+In above class diagram, since interface A & B are at same level, to resolve conflict, class C must provide its own implementation by overriding method foo().
+
+Rule 3
+class C {
+    void foo() {
+        B.super.foo();
+    }
+}
+foo() method can refer to A or B’s default implementation using A.super.foo() or B.super.foo()
+Question: what will be output of the below program?
+Problem Statement
+interface A {
+    default void foo() { System.out.println("hello from A"); }
+}
+interface B extends A {
+    default void foo() { System.out.println("hello from B"); }
+}
+interface C extends A {}
+class D implements B, C {}
+
+
+C c = new D();
+c.foo();
+Output
+hello from B
+The static type of c is unimportant here; what really counts is that it is an instance of class D, whose most specific version of foo() is inherited from class B.
