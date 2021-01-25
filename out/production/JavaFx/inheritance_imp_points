@@ -410,3 +410,211 @@ interface  okay
 //ERROR because there is ambiguity to avoid this we have to override the okay1 function in a class
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+interface GPI
+{
+    // default method
+    default void show()
+    {
+        System.out.println("Default GPI");
+    }
+}
+
+interface PI1 extends GPI {
+   default void show()
+    {
+        System.out.println("OP bro");
+    }
+
+}
+
+interface PI2 extends GPI {
+
+}
+
+class TestClass implements PI2, PI1
+{
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+// CORRECT ANSWER IS OP bro
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+interface GPI
+{
+   void show();
+}
+
+interface PI1 extends GPI {
+
+}
+
+interface PI2 extends GPI {
+
+}
+
+class TestClass implements PI2, PI1
+{
+    public  void show()
+    {
+
+    }
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+
+//CORRECT
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+======================ENUM IMPORTANT =====================================================================================================
+
+
+
+Every enum internally implemented by using Class.
+/* internally above enum Color is converted to
+class Color
+{
+     public static final Color RED = new Color();
+     public static final Color BLUE = new Color();
+     public static final Color GREEN = new Color();
+}*/
+Every enum constant represents an object of type enum.
+enum type can be passed as an argument to switch statement.
+filter_none
+edit
+play_arrow
+
+brightness_4
+// A Java program to demonstrate working on enum
+// in switch case (Filename Test. Java)
+import java.util.Scanner;
+
+// An Enum class
+enum Day
+{
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY;
+}
+
+// Driver class that contains an object of "day" and
+// main().
+public class Test
+{
+    Day day;
+
+    // Constructor
+    public Test(Day day)
+    {
+        this.day = day;
+    }
+
+    // Prints a line about Day using switch
+    public void dayIsLike()
+    {
+        switch (day)
+        {
+        case MONDAY:
+            System.out.println("Mondays are bad.");
+            break;
+        case FRIDAY:
+            System.out.println("Fridays are better.");
+            break;
+        case SATURDAY:
+        case SUNDAY:
+            System.out.println("Weekends are best.");
+            break;
+        default:
+            System.out.println("Midweek days are so-so.");
+            break;
+        }
+    }
+
+    // Driver method
+    public static void main(String[] args)
+    {
+        String str = "MONDAY";
+        Test t1 = new Test(Day.valueOf(str));
+        t1.dayIsLike();
+    }
+}
+
+=============================================================================================================================================
+
+
+
+implements keyword can not be used with interface
+can not implements and extends same class or interface multiple times [ compile time error ]
+
+
+==============================================================================================================================================
+
+
+
+
+
+
+
+interface a1
+{
+void hello();
+}
+interface c1 {
+    void hello();
+}
+interface b1 extends c1
+{
+
+}
+interface a2 extends a1
+{
+
+}
+interface a3 extends a2
+{
+
+}
+interface a4 extends a3
+{
+default void hello()
+{
+    System.out.println("OKay bro");
+}
+}
+
+class TestClass implements a4,b1
+{
+    public  void show()
+    {
+
+    }
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.show();
+    }
+}
+
+//ERROR
+
+
+==============================================================================================================================
+
+
+

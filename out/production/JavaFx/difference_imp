@@ -1,0 +1,11 @@
+IN PYTHON , JAVASCRIPT , PHP , R -> FUNCTIONS ARE OBJECT 
+so they dont support function overloading
+in python class is also object of type class
+Note : -> c++ , php , r , python , javascript support default arguments but java does not except varargs
+Note :-> in javascript we can pass arguments or not it is not compulsory whether you defined some parameter as default or simple it simple take undefined value if not passed
+arguments array can be used to access parameters values 
+otherwise all language want parameters should be intialed while calling 
+Note special case with R is [ line 7 ] is somehow different for R in r  parameters should be intialed while calling if variable is used in function ] simple undefined error will be encountered
+C++ , PHP SUPPORT & by reference 
+But java does not support & ( by refernce ) 
+In java varargs can be declared  only and only  in function prototype
