@@ -86,15 +86,91 @@ class b extends a
 
 
 ______________________________________________________________________________________________________________|
-| parent  class all data except private including its inherited data from parents ( not overrided by child)   | [  accessible through super and this both keywords]
+| parent  class all data except private including its inherited data from parents ( not overrided or hidden by child)   | [  accessible through super and this both keywords]
 |_____________________________________________________________________________________________________________|
-| parent  class all data except private including its inherited data from parents (  overrided by child)      | [ accessible through this keyword ]
+| parent  class all data except private including its inherited data from parents (  overrided or hidden by child)      | [ accessible through this keyword ]
 |_____________________________________________________________________________________________________________|
 |
-| parent  class all data except private including its inherited data from parents (  overrided by child but you want parent data copy not new one) | [ accessible through super keyword ]
+| parent  class all data except private including its inherited data from parents (  overrided or hidden by child but you want parent data copy not new one) | [ accessible through super keyword ]
 ______________________________________________________________________________________________________________
 | child class all data  of its own (personal not inherited from anyone)                                       | [accessible through this keyword ]
 |_____________________________________________________________________________________________________________|
+
+Note :-> fields and static methods can not be  overridden  but can be hidden  .
+========================================================================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+EXAMPLE : ->
+
+
+
+package Test;
+class a
+{
+    int a=78;
+    static int k=890;
+    int op=4748;
+    void hello1()
+    {
+        System.out.println("First ");
+    }
+    static void static_hello()
+    {
+        System.out.println("Static First");
+    }
+}
+class b extends a
+{
+    int a=19;
+    void hello1()
+    {
+        System.out.println("Second");
+    }
+    static void static_hello()
+    {
+        System.out.println("Static Second");
+    }
+    void hello()
+    {
+        System.out.println(super.a);
+        System.out.println(this.a);
+        super.static_hello();
+        this.static_hello();
+        super.hello1();
+        this.hello1();
+        System.out.println(super.k);
+        System.out.println(super.op);
+        this.k=101;
+        this.op=102;
+        System.out.println(super.k);
+        System.out.println(this.op);
+
+    }
+}
+public class Check2 {
+    public static void main(String[] args) {
+        b obj=new b();
+        obj.hello();
+
+    }
+}
+
+
+OUTPUT ---->
+
+78
+19
+Static First
+Static Second
+First
+Second
+890
+4748
+101
+102
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+============================================================================================================================================
+
 
 
 
@@ -614,7 +690,9 @@ class TestClass implements a4,b1
 //ERROR
 
 
-==============================================================================================================================
+==================================================================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+
 
 
 

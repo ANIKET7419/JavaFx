@@ -86,17 +86,33 @@ class b extends a
 
 
 ______________________________________________________________________________________________________________|
-| parent  class all data except private including its inherited data from parents ( not overrided by child)   | [  accessible through super and this both keywords]
+| parent  class all data except private including its inherited data from parents ( not overrided or hidden by child)   | [  accessible through super and this both keywords]
 |_____________________________________________________________________________________________________________|
-| parent  class all data except private including its inherited data from parents (  overrided by child)      | [ accessible through this keyword ]
+| parent  class all data except private including its inherited data from parents (  overrided or hidden by child)      | [ accessible through this keyword ]
 |_____________________________________________________________________________________________________________|
 |
-| parent  class all data except private including its inherited data from parents (  overrided by child but you want parent data copy not new one) | [ accessible through super keyword ]
+| parent  class all data except private including its inherited data from parents (  overrided or hidden by child but you want parent data copy not new one) | [ accessible through super keyword ]
 ______________________________________________________________________________________________________________
 | child class all data  of its own (personal not inherited from anyone)                                       | [accessible through this keyword ]
 |_____________________________________________________________________________________________________________|
 
+Note :-> fields and static methods can not be  overridden  but can be hidden  .
+========================================================================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+EXAMPLE : ->
 
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+============================================================================================================================================
 
 -------------7------------------------------>
 

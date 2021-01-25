@@ -1,43 +1,50 @@
 package Test;
 class a
 {
-    static int a=1;
-    int b=940;
-    void hello()
+    int a=78;
+    static int k=890;
+    int op=4748;
+    void hello1()
     {
-        System.out.println("Hello First ");
+        System.out.println("First ");
     }
-    static void op()
+    static void static_hello()
     {
-        System.out.println("Op second");
+        System.out.println("Static First");
     }
-
 }
 class b extends a
 {
-    static int a=2;
-    int b=485945;
+    int a=19;
+    void hello1()
+    {
+        System.out.println("Second");
+    }
+    static void static_hello()
+    {
+        System.out.println("Static Second");
+    }
     void hello()
     {
-        System.out.println("Hello second ");
-    }
-    static void op()
-    {
-        System.out.println("Op second");
-    }
-    void unique()
-    {
-        System.out.println("unique");
-    }
+        System.out.println(super.a);
+        System.out.println(this.a);
+        super.static_hello();
+        this.static_hello();
+        super.hello1();
+        this.hello1();
+        System.out.println(super.k);
+        System.out.println(super.op);
+        this.k=101;
+        this.op=102;
+        System.out.println(super.k);
+        System.out.println(this.op);
 
+    }
 }
 public class Check2 {
     public static void main(String[] args) {
-       a obj=new b();
-       obj.hello();
-      // obj.unique();
-       System.out.println(obj.a);
-       System.out.println(obj.b);
+        b obj=new b();
+        obj.hello();
 
     }
 }
