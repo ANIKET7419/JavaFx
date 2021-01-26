@@ -738,7 +738,7 @@ class a
 ----->>> ABSOLUTELY CORRECT   <----------------
 ======================================================================================
 IMP :-> '' private members are invisible in child class so it means they can  not be  overridden or hidden simply means they are not inherited by child class ''
-
+**** MEANS NEITHER THIS NOR SUPER KEYWORDS CAN BE USED ***
 
 
 
@@ -801,4 +801,9 @@ class TestClass implements a4,b1,c1,d1,d5
 
 
 // Correct
-========================================================================================================
+========================================================================================================================
+
+AS IF WE DEFINE CONSTRUCTOR FOR CLASS THEN COMPILER WILL NOT ADD DEFAULT CONSTRUCTOR BY ITS OWN
+IF WE DO NOT DEFINE ANY CONSTRUCTOR THEN COMPILER WILL DEFINE THAT BY OWN SELF [ THIS RULE IS ALSO IN C++ ]
+========================================================================================================================
+
