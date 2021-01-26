@@ -35,17 +35,10 @@ interface A4 extends A3
 }
 
 
-class TestClass implements A5
+class TestClass implements   A1,A3,A2,A4,A5
 {
     public static void main(String args[])
     {
         new TestClass().hello();
-    }
-}
-public class Check {
-
-    public  static void main(String argc[])
-    {
-
     }
 }

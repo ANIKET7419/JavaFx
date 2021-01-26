@@ -231,4 +231,8 @@ class TestClass implements A3,A2
         new TestClass().hello();
     }
 }
-//CORRECT OUTPUT IS
+//CORRECT OUTPUT IS INTERFACE
+
+==================================================================================================
+a class or interface can not extends or implements own self
+================================================================================================
