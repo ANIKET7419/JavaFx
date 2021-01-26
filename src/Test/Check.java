@@ -54,6 +54,6 @@ class TestClass extends CONFUSIONREMOVER implements   A1,A3,A2,A4,A5,A10
 {
     public static void main(String args[])
     {
-        //new TestClass().hello();
+        new TestClass().hello();
     }
 }
