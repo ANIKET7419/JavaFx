@@ -72,8 +72,9 @@ public class Check {
 
 =====================================================================================================================
 IN INTERFACE ALL MEMBERS ARE PUBLIC BY DEFAULT BUT WE CAN MAKE PRIVATE METHODS NOT PRIVATE VARIABLE FOR PRIVATE METHODS IT IS COMPULSORY TO GIVE DEFINITION WE CAN NOT USE DEFAULT
-KEYWORD WITH PRIVATE DEFAULT KEYWORD IS USED IF WE WANT TO GIVE DEFINITION IN INTERFACE DEFAULT KEYWORD IS ALLOWED ONLY IN INTERFACE
-=====================================================
+KEYWORD WITH PRIVATE DEFAULT KEYWORD IS USED IF WE WANT TO GIVE DEFINITION IN INTERFACE DEFAULT KEYWORD IS ALLOWED ONLY IN INTERFACE . STATIC METHOD IN INTERFACE ALSO NEED TO BE DEFINED
+DEFAULT KEYWORD CAN NOT BE USED WITH STATIC METHOD [ SAME LIKE PRIVATE WE HAVE DISCUSSED BEFORE BUT THIS FUNCTION IS PUBLIC BY DEFAULT]
+=================================================================================================================================================
 strictfp modifier is used to fix the floating point result over different platform . we can apply to any class and method that has definition
 strictfp can be used with abstract class but not with abstract method
 strictfp can also be applied on interface , enum , annotation definition
@@ -202,3 +203,32 @@ public class Check {
 =====================================================
 
 
+interface  A2
+{
+     default void hello()
+    {
+        System.out.println("CLASS");
+    }
+}
+
+
+ interface A1 extends A2
+{
+
+    default void hello()
+    {
+        System.out.println("INTERFACE ");
+    }
+}
+interface A3 extends A1{
+
+}
+
+class TestClass implements A3,A2
+{
+    public static void main(String args[])
+    {
+        new TestClass().hello();
+    }
+}
+//CORRECT OUTPUT IS
