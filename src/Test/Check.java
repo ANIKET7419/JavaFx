@@ -1,5 +1,5 @@
 package Test;
-interface  A2 extends A1
+interface  A2
 {
      default void hello()
     {
@@ -8,7 +8,7 @@ interface  A2 extends A1
 }
 
 
- interface A1
+ interface A1 extends A2
 {
 
     default void hello()
@@ -16,8 +16,11 @@ interface  A2 extends A1
         System.out.println("INTERFACE ");
     }
 }
+interface A3 extends A1{
 
-class TestClass implements A1,A2
+}
+
+class TestClass implements A3,A2
 {
     public static void main(String args[])
     {

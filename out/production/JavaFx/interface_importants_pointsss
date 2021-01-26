@@ -78,3 +78,127 @@ strictfp modifier is used to fix the floating point result over different platfo
 strictfp can be used with abstract class but not with abstract method
 strictfp can also be applied on interface , enum , annotation definition
 ===============================================
+
+
+
+
+
+
+class CLASS
+{
+  public   void hello()
+    {
+        System.out.println("CLASS");
+    }
+}
+
+
+ interface A1
+{
+
+    default void hello()
+    {
+        System.out.println("INTERFACE ");
+    }
+}
+
+class TestClass extends CLASS implements A1
+{
+    public static void main(String args[])
+    {
+        new TestClass().hello();
+    }
+}
+
+//CORRECT OUTPUT IS CLASS [RULE 1]
+
+=============================================================================================================================
+package Test;
+class CLASS
+{
+     void hello()
+    {
+        System.out.println("CLASS");
+    }
+}
+
+
+ interface A1
+{
+
+    default void hello()
+    {
+        System.out.println("INTERFACE ");
+    }
+}
+
+class TestClass extends CLASS implements A1
+{
+    public static void main(String args[])
+    {
+        new TestClass().hello();
+    }
+}
+ERROR : -> BECAUSE AS WE KNOW ACCORDING TO RULE 1 [ CLASS HAS HIGHER PRIORITY ] SO IT WILL USE CLASS DEFINITION BY DEFAULT BUT IN INTERFACE METHOD IS PUBLIC AND IN CLASS IT IS DEFAULT SO  WE CAN NOT DOWNGRADE THE PREVILLAGE
+SO FIRST OPTION IS MAKE FUNCTION PUBLIC IN CLASS OR OVERRIDE IT IN CLASS TestClass
+
+
+==========================================================================================================================================================
+interface can extends only another interface [ implements keyword can not be used in interface prototype ]
+class can extends another class and implements interfaces
+====================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+package Test;
+interface  A2
+{
+     default void hello()
+    {
+        System.out.println("CLASS");
+    }
+}
+
+
+ interface A1
+{
+
+    default void hello()
+    {
+        System.out.println("INTERFACE ");
+    }
+}
+interface A3 extends A1{
+
+}
+
+class TestClass implements A3,A2
+{
+    public static void main(String args[])
+    {
+        new TestClass().hello();
+    }
+}
+public class Check {
+
+    public  static void main(String argc[])
+    {
+
+    }
+}
+
+// ERROR WE HAVE TO OVERRIDE in TestClass class
+
+
+
+=====================================================
+
+
