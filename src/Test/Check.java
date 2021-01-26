@@ -1,51 +1,23 @@
 package Test;
-
-
-
-
-
-interface d1
+interface  A2 extends A1
 {
-    default void hello()
+     default void hello()
     {
-        System.out.println("d1");
+        System.out.println("CLASS");
     }
 }
-interface d12 extends d1
+
+
+ interface A1
 {
+
     default void hello()
     {
-        System.out.println("d12");
+        System.out.println("INTERFACE ");
     }
 }
-interface d3 extends d12
-{
 
-}
-interface d4 extends d3
-{
-    default void hello()
-    {
-        System.out.println("d4");
-    }
-}
-interface d5 extends d1
-{
-
-}
-interface d7 extends d5{
-
-}
-interface d8 extends d6{
-
-}
-interface d6 extends d1
-{
-
-}
-
-
-class TestClass implements d7,d8,d6,d5,d4,d1,d12
+class TestClass implements A1,A2
 {
     public static void main(String args[])
     {
