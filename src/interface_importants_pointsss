@@ -62,13 +62,7 @@ class TestClass implements d7,d8,d6,d5,d4,d1,d12
         new TestClass().hello();
     }
 }
-public class Check {
 
-    public  static void main(String argc[])
-    {
-
-    }
-}
 
 =====================================================================================================================
 IN INTERFACE ALL MEMBERS ARE PUBLIC BY DEFAULT BUT WE CAN MAKE PRIVATE METHODS NOT PRIVATE VARIABLE FOR PRIVATE METHODS IT IS COMPULSORY TO GIVE DEFINITION WE CAN NOT USE DEFAULT
@@ -188,13 +182,7 @@ class TestClass implements A3,A2
         new TestClass().hello();
     }
 }
-public class Check {
 
-    public  static void main(String argc[])
-    {
-
-    }
-}
 
 // ERROR WE HAVE TO OVERRIDE in TestClass class
 
@@ -236,3 +224,122 @@ class TestClass implements A3,A2
 ==================================================================================================
 a class or interface can not extends or implements own self
 ================================================================================================
+
+
+
+
+package Test;
+interface A1
+{
+    default void hello()
+    {
+        System.out.println("A1");
+    }
+}
+interface A2 extends A1
+{
+    default void hello()
+    {
+        System.out.println("A2");
+    }
+}
+interface A3 extends A2
+{
+    default void hello()
+    {
+        System.out.println("A3");
+    }
+}
+interface A4 extends A3
+{
+    default void hello()
+    {
+        System.out.println("A4");
+    }
+}interface A5 extends A4
+{
+    default void hello()
+    {
+        System.out.println("A5");
+    }
+}
+
+
+class TestClass implements   A1,A3,A2,A4,A5
+{
+    public static void main(String args[])
+    {
+        new TestClass().hello();
+    }
+}
+
+=====TO KNOW THIS PREFER IMAGE THAT I UPLOADED=====
+
+
+
+
+=====================================================================================================
+
+
+
+package Test;
+interface A1
+{
+    default void hello()
+    {
+        System.out.println("A1");
+    }
+}
+interface A2 extends A1
+{
+    default void hello()
+    {
+        System.out.println("A2");
+    }
+}
+interface A3 extends A2
+{
+    default void hello()
+    {
+        System.out.println("A3");
+    }
+}
+interface A4 extends A3
+{
+    default void hello()
+    {
+        System.out.println("A4");
+    }
+}interface A5 extends A4
+{
+    default void hello()
+    {
+        System.out.println("A5");
+    }
+}
+interface  A10 {
+    default void hello() {
+
+    }
+}
+class CONFUSIONREMOVER
+{
+    public void hello()
+    {
+
+    }
+}
+
+class TestClass extends CONFUSIONREMOVER implements   A1,A3,A2,A4,A5,A10
+{
+    public static void main(String args[])
+    {
+        //new TestClass().hello();
+    }
+}
+
+
+// correct [ RULE 1 ]
+
+=======================================================
+

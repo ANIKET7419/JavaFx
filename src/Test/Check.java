@@ -33,12 +33,27 @@ interface A4 extends A3
         System.out.println("A5");
     }
 }
+interface  A10 {
+    default void hello() {
 
+    }
+}
+class OP
+{
+    public void hello()
+    {
 
-class TestClass implements   A1,A3,A2,A4,A5
+    }
+}
+class CONFUSIONREMOVER extends OP
+{
+
+}
+
+class TestClass extends CONFUSIONREMOVER implements   A1,A3,A2,A4,A5,A10
 {
     public static void main(String args[])
     {
-        new TestClass().hello();
+        //new TestClass().hello();
     }
 }
