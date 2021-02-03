@@ -1,0 +1,155 @@
+java 14 supports switch expression
+data_type variable_name=switch(expression){
+case constant_exp , constant_exp // for multiple value ->
+value or {multiple statement then yield value; } //after yield we can not use any statement in that block
+}
+we can not use return statement in the switch expression where a variable is waiting for its value
+this swicth expression can also be without catching variable.
+no need to use break statement in this new expression but we can use but in the same block not out of it or in single line if block is not used
+in earlier switch we could do this out of block or inside the block
+// same happen with lambda expression if it is without block then we can not use return it there is any return type in function prototype
+if it is block then we have to use return if return type is given [ same goes with yield ]
+
+in a switch expression we can not use both type of case at a same time
+like
+(i) case :  default :
+ (ii) case -> default ->
+we can use , to seperate multiple values in  new switch expression
+
+
+
+=================================
+switch (1)
+   {
+       case 1,2,3:
+           System.out.println("OKay");
+   }
+
+   // error in case if compiler is not 14 or later
+
+   switch (1)
+      {
+          case 1,2,3->
+              System.out.println("OKay");
+      }
+
+cases for [ jdk 14 or later] bcz it is only supported in jdk 14 or later :->
+int k= switch (1)
+   {
+       case 1,2,3->10;
+       default :190;
+   };
+   //error bcz we used : or -> both at a same time
+
+ int k= switch (1)
+   {
+       case 1,2,3->10;
+       default ->190;
+   };
+//okay
+
+
+ int k= switch (1)
+   {
+       case 1,2,3:10;
+       default :190;
+   };
+   //error we can not use this feature without ->
+
+
+
+int k= switch (1)
+   {
+       case 1,2,3->{
+
+       yield 190;}
+       default ->190;
+   };
+//okay
+
+
+int k= switch (1)
+   {
+       case 1,2,3->{
+
+       190;}
+       default ->190;
+   };
+
+   //error have to use yield bcz of block
+
+
+
+   int k= switch (1)
+      {
+          case 1,2,3->{
+
+         yield 190;
+         int ui=40;}
+          default ->110;
+      };
+
+//error unreachable statement after yield
+
+//no need to use break
+
+int k= switch (1)
+      {
+          case 1,2,3->{
+
+         yield 190;
+         }
+          default :190;
+      };
+
+
+
+
+
+
+// we can not use return if we are using catching value switch expression
+
+
+// we can use jdk 14 switch expression with left side variable or without that catching variable in case of varibale we have to use yield if it is blocked or nothing simple a expression if it is not block
+
+
+
+
+
+
+
+
+====================================
+
+
+
+
+
+
+
+
+[[[[
+import java.util.Scanner;
+import java.util.Scanner ;
+//okay no problem
+
+
+import java.util.Scanner;
+import java.okay.Scanner;
+//there is a problem [ Compile time ] whether after this in any statement we used Scanner class or not
+
+import java.util.*;
+import java.sql.Date;
+for Date class absolute import will be used [ sql wala in this case ]
+
+
+
+static import .....
+//problem compile time
+
+import static .....
+//no problem at all
+
+
+
+]]]]
