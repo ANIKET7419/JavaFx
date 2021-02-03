@@ -114,6 +114,12 @@ int k= switch (1)
 
 
 
+simple funda ye hai ki
+agar aap variable waala switch expression use karte ho to jab bhi switch cases evaluate ho always yha se variable me value
+initialize honi  chahiye
+// variable initialize waale case me  we can only use -> not :
+// , waale cases me we can use : or -> if it is not variable intialized waala case
+
 
 
 
