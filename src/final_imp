@@ -1,0 +1,19 @@
+interface can not be final
+abstract class  can not be final
+if class contain abstract function then it is compulsory to use abstract keyword with class name
+abstract class  op{
+
+}
+//Valid
+
+class abstract   op{
+
+}
+//Not Valid
+
+we know enum is by default final but instead also we can not use final keyword with enum
+
+final keyword can not be used with constructor
+
+
+
