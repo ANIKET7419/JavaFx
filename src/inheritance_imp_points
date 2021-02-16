@@ -86,7 +86,7 @@ class b extends a
 
 
 ______________________________________________________________________________________________________________|
-| parent  class all data except private including its inherited data from parents ( not overrided or hidden by child)   | [  accessible through super and this both keywords]
+| parent  class all data except private including its inherited data from parents ( not overrided or not  hidden by child)   | [  accessible through super and this both keywords]
 |_____________________________________________________________________________________________________________|
 | parent  class all data except private including its inherited data from parents (  overrided or hidden by child)      | [ accessible through this keyword ]
 |_____________________________________________________________________________________________________________|

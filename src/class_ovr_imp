@@ -1,0 +1,15 @@
+class op{
+    public int op111;
+     public   class op1{
+
+    }
+}
+class op2 extends op{
+    private int op111;
+   private class op1{
+
+    }
+
+}
+// It is purely valid bcz it is not overriding
+In overriding we need to make sure that we must not decrease the level of access modifier while overriding
