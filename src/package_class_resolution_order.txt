@@ -4,8 +4,9 @@ javac packagename/pkg2/filename.java
 
 here the classpath will be default defined by environment variable or current working directory
 --> order is --->
-1st ENV
-2nd CWD
+1st -classpath whether found or not it will not search for 2,3
+2nd ENV     whether found or not it will not search for 3
+3rd CWD     whether found or not
 
 the classpath is the path where compiler and jvm search for class loaded by application loader
 

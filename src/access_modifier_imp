@@ -1,0 +1,104 @@
+ private final   void hello()
+    {
+
+    }
+    // Correct
+
+
+
+
+============= INSIDE OF A SIMPLE FUNCTION =====================
+we can not define enum ,interface inside the function body
+we can define class , abstract class inside the function body
+protected , private , public access modifier are not allowed at all bcz this modifiers are used only with class field,method,nested class,nested enum,nested interface
+
+
+
+
+
+
+
+
+
+****************** INSIDE OF  INTERFACE ********************
+
+{} non static and static  blocks are not allowed
+
+
+--------- VARIABLE -----------
+ALLOWED -  public
+DEFAULT -  public static final
+Example : - int y=4590; // it is public static final
+            public int y=4859; // it is public static final
+            static public int y =5895; it is public static final
+            final int y=59;  it is public static final
+
+
+
+
+---------- METHODS ----------------
+After JDK 8 - private and static methods are allowed in interface
+ALLOWED - private , public
+DEFAULT - non static public
+
+
+COMBINATION in interface methods :-
+final private  - valid
+final static - invalid
+final default - invalid
+final void hello(); - invalid
+private default - invalid
+static default - invalid
+private static - valid
+final private static - invalid
+default keyword is valid only in interface only
+default keyword not valid in enum ,class,abstract class
+
+
+--------------- INTERFACE , CLASS , ENUM --------------------
+
+ALLOWED - public
+DEFAULT - public static
+
+
+
+******************* INSIDE OF CLASS **************************
+
+
+
+
+
+ALL OF THE TYPE OF DATA whether it is a class, enum ,interface   is default type by default and can use private,protected,public as access modifier
+
+
+
+
+
+******************OUTER MOST AREA OF JAVA FILE *********************
+In this area we can only define
+class , interface , enum
+and we can use public or keep remain empty
+public class okay{} //correct
+class okay{} //correct
+public enum okay{}//correct
+enum okay{} //correct
+public interface okay{}//correct
+interface okay {} //correct
+
+
+In java file more than two class , enum or interface are not allowed to have the same name if in it's any outer scope there exist same named class,interface,enum
+bcz no any hiding is there for this case
+
+import java.util.Date;
+class Date{
+
+} // it is also an error
+
+import java.util.Date;
+import java.sql.Date ;
+//it is also an error
+
+
+
+
+
