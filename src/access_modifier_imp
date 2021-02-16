@@ -70,7 +70,7 @@ DEFAULT - public static
 
 ALL OF THE TYPE OF DATA whether it is a class, enum ,interface   is default type by default and can use private,protected,public as access modifier
 
-
+there is only one special case with enum that enum constants are always public static final .
 
 
 
