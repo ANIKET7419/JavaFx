@@ -1,11 +1,11 @@
 /**
 
- <br>okay bro
-  yes
-  i am winner
-
+ *okay bro.
+  *yes
+  *i am winner
+  *@author  ANiket
  */
-class practice
+public class practice
 {
 
 
