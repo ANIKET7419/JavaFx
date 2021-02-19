@@ -81,3 +81,6 @@ Infinity – -Infinity	+Infinity
 ±Infinity ÷ ±Infinity	NaN
 ±Infinity × 0	NaN
 NaN == NaN	False
+
+
+
