@@ -28,3 +28,50 @@ in javascript and c++ if size of collection is 0 then it is considered as true i
 in python , php if size of collection is 0 then it is considered as false in special case
 in r if size of collection is 0 then it is an error [ shows :  argument is of length zero ]
 
+
+
+==================
+
+In java and c++ both :-
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+
+		int a=10;
+		int j=5459;
+		switch(a)
+		{
+		   System.out.println("450"); // this is error we can not do anything in switch without case
+		    case 10: System.out.println(j);
+        }
+}
+}
+
+In c:
+that was not error but printf("%d",450) will not be executed
+
+IN java :
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+
+		int a=10;
+		int j=5459;
+		switch(a)
+		{
+
+		    case 10:
+		}
+
+
+	}
+}
+
+empty switch cases [ with or without bracket ] are not error in java
+
+but c++ /c gives an error on empty case [ without bracket ]
