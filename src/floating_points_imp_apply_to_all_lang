@@ -84,3 +84,52 @@ NaN == NaN	False
 
 
 
+
+Example − Convert decimal number 112 into binary number.
+
+Since given number is decimal integer number, so by using above algorithm performing short division by 2 with remainder.
+
+Division	Remainder (R)
+112 / 2 = 56	0
+56 / 2 = 28	    0
+28 / 2 = 14	    0
+14 / 2 = 7	    0
+7 / 2 = 3	    1
+3 / 2 = 1	    1
+1 / 2 = 0	    1
+
+
+
+Now, write remainder from bottom to up (in reverse order), this will be 1110000 which is equivalent binary number of decimal integer 112.
+
+But above method can not convert fraction part of a mixed (a number with integer and fraction part) decimal number. For decimal fractional part, the method is explained as following below.
+
+(b) Performing Short Multiplication by Two with result (For fractional part)
+Let decimal fractional part is M then multiply this number from 2 because base of binary number system is 2. Note down the value of integer part, which will be either 0 or 1. Again multiply remaining decimal fractional number till it became 0 and note every integer part of result of every step. Then write noted results of integer part, which will be equivalent fraction binary number of given decimal number. This is procedure for converting an fractional decimal number, algorithm is given below.
+
+Take decimal number as multiplicand.
+
+Multiple this number by 2 (2 is base of binary so multiplier here).
+
+Store the value of integer part of result in an array (it will be either 0 or 1 because of multiplier 2).
+
+Repeat the above two steps until the number became zero.
+
+Print the array (which will be equivalent fractional binary number of given decimal fractional number).
+
+Note that a multiplicand (here decimal fractional number) is that to be multiplied by multiplier (here base of 2, i.e., 2)
+
+Example − Convert decimal fractional number 0.8125 into binary number.
+
+Since given number is decimal fractional number, so by using above algorithm performing short multiplication by 2 with integer part.
+
+Multiplication	Resultant integer part (R)
+0.81252 x 2= 1.625	1
+0.6252 x 2= 1.25	1
+0.252 x 2= 0.50	    0
+0.52 x 2= 1.0	    1
+0 x 2 = 0	        0
+Now, write these resultant integer part, this will be 0.11010 which is equivalent binary fractional number of decimal fractional 0.8125.
+
+
+
