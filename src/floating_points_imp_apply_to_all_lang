@@ -260,3 +260,8 @@ In non floating conversion from lower to higher it is simple bcz we nee dto put 
 but in floating it is different i have shown you
 in non floating from higher to lower it takes least significant total required bits
 but in floating it is different
+
+
+
+Only comparing is tricky otherwise other arithmetic operations are simple may produce result with very very very small difference  and to avoid any of this  issue use String.format() or Math.round() function
+otherwise not necessary for arithmetic but for comparing must care about this things ......
