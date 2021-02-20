@@ -141,8 +141,8 @@ Comparing Floating-Point Numbers Is Tricky
 
 
 Note : 0.4f is not equal to 0.4
-Note : 0.5 is equal to 0.5
-
+Note : 0.5f is equal to 0.5
+Note : 0.4 is equal to 0.4
 Note : 0.1+0.1+0.1 !=0.3
 Note : 0.1+0.1+0.1 == 0.30000000000000004
 
@@ -208,7 +208,9 @@ number that is stored actually not exactly 0.1 but
 1 * ( 1 +  0.6000000238418579101562 ) * 2^(-4)
 1.6000000238418579101562*  2*(-4) = 0.100000001490116119384765625
 
-Note : (0.7+0.1)*10 != 8 it is equal to 7 so be careful when doing any floating point operation
+Note : (0.7+0.1)*10 != 8 it is equal to 7 so be careful when doing any comp floating point operation operation like arithmetic cause only very small problem not much but comparing can create a lot
+
+
 
 
 refer : http://weitz.de/ieee/
@@ -256,12 +258,12 @@ abs(a-b)<=delta [ delta should  be very smallest value like   0.000001  ]
 
 
 
-In non floating conversion from lower to higher it is simple bcz we nee dto put extra 1 or 0 according to sign
-but in floating it is different i have shown you
-in non floating from higher to lower it takes least significant total required bits
-but in floating it is different
+In non floating conversion from lower to higher it is simple bcz we need to put extra 1 or 0 according to sign [ note: that does not include any float type ]
+but in floating it is different i have shown you [ where at least float type is included ]
+in non floating from higher to lower it takes least significant total required bits [ where no any float type is included ]
+but in floating it is different [ where at least one float type is included in either side ]
 
 
 
 Only comparing is tricky otherwise other arithmetic operations are simple may produce result with very very very small difference  and to avoid any of this  issue use String.format() or Math.round() function
-otherwise not necessary for arithmetic but for comparing must care about this things ......
+otherwise not necessary for arithmetic but for comparing must care about these things ......
