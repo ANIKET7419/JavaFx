@@ -256,3 +256,7 @@ abs(a-b)<=delta [ delta should  be very smallest value like   0.000001  ]
 
 
 
+In non floating conversion from lower to higher it is simple bcz we nee dto put extra 1 or 0 according to sign
+but in floating it is different i have shown you
+in non floating from higher to lower it takes least significant total required bits
+but in floating it is different
