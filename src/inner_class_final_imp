@@ -1,0 +1,26 @@
+( 1)
+
+class Outer{
+class Inner{
+
+}
+}
+
+(2)
+class Outer{
+function(){
+
+
+local data
+
+class Inner{
+
+}
+
+}
+}
+
+Note : IN case 2 there is special case that Inner class can access all data of Outer class and have privilege  to
+change data but it can access local data of that function in which it lies it can not change it's local data . Note  that it is not compulsory to make final those local data that
+you are accessing in the inner class but make sure if you are using local data then if your inner class changing the local data in compile time
+error will be generated otherwise not .
