@@ -1,0 +1,63 @@
+public class practice
+{
+    class op{
+    }
+
+    public static void main(String[] args) {
+   op obj=new op(); // Error bcz class op is not static and most important main function and op class are members of class practice
+   practice p=new practice(); // Correct
+    }
+}
+============================
+non static inner class can not have static declarations
+static inner class can  have static declarations
+non static out most class can have static dec.
+out most class can not be static
+
+==================================================
+public class practice
+{
+
+    class op1{
+        static int op;
+    }
+}     //Error
+
+
+======================================
+
+ class practice
+{
+
+
+        static int op;
+
+}  //Correct
+================================
+
+public class practice
+{
+
+
+        static int op;
+
+}  //Correct
+======================================
+
+
+public class practice
+{
+        static int op;
+}  //Correct
+
+====================================
+
+
+public class practice
+{
+    static class okay{
+        static int op;
+        }
+}  //Correct
+
+================================================================
