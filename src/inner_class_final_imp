@@ -24,3 +24,91 @@ Note : IN case 2 there is special case that Inner class can access all data of O
 change data but it can access local data of that function in which it lies it can not change it's local data . Note  that it is not compulsory to make final those local data that
 you are accessing in the inner class but make sure if you are using local data then if your inner class changing the local data in compile time
 error will be generated otherwise not .
+As i said it is not compulsory to make data final in local function if we want to access it in the inner local class but note that [ That data must be initialized at most one in the local function body otherwise error will be generated ]
+at most one means one or zero [ note if it is zero times then again error indicating that variable might not be initialized will be generated ]
+
+Example  :
+ public static void main(String[] args) {
+        int op;
+        Canvas canvas= new Canvas(){
+
+            @Override
+            public void paint(Graphics graphics)
+            {
+              int k=op; //error variable might not be initialized
+            }
+
+        };
+
+    }
+
+
+
+    public static void main(String[] args) {
+            int op;
+            Canvas canvas= new Canvas(){
+
+                @Override
+                public void paint(Graphics graphics)
+                {
+                  int k=op; //error variable might not be initialized
+                }
+
+            };
+            op=45904;
+
+        }
+
+
+
+
+        public static void main(String[] args) {
+                int op=459;
+                Canvas canvas= new Canvas(){
+
+                    @Override
+                    public void paint(Graphics graphics)
+                    {
+                      int k=op; //correct
+                    }
+
+                };
+
+            }
+
+
+
+
+
+public static void main(String[] args) {
+                int op=459;
+                op=34904;
+                Canvas canvas= new Canvas(){
+
+                    @Override
+                    public void paint(Graphics graphics)
+                    {
+                      int k=op; //error
+                    }
+
+                };
+
+            }
+
+
+
+public static void main(String[] args) {
+                int op=459;
+
+                Canvas canvas= new Canvas(){
+
+                    @Override
+                    public void paint(Graphics graphics)
+                    {
+                      int k=op; //error
+                    }
+
+                };
+                 op=34904;
+
+            }
