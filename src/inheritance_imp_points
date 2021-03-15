@@ -67,7 +67,7 @@ class b extends a
 
     void  okay()
     {
-        a1=189; // error bcz a is private variable in a class
+        a1=189; // error bcz a is private variable in a class and private data is not accessible or inherited in the child class
         super.a1=4894; //error we can not access directly please refer access modifier table
     }
 
