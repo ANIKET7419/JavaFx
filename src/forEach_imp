@@ -1,0 +1,59 @@
+Syntax:
+
+for (type var : array)
+{
+    statements using var;
+}
+
+
+is equivalent to:
+
+for (int i=0; i<arr.length; i++)
+{
+    type var = arr[i];
+    statements using var;
+}
+
+
+Example:
+int i;
+for(i:arr){} //ERROR   [   Error:  bad initializer for for-loop ]
+
+
+for(int i:arr){} //CORRECT
+
+
+
+
+Limitations of for-each loop
+
+For-each loops are not appropriate when you want to modify the array:
+for (int num : marks)
+{
+    // only changes num, not the array element
+    num = num*2;
+}
+For-each loops do not keep track of index. So we can not obtain array index using For-Each loop
+for (int num : numbers)
+{
+    if (num == target)
+    {
+        return ???;   // do not know the index of num
+    }
+}
+For-each only iterates forward over the array in single steps
+// cannot be converted to a for-each loop
+for (int i=numbers.length-1; i>0; i--)
+{
+      System.out.println(numbers[i]);
+}
+For-each cannot process two decision making statements at once
+// cannot be easily converted to a for-each loop
+for (int i=0; i<numbers.length; i++)
+{
+    if (numbers[i] == arr[i])
+    { ...
+    }
+}
+
+
