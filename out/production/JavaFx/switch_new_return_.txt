@@ -18,7 +18,114 @@ we can use , to seperate multiple values in  new switch expression
 
 
 
+=================================
+switch (1)
+   {
+       case 1,2,3:
+           System.out.println("OKay");
+   }
 
+   // error in case if compiler is not 14 or later
+
+   switch (1)
+      {
+          case 1,2,3->
+              System.out.println("OKay");
+      }
+
+cases for [ jdk 14 or later] bcz it is only supported in jdk 14 or later :->
+int k= switch (1)
+   {
+       case 1,2,3->10;
+       default :190;
+   };
+   //error bcz we used : or -> both at a same time
+
+ int k= switch (1)
+   {
+       case 1,2,3->10;
+       default ->190;
+   };
+//okay
+
+
+ int k= switch (1)
+   {
+       case 1,2,3:10;
+       default :190;
+   };
+   //error we can not use this feature without ->
+
+
+
+int k= switch (1)
+   {
+       case 1,2,3->{
+
+       yield 190;}
+       default ->190;
+   };
+//okay
+
+
+int k= switch (1)
+   {
+       case 1,2,3->{
+
+       190;}
+       default ->190;
+   };
+
+   //error have to use yield bcz of block
+
+
+
+   int k= switch (1)
+      {
+          case 1,2,3->{
+
+         yield 190;
+         int ui=40;}
+          default ->110;
+      };
+
+//error unreachable statement after yield
+
+//no need to use break
+
+int k= switch (1)
+      {
+          case 1,2,3->{
+
+         yield 190;
+         }
+          default :190;
+      };
+
+
+
+
+
+
+// we can not use return if we are using catching value switch expression
+
+
+// we can use jdk 14 switch expression with left side variable or without that catching variable in case of varibale we have to use yield if it is blocked or nothing simple a expression if it is not block
+
+
+
+simple funda ye hai ki
+agar aap variable waala switch expression use karte ho to jab bhi switch cases evaluate ho always yha se variable me value
+initialize honi  chahiye
+// variable initialize waale case me  we can only use -> not :
+// , waale cases me we can use : or -> if it is not variable intialized waala case
+
+
+
+
+
+
+====================================
 
 
 

@@ -9,3 +9,69 @@ Note special case with R is [ line 7 ] is somehow different for R in r  paramete
 C++ , PHP SUPPORT & by reference 
 But java does not support & ( by refernce ) 
 In java varargs can be declared  only and only  in function prototype
+
+
+
+
+
+
+========= Boolean ======
+
+in java boolean is boolean it is not equal to 0 or 1 we can not type cast it to any or any to boolean it is illegal
+In javascript , c++ , php ,R,python  boolean is 0 or 1 [ 0 == false ]( true) [1== true ](true) but [2==true] (false) [2==false] (false)
+bcz it is always converted into 0 or 1 when an arithmetic, relational,logical etc operations are applied
+Special is \\\ example - while(10) //it is considered as true but not equal to true [infinite loop]
+ while(0) //false
+ while(0.1) //true [infinite loop]
+ but 0, null,None,undefinded,NULL,NaN are considered as false in these special case
+in javascript and c++ if size of collection is 0 then it is considered as true in special cases
+in python , php if size of collection is 0 then it is considered as false in special case
+in r if size of collection is 0 then it is an error [ shows :  argument is of length zero ]
+
+
+
+==================
+
+In java and c++ both :-
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+
+		int a=10;
+		int j=5459;
+		switch(a)
+		{
+		   System.out.println("450"); // this is error we can not do anything in switch without case
+		    case 10: System.out.println(j);
+        }
+}
+}
+
+In c:
+that was not error but printf("%d",450) will not be executed
+
+IN java :
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+
+		int a=10;
+		int j=5459;
+		switch(a)
+		{
+
+		    case 10:
+		}
+
+
+	}
+}
+
+empty switch cases [ with or without bracket ] are not error in java
+
+but c++ /c gives an error on empty case [ without bracket ]

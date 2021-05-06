@@ -66,3 +66,89 @@ The size is MEDIUM
 In the above example, we have created an enum class Size. This class is implementing the Pizza interface.
 
 Since we are implementing an interface, we have provided an implementation of the abstract method displaySize() inside the enum class.
+
+
+======== IMPORTANT PROPERTIES ====
+1. enum can be empty
+enum aniket{
+
+} //correct
+
+2. But if enum contains any variable ,interface,class,enum then there must be at least one enum constant
+  and those constant should be declared in the top most body of enum with ';' to terminate the sequence of enum constants
+  only one ; is allowed we can not declare enum constant like A;B;
+  A,B; // acceptable
+
+3. If enum contains only enum constants then it is not compulsory to use ; to terminate the sequence of enum constants
+   in this case also A,B,C;OP; // error
+
+
+============ EXAMPLE ========================
+
+enum  okay{
+    IOO
+}
+// correct
+
+enum  okay{
+    IOO;OP;
+}
+//ERROR
+
+enum  okay{
+    IOO,OP;
+}
+// CORRECT
+
+enum  okay{
+    IOO
+    void hello()
+    {
+
+    }
+}
+// ERROR COMPULSORY TO USE ';' in this case
+
+
+
+
+enum  okay{
+    IOO;
+    void hello()
+    {
+
+    }
+}
+//CORRECT
+
+
+enum  okay{
+
+    void hello()
+    {
+
+    }
+}
+
+//ERROR Read rule number 2
+
+
+enum  okay{
+
+    void hello()
+    {
+
+    }
+    IO;
+}
+// ERROR IO; should be in the top of the enum okay body
+for variable ,enum,interface,class it is same as function that i used to demo
+
+
+
+
+
+
+
+
+
