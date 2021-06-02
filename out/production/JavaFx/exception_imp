@@ -1,0 +1,81 @@
+ void  function() throws Exception{
+
+    } //correct
+
+
+==============================================================================
+class op extends  Exception{
+
+}
+
+try{}
+catch(op exp){
+}
+// Error : says op exception will never be generated
+==================================================================================
+
+ void  function() throws op{
+
+    }
+
+
+class op extends  Exception{
+
+}
+
+try{
+function();
+}
+catch(op exp){
+}
+// Correct
+
+==========================================================================================
+
+
+
+class op extends  Exception{
+
+}
+
+try{
+int a=10;
+}
+catch(op exp){
+}
+// Error : says op exception will never be generated
+
+============================================================================================
+
+
+class op extends  RuntimeException{
+
+}
+
+try{
+int a=10;
+}
+catch(op exp){
+}
+// Correct
+
+========================================================================
+
+class op extends  RuntimeException{
+
+}
+
+try{
+}
+catch(op exp){
+}
+// Correct
+
+=========================================================================
+
+Unchecked - Runtime for custom exp
+Checked - Exception for custom exp
+Note : Exception is the super class of RuntimeException
+
+========================================================================
+

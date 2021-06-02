@@ -1,0 +1,27 @@
+/**  documentation  */
+note : line starting with * do not have any special meaning it is way to show attractive
+       in the line that starts with *  this * will not be shown on browser but intermediate and final * will be shown
+/**
+
+ *okay bro.
+  *yes
+  *i am winner
+  *@author  ANiket
+ */
+public class practice
+{
+
+
+    /**
+
+     <br>okay bro
+     yes
+     i am winner
+
+     */
+    public static void main(String[] args) {
+
+
+    }
+}
+//correct

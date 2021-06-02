@@ -1,0 +1,256 @@
+In java there is guaranteed order of evaluation of the arguments of a function just before the call
+that is from left to right and not that each argument will be treated as different attribute it means postincrement value will be
+reflected in the subsequent arguments ,  but in c++ behaviour is undefined .
+
+refer : -> https://stackoverflow.com/questions/2934904/order-of-evaluation-in-c-function-parameters
+
+
+
+
+
+
+Pre-increment operator: A pre-increment operator is used to increment the value of a variable before using it in a expression. In the Pre-Increment, value is first incremented and then used inside the expression.
+Syntax:
+
+
+ a = ++x;
+Here, if the value of ‘x’ is 10 then value of ‘a’ will be 11 because the value of ‘x’ gets modified before using it in the expression.
+
+
+CPP
+filter_none
+edit
+play_arrow
+
+brightness_4
+// CPP program to demonstrate pre increment
+// operator.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x = 10, a;
+
+    a = ++x;
+    cout << "Pre Increment Operation";
+
+    // Value of a will change
+    cout << "\na = " << a;
+
+    // Value of x change before execution of a=++x;
+    cout << "\nx = " << x;
+
+    return 0;
+}
+Output :
+
+Pre Increment Operation
+a = 11
+x = 11
+
+Post-increment operator: A post-increment operator is used to increment the value of variable after executing expression completely in which post increment is used. In the Post-Increment, value is first used . when same variable is used again in same expression or in different expression value will be incremented value
+
+Syntax:
+
+
+ a = x++;
+Here, suppose the value of ‘x’ is 10 then value of variable ‘b’ will be 10 because old value of ‘x’ is used.
+
+
+
+
+
+CPP
+filter_none
+edit
+play_arrow
+
+brightness_4
+// CPP program to demonstrate pre increment
+// operator.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x = 10, a;
+
+    a = x++;
+
+    cout << "Post Increment Operation";
+
+    // Value of a will not change
+    cout << "\na = " << a;
+
+    // Value of x change after execution of a=x++;
+    cout << "\nx = " << x;
+
+    return 0;
+}
+Output :
+
+Post Increment Operation
+a = 10
+x = 11
+
+
+
+Special Case for Post-increment operator: If we assign the post-incremented value to the same variable then the value of that variable will not get incremented i.e. it will remain the same like it was before.
+
+Syntax:
+
+a = a++;
+Here, if the value of ‘x’ is 10 then value of ‘a’ will be 10 because the value of ‘x’ gets assigned to the post-incremented value of ‘x’.
+
+C++
+filter_none
+edit
+play_arrow
+
+brightness_4
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+    int x = 10;
+
+    cout << "Value of x before post-incrementing";
+
+    cout << "\nx = " << x;
+
+    x = x++;
+
+    cout << "\nValue of x after post-incrementing";
+
+    // Value of a will not change
+    cout << "\nx = " << x;
+
+    return 0;
+}
+Output:
+
+Value of x before post-incrementing
+x = 10
+Value of x after post-incrementing
+x = 10
+This special case is only with post-increment and post-decrement operators, while the pre-increment and pre-decrement operators works normal in this case.
+
+Evaluating post and pre-increment together
+
+Precedence of postfix ++ is more than prefix ++ and their associativity is also different. Associativity of prefix ++ is right to left and associativity of postfix ++ is left to right.
+
+
+Associativity of postfix ++ is left to right
+Associativity of prefix ++ is right to left
+
+
+in c++ there is a special operator , separator  that is not in java
+
+
+
+Comma Operator in C/C++ programming language has two contexts −
+
+As a Separator −
+
+As an operator − The comma operator { , } is a binary operator that discards the first expression (after evaluation) and then use the value of the second expression. This operator has the least precedence.
+
+Consider the following codes and guess the output −
+
+Example
+ Live Demo
+
+#include <stdio.h>
+int main(void) {
+   char ch = 'a', 'b', 'c';
+   printf("%c", ch);
+   return 0;
+}
+Output
+It gives an error because the works as a separator.
+
+prog.c: In function ‘main’:
+prog.c:5:20: error: expected identifier or ‘(’ before 'b'
+char ch = 'a', 'b', 'c';
+^~~
+Example
+ Live Demo
+
+#include <stdio.h>
+int main(void) {
+   char ch;
+   ch = 'a','b','c';
+   printf("%c", ch);
+   return 0;
+}
+Output
+It gives a as output as it works because the ‘,’ works as operator but it precedence is below assignment operator hence the output is a.
+
+a
+Example
+ Live Demo
+
+#include <stdio.h>
+int f1() {
+   return 43;
+}
+int f2() {
+   return 123 ;
+}
+int main(void) {
+   int a;
+   a = (f1() , f2());
+   printf("%d", a);
+   return 0;
+}
+Output
+It gives 123 as output as the ‘, ’ works as operator and being in braces it works and evaluates the second expression and gives output.
+
+123
+
+
+
+The comma operator (,) is used to separate two or more expressions that are included where only one expression is expected. When the set of expressions has to be evaluated for a value, only the rightmost expression is considered.
+
+For example, the following code:
+
+
+a = (b=3, b+2);
+
+
+Would first assign the value 3 to b, and then assign b+2 to variable a. So, at the end, variable a would contain the value 5 while variable b would contain value 3.
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Hello World";
+    int a=(1,1);
+    cout<<(++a + ++a + a);
+
+    return 0;
+}
+
+// correct bcz () is used , as very lesser priority
+but if int a =1,1 ; //error bcz = is operated first then , and it will treat as initialization walaa separator
+
+
+Note that  in c++ one variable can be modified at most once in an expression otherwise behaviour can be undefined
+
+
+
+EXAMPLE : ->
+
+i=1
+a= i++ + i++
+answer is 2 + 1 =3
+
+i=1
+(++i + ++i +i ) in java answer is 8 but in c++ behaviour is undefined [ in c++ answer can be that may not be  expected ]

@@ -1,0 +1,269 @@
+TYPES	SIGN	BIASED EXPONENT	NORMALISED MANTISA	BIAS
+Single precision	1(31st bit)	8(30-23)	23(22-0)	127
+Double precision	1(63rd bit) 11(62-52)	52(51-0)	1023
+
+Example –
+
+85.125
+85 = 1010101
+0.125 = 001
+85.125 = 1010101.001
+       =1.010101001 x 2^6
+sign = 0
+
+1. Single precision:
+biased exponent 127+6=133
+133 = 10000101
+Normalised mantisa = 010101001
+we will add 0's to complete the 23 bits
+
+The IEEE 754 Single precision is:
+= 0 10000101 01010100100000000000000
+This can be written in hexadecimal form 42AA4000
+
+2. Double precision:
+biased exponent 1023+6=1029
+1029 = 10000000101
+Normalised mantisa = 010101001
+we will add 0's to complete the 52 bits
+
+The IEEE 754 Double precision is:
+= 0 10000000101 0101010010000000000000000000000000000000000000000000
+This can be written in hexadecimal form 4055480000000000
+
+
+
+
+Special Values: IEEE has reserved some values that can ambiguity.
+
+Zero –
+Zero is a special value denoted with an exponent and mantissa of 0. -0 and +0 are distinct values, though they both are equal.
+Denormalised –
+If the exponent is all zeros, but the mantissa is not then the value is a denormalized number. This means this number does not have an assumed leading one before the binary point.
+Infinity –
+The values +infinity and -infinity are denoted with an exponent of all ones and a mantissa of all zeros. The sign bit distinguishes between negative infinity and positive infinity. Operations with infinite values are well defined in IEEE.
+Not A Number (NAN) –
+The value NAN is used to represent a value that is an error. This is represented when exponent field is all ones with a zero sign bit or a mantissa that it not 1 followed by zeros. This is a special value that might be used to denote a variable that doesn’t yet hold a value.
+
+
+EXPONENT	MANTISA	        VALUE
+0	        0	            exact 0
+255	        0	            Infinity
+0	        not 0	        denormalised
+255	        not 0	        Not a number (NAN)
+
+
+
+The range of positive floating point numbers can be split into normalized numbers, and denormalized numbers which use only a portion of the fractions’s precision. Since every floating-point number has a corresponding, negated value, the ranges above are symmetric around zero.
+
+There are five distinct numerical ranges that single-precision floating-point numbers are not able to represent with the scheme presented so far:
+
+Negative numbers less than – (2 – 2-23) × 2127 (negative overflow)
+Negative numbers greater than – 2-149 (negative underflow)
+Zero
+Positive numbers less than 2-149 (positive underflow)
+Positive numbers greater than (2 – 2-23) × 2127 (positive overflow)
+Overflow generally means that values have grown too large to be represented. Underflow is a less serious problem because is just denotes a loss of precision, which is guaranteed to be closely approximated by zero.
+
+Table of the total effective range of finite IEEE floating-point numbers is shown below:
+
+
+Operation	        Result
+n ÷ ±Infinity	0
+±Infinity × ±Infinity	±Infinity
+±nonZero ÷ ±0	±Infinity
+±finite × ±Infinity	±Infinity
+Infinity + Infinity
+Infinity – -Infinity	+Infinity
+-Infinity – Infinity
+-Infinity + – Infinity	– Infinity
+±0 ÷ ±0	NaN
+±Infinity ÷ ±Infinity	NaN
+±Infinity × 0	NaN
+NaN == NaN	False
+
+
+
+
+Example − Convert decimal number 112 into binary number.
+
+Since given number is decimal integer number, so by using above algorithm performing short division by 2 with remainder.
+
+Division	Remainder (R)
+112 / 2 = 56	0
+56 / 2 = 28	    0
+28 / 2 = 14	    0
+14 / 2 = 7	    0
+7 / 2 = 3	    1
+3 / 2 = 1	    1
+1 / 2 = 0	    1
+
+
+
+Now, write remainder from bottom to up (in reverse order), this will be 1110000 which is equivalent binary number of decimal integer 112.
+
+But above method can not convert fraction part of a mixed (a number with integer and fraction part) decimal number. For decimal fractional part, the method is explained as following below.
+
+(b) Performing Short Multiplication by Two with result (For fractional part)
+Let decimal fractional part is M then multiply this number from 2 because base of binary number system is 2. Note down the value of integer part, which will be either 0 or 1. Again multiply remaining decimal fractional number till it became 0 and note every integer part of result of every step. Then write noted results of integer part, which will be equivalent fraction binary number of given decimal number. This is procedure for converting an fractional decimal number, algorithm is given below.
+
+Take decimal number as multiplicand.
+
+Multiple this number by 2 (2 is base of binary so multiplier here).
+
+Store the value of integer part of result in an array (it will be either 0 or 1 because of multiplier 2).
+
+Repeat the above two steps until the number became zero.
+
+Print the array (which will be equivalent fractional binary number of given decimal fractional number).
+
+Note that a multiplicand (here decimal fractional number) is that to be multiplied by multiplier (here base of 2, i.e., 2)
+
+Example − Convert decimal fractional number 0.8125 into binary number.
+
+Since given number is decimal fractional number, so by using above algorithm performing short multiplication by 2 with integer part.
+
+Multiplication	Resultant integer part (R)
+0.81252 x 2= 1.625	1
+0.6252 x 2= 1.25	1
+0.252 x 2= 0.50	    0
+0.52 x 2= 1.0	    1
+0 x 2 = 0	        0
+Now, write these resultant integer part, this will be 0.11010 which is equivalent binary fractional number of decimal fractional 0.8125.
+
+
+
+
+
+======= ********************** VERY VERY VERY IMPORTANT **********************  ===========================================================================================================================
+
+Comparing Floating-Point Numbers Is Tricky
+
+
+Note : 0.4f is not equal to 0.4
+Note : 0.5f is equal to 0.5
+Note : 0.4 is equal to 0.4
+Note : 0.1+0.1+0.1 !=0.3
+Note : 0.1+0.1+0.1 == 0.30000000000000004
+
+It is not only about java it is about all languages
+
+Proof :->
+
+
+32 bit float number is stored like
+
+1 bit - sign bit
+8 bits - exponent
+23 bit - mantisa
+
+64 bit float number is stored like
+
+1 bit - sign bit
+11 bits - exponent bit
+52 bit - mantissa
+
+Example : -
+
+  0.1f will be stored like
+                      Integer part
+  0.1*2 = 0.2         0
+  0.2*2 = 0.4         0
+  0.4*2 = 0.8         0
+  0.8*2 = 1.6         1
+  0.6*2 = 1.2         1
+  0.2 * 2 =0.4        0
+  0.4 * 2 = 0.8         0
+
+
+  non stopping
+
+in 0.1 integer part is 0 and its binary rep is 0
+Overall our floating point number in binary format is
+0.0001100110011001100110011001100110011001100 .......
+Now
+in 32 bit format
+
+1.100110011001100110011001100110011001100110011001100110011001100 .... exponent is -4
+
+exponent - 2^(n-1)-1 here in 32 bit exponent is 8 bits long so 2^(8-1)-1=127
+so  our exponent is -4 + 127 = 123
+
+123 binary format is 01111011
+
+sign bit - 0
+
+mantissa part : - 100110011001100110011001100110011001100110011001100110011001100 ....
+
+overall 32 bit format is
+
+0      0 1 1 1 1 0 1 1     1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0
+[0]    [7 6 5 4 3 2 1 0]    [-1 -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20 -21 -22 -23 ]
+
+if we convert this number into decimal we found that :
+number that is stored actually not exactly 0.1 but
+
+(-1)^s * (1+decimal conversion of mantissa according to the number described upside ] )* 2^(decimal conversion of expo -127 )
+(-1)^0 * ( 1+ ( 2^(-1) +  2^(-4) + 2^(-5) + 2^(-8) + 2^(-9) + 2^(-12) + 2^(-13) + 2^(-16) + 2^(-17) + 2^(-20) + 2^(-21) ) ) * 2^(123-127)
+1 * ( 1 +  0.6000000238418579101562 ) * 2^(-4)
+1.6000000238418579101562*  2*(-4) = 0.100000001490116119384765625
+
+Note : (0.7+0.1)*10 != 8 it is equal to 7 so be careful when doing any comp floating point operation operation like arithmetic cause only very small problem not much but comparing can create a lot
+
+
+
+
+refer : http://weitz.de/ieee/
+
+0.1 f != 0.1 because :->
+
+when 0.1f is converted into the double the result is 0.10000000149011612
+
+bcz
+
+when 32 bit format is converted into 64 bit format
+
+32bit sign bit         [binary format of ( 32 bit exp value - 127 +1023 ) ]   [32 old mantissa ]additional 0's bit
+
+
+it means 0.1 in 32 bit
+
+0      0 1 1 1 1 0 1 1     1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0
+
+in 64 bit [ if converted from 32 bit only ]
+
+0      0 1 1 1 1 1 1 1 0 1 1     1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0  0 0
+
+
+
+
+in 64 bit [ if converted from 32 bit only ]
+
+0      0 1 1 1 1 1 1 1 0 1 1     1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0  1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1
+
+
+Note :
+jshell> 1> 0.999999999f
+$7 ==> false
+
+jshell> 1> 0.999999999
+$7 ==> true
+
+
+
+so from now to compare two floating point numbers use  some delta
+
+abs(a-b)<=delta [ delta should  be very smallest value like   0.000001  ]
+
+
+
+
+In non floating conversion from lower to higher it is simple bcz we need to put extra 1 or 0 according to sign [ note: that does not include any float type ]
+but in floating it is different i have shown you [ where at least float type is included ]
+in non floating from higher to lower it takes least significant total required bits [ where no any float type is included ]
+but in floating it is different [ where at least one float type is included in either side ]
+
+
+
+Only comparing is tricky otherwise other arithmetic operations are simple may produce result with very very very small difference  and to avoid any of this  issue use String.format() or Math.round() function
+otherwise not necessary for arithmetic but for comparing must care about these things ......
