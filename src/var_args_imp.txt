@@ -83,11 +83,50 @@ static void okay(int y,int ... op)
     okay(90,9); //one
     okay(90,9,9f) //two
 
+
+
+
+
+but in case of boolean it is not true bcz size is not clear of boolean
+
+
+static void okay(int y,boolean ... op)
+    {
+
+        System.out.println("One");
+    }
+    static void okay(int io,float ...b)
+    {
+     System.out.println("Two");
+    }
+Okay(90); //ERROR
+
 ------------------------------------------------------------------------------------------------------
 
+class HelloWorld {
+    static void hello(double ... op){
+
+    }
+    static void hello(int ... op){
+
+    }
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+       hello(null);
+    }
+}
 
 
 
+hello(null);
+       ^
+  both method hello(double...) in HelloWorld and method hello(int...) in HelloWorld match
+1 error
+
+
+
+
+-----------------------------------------------
  static void okay(int y,int ...op)
     {
 
