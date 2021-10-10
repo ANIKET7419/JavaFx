@@ -252,7 +252,7 @@ agar available nhi hai to it will ask user to enter the data
 
 
      INPUT :-
-        1234 [ bcz 8 byte complete hue utf-8 use hua hai waise java utf-16 use karta hai characters ke liye ]
+        1234 [ bcz 4 bytes complete hue utf-8 use hua hai waise java utf-16 use karta hai characters ke liye ]
 
      Output:
      
