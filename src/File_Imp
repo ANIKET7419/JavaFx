@@ -1,0 +1,262 @@
+File file=new File("abc");
+Agar is naam ki file already system me thi to ye usko refer kargea
+agar nhi thi to new file create nahi karega just " abc " name ko represent karega
+
+
+file.createNewFile();
+ ye line agar file exists nhi karti to create kar dega agar exist karti hai to kuchh bhi nahi karega agar usme kuchh purana data ]\
+ tha to same to same rahega kuchh bhi changes nhi aayenge
+
+
+
+File class -> directory ke liye bhi use hoti hai just use mkdir function but functionality same hi hai
+
+
+
+
+  File file =new File("/root/IdeaProjects/PR/src/read.txt");
+      String []data=file.list();
+      System.out.println(data);
+
+data = null hai kyuki ye file hai file mein sub directory aur other file nhi hoti agar ye directory hoti to string array with 0 size return aata
+
+
+
+
+
+
+
+
+
+:::::-----IMP::::---
+FileWriter outputStream =new FileWriter("/root/IdeaProjects/PR/src/read");
+ ye line agar file exist nhi karti to kuchh nhi sirf usko naam ko refer karegi koi file new create nhi karegi jab tak kuchh write function ka use naa kare
+ agar file  already exist karti hai to iska matlab ye usko point karegi lekin uske under ka sara data chla jayega
+
+
+
+FileInputStream inputStream =new FileInputStream("/root/IdeaProjects/PR/src/read");
+
+ye us file ko point karegi agar exist karti hai to or point to top left pe pahucha degi [ imp harek object ke liye pointer alag alag hota hai sirf isi new object ke liye pointer first character ko point karega ]
+agar nhi exist karti to exception generate ho jayega
+
+
+
+
+
+FileWriter writer=new FileWriter("file",true); // true yha pe append ko show kar rha hai isse ye append mode me khulegi aur pointer sabse last me hoga us time pe
+
+
+
+flush karna zaroori hai agar autoflush off hai otherwise data write hi nhi hoga chahe file close hi kyu naa ho jaye
+
+
+agar autoflush off hai aur  buffer full ho gya to wah data ko write kar dega bina flush command ke
+
+
+in some system FileWriter dont recognize \n as next line  character but mere system me shi chal rha hai
+
+
+
+
+
+BufferedReader / BufferedWriter directly file ke sath communicate nhi karta ye kisi Reader yaa Writer ke sath ki communicate karega yaa fir other BufferedReader BufferedWriter
+Ex :- BufferedReader reader=new BufferedReader(new FileReader("abc.txt"));
+BufferedReader reader=new BufferedReader(new BufferedReader(new FileReader("abc.txt"))); // two level buffering
+
+Buffered wale me aap buffered ka size bhi mention kar sakte ho
+aur isme newLine() function bhi hota hai
+agar hum BufferedReader ys BufferedWriter ko close karte hai to automatically inner Writer aur Reader bhi close ho jata hai we dont need to close them explicitly
+
+
+
+DataInputStream bhi directly communicate nhi karta file se ye InputStream maangta hai as argument
+
+
+
+
+========================= Very Important ==============================
+
+why do we need PrintWriter ?
+
+Ans - In FileWriter hum sirf character , character sequence , string ko hi write kar skte hai lekin direct double , int , boolean type ko
+write nhi kar skte . int ko agar karte hai to wo usko utf-8 code maan leta hai . Agar hame in typo ke data ko write karna hai to hame inhe
+string ke format me write karna padega joki storage jyada lega , space issue will be there . Just to avoid that PrintWriter came into the picture . isse hum kisi bhi data type ko directly write kar skte hai
+
+ex pw.print("hello");
+   pw.print(100);  //100 will be printed
+   pw.print(100.3);
+   pw.print(100.4f);
+   pw.print('c');
+   pw.print(true);
+
+
+
+isme nextline ke liye println bhi hai
+
+
+PrintWriter is the most recommended writer for writing into the file among all Writers.
+
+In reading data , BufferedReader is more recommended for file . There is no any PrintReader .
+
+
+Writers Level:->
+1. FileWriter
+2. BufferedWriter
+3. PrintWriter
+
+Readers Level:->
+
+1. FileReader
+2. BufferedReader
+
+
+PrintWriter ka another advantage ye hai ki ye directly bhi file ke sath communicate kar skta hai
+aur other Writer ke through bhi [ INDIRECTLY ] ye communicate kar skta hai
+
+FileWriter,PrintWriter are buffered internally. so we have to use flush aur autoflush mode  should be true .
+FileOutputStream me flush function to hai but autoflush ka option nhi hai short me bole to ye internally buffered nhi hai
+
+
+
+
+FileWriter ki super class OutputStreamWriter h naaki Writer
+FileReader ki super class InputStreamReader h naaki Reader
+BufferedWriter,PrintWriter ki super class Writer h
+
+
+
+
+=============================  Taking input from console Scanner vs BufferedReader================== :->
+
+
+Scanner scanner=new Scanner(System.in);
+int n=scanner.nextInt();
+
+
+BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+int n=Integer.parseInt(reader.readLine());
+
+
+
+
+==================== Scanner ================================
+
+        Scanner scanner=new Scanner(System.in);
+        Scanner scanner1=new Scanner("hello bhai\n data is here");
+        Scanner scanner2=new Scanner(new File("/root/IdeaProjects/PR/src/read"));
+
+
+
+
+
+
+        package com.tutorialspoint;
+
+        import java.util.regex.Matcher;
+        import java.util.regex.Pattern;
+
+        public class JavaCharacterClassDemo {
+           private static final String REGEX = "\\p{javaWhitespace}";
+           private static final String INPUT = "Bb1   \tc\n \t!";
+
+           public static void main(String[] args) {
+              // create a pattern
+              Pattern  pattern = Pattern.compile(REGEX);
+              // get a matcher object
+              Matcher matcher = pattern.matcher(INPUT);
+
+              while(matcher.find()) {
+                 //Prints the start index of the match.
+                 System.out.println("Match String start(): "+matcher.start());
+              }
+           }
+        }
+
+
+
+        Match String start(): 3
+        Match String start(): 4
+        Match String start(): 5
+        Match String start(): 6
+        Match String start(): 8
+        Match String start(): 9
+        Match String start(): 10
+
+
+
+
+
+Scanning
+Objects of type Scanner are useful for breaking down formatted input into tokens and translating individual tokens according to their data type.
+
+Breaking Input into Tokens
+By default, a scanner uses white space to separate tokens. (White space characters include blanks, tabs, and line terminators. For the full list, refer to the documentation for Character.isWhitespace.) To see how scanning works, let's look at ScanXan, a program that reads the individual words in xanadu.txt and prints them out, one per line.
+
+import java.io.*;
+import java.util.Scanner;
+
+public class ScanXan {
+    public static void main(String[] args) throws IOException {
+
+        Scanner s = null;
+
+        try {
+            s = new Scanner(new BufferedReader(new FileReader("xanadu.txt")));
+
+            while (s.hasNext()) {
+                System.out.println(s.next());
+            }
+        } finally {
+            if (s != null) {
+                s.close();
+            }
+        }
+    }
+}
+Notice that ScanXan invokes Scanner's close method when it is done with the scanner object. Even though a scanner is not a stream, you need to close it to indicate that you're done with its underlying stream.
+
+
+=============================  IMP ===============================
+jab hum nextInt(),nextFloat(),next() ka use karte hai to ye delimeter tak jaata hai jo non delimtere ke baad hai  aur us data [ jo delimeter se pahle hai dhyaan rahe use data se wo agar prefix me deleter hai usko htakar ] ko particular type me parse karta hai lekin cursor us data ke baad delimeter par hi rahega
+nextLine() hamesa \n ko consume kar deta hai scanning karte hue aur ye kabhi nhi delimeter ko remove nhi karta balki data me hi consider karta hai
+nextLine() wala dusro se thoda hatke hai
+
+
+
+
+we have System.in , System.out . in waala program me input ke liye out wala program me se output console me dene ke liye
+
+Jab bhi hum reading karte hai System.in stream me agar already data available hai to user data enter kare uska wait nhi karega
+agar available nhi hai to it will ask user to enter the data
+
+
+ Scanner scanner = new Scanner(System.in);
+        int a=scanner.nextInt();
+        int k=100;
+        int temp=k;
+        k=a;
+        a=temp;
+        System.out.println("okay");
+        String data=scanner.next();
+        System.out.println(data);
+
+
+
+==============================================================================================================
+
+
+        DataInputStream inputStream =new DataInputStream(System.in);
+     int d=inputStream.readInt();
+     System.out.println(d);
+
+
+     INPUT :-
+        1234 [ bcz 8 byte complete hue utf-8 use hua hai waise java utf-16 use karta hai characters ke liye ]
+
+     Output:
+     
+     825373492
+     
+     
+     
