@@ -1,0 +1,60 @@
+String constant Pool :->
+
+
+String str1=new String("aniket");  |   String str1="aniket";
+
+it will create two objects one     |  it will create object in constant pool only
+in heap area and another one       |  ye hamesha literal ke kaaran hua jab bhi lietral present hoga code me to wo constant pool me store hoga
+in string constant  pool .
+str1 lekin heap wale ko refer karega
+
+
+constant pool me ek string literal ek hi baar create hoga baar baar nhi lekin heap area me it is possible .
+
+constant pool was in Method area ( PERM GENERATION ) till version 1.6 but in and after 1.7 it is also in heap area
+
+
+================== IMP ======================
+Runtime pe jo bhi string form hogi like concat karke or bhi dusre operation se then they will be stored in the
+heap area only not in the constant pool .
+Example  :->
+
+String s=new String("aniket"); // constant pool and heap both
+s.concat("solutions")    // solutions is a literal it will be stored in constant pool but concat function will generate new string aniketsolutions and this one will be stored only in heap area
+
+
+
+<-:  INTEGER CONSTANT POOL :->
+
+
+Integer i=new Integer(5); // 5 yha pe literal bhi isliye it will be stored in   integer constant pool  and heap [ new ka use ] as well.
+
+Integer i=Integer.valueOf("5"); // this function return the reference from constant pool , if not created then it will create in heap area then wo heap area me se refer karega
+
+new keyword ka use karna for Integer,Float,Character,Long,Double is now deprecated
+
+-128  to   127 numbers can be stored in the constant pool agar is limit se bahar hai tab always heap me hi create hoga object constant pool me nhi
+
+
+Example :->
+      Integer j=127;
+      Integer i=Integer.valueOf("127");
+      System.out.println(i==j);
+
+      output :- true
+
+
+        Integer j=128;
+      Integer i=Integer.valueOf("128");
+      System.out.println(i==j);
+
+
+    output - false
+
+
+
+Imp :->     Long j=128l; // Correct
+            Long j=128; // Incorrect bcz Long yha pe class hai primitive data type nhi to yha pe exact same type chahiye literal me bhi for autoboxing
+
+
+Integer wali same thing applies to Long as well 
