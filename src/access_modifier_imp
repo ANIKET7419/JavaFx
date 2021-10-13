@@ -37,7 +37,8 @@ Example : - int y=4590; // it is public static final
 
 
 ---------- METHODS ----------------
-After JDK 8 - private and static methods are allowed in interface
+After JDK 8 - default and static methods are allowed in interface
+After JDK 9 - private methods are allowed in interface
 ALLOWED - private , public
 DEFAULT - non static public
 
@@ -100,5 +101,11 @@ import java.sql.Date ;
 
 
 
+we can not add any type of blocks in interface also constructor can not be added in the interface . This is the reason ki
+interface me itni facility hone ka baad me abstract class ke equal nhi hai
 
+
+interface aniket{
+public abstract void hello(); // Correct
+}
 
