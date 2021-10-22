@@ -57,3 +57,22 @@ for (int i=0; i<numbers.length; i++)
 }
 
 
+
+
+
+There are two possible reasons to do this:
+
+It could simply be a way to avoid changing the loop variable accidentally in the loop body. (Or to document the fact that the loop variable is not going to be changed.)
+
+It could be done so that you can refer to the loop variable in an anonymous inner class. For example:
+
+for(final Animal animal : animalList){
+    executor.submit(new Runnable(){
+        public void run() {
+            animal.feed();
+        }
+    });
+}
+It is a compilation error if you leave out the final in this example.
+
+UPDATE it is not a compilation error in Java 8 and later versions. The non-local variable is now only required to be effectively final. In simple terms, that means that the variable is not assigned to (using an assignment operator or a pre/post increment or decrement operator) after the initial declaration / initialization.
