@@ -127,3 +127,10 @@ hexadecimal - 0xa1161;
 binary - 0b101010;
 octal 01717; 
 
+
+long t=940;  // long is greater so it is correct
+
+But Long t=940; // Error [ Bcz in autoboxing or unboxing the type must be exactly same  whether in simple statement or passing as arguments ]
+Long t= 940l; // Correct
+int op=(int)t; // Error // bcz Long can be unboxed to long primitive type
+int op=(int)(long)t; // Correct
