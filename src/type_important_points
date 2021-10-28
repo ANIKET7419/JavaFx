@@ -134,3 +134,15 @@ But Long t=940; // Error [ Bcz in autoboxing or unboxing the type must be exactl
 Long t= 940l; // Correct
 int op=(int)t; // Error // bcz Long can be unboxed to long primitive type
 int op=(int)(long)t; // Correct
+
+
+
+
+
+
+
+
+
+
+byte temp;
+temp=temp==1|| match(s,p,i+1,j)==1||match(s,p,i+1,j+2)==1?(byte)1:(byte)0; // Very special case agar byte type casting htaye to error aayega   
