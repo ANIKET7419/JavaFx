@@ -146,3 +146,37 @@ int op=(int)(long)t; // Correct
 
 byte temp;
 temp=temp==1|| match(s,p,i+1,j)==1||match(s,p,i+1,j+2)==1?(byte)1:(byte)0; // Very special case agar byte type casting htaye to error aayega   
+
+
+
+
+
+
+
+
+
+0x00 and 0x01 are int literals: they are expressions with int type. An int can't usually be assigned to a byte, but it can if the expression is compile-time constant, provided the value is in the range of byte.
+
+With the conditional, the assigned value is compile-time constant:
+
+if (enabled) {
+  enabledByte = 0x01;
+} else {
+  enabledByte = 0x00;
+}
+These assignments are completely separate from the compiler's point of view. There is one statement which assigns the constant value 1, and one statement which assigns the constant value 0.
+
+For each statement, the compiler can guarantee that fits into the range of byte, so it automatically narrows the assigned value to byte.
+
+However, the assignment with the conditional operator:
+
+enabledByte = enabled ? 0x01 : 0x00;
+The rhs expression is of type int, but isn't compile time constant, because enabled isn't known at compile time. It doesn't matter that the two possible values are compile-time constant, and both would fit into a byte: the non-constant first operand makes it non-constant. As such, the result of the conditional operator expression cannot be automatically narrowed.
+
+The most efficient solution to this is to cast the second and third operands to byte:
+
+enabled ? (byte) 0x01 : (byte) 0x00
+This is better than
+
+(byte) (enabled ? 0x01 : 0x00)
+Because the latter will cast at runtime, each time the expression is evaluated, whereas the former does not: the operands are already bytes at compile-time, so no cast is necessary.
