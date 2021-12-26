@@ -3,3 +3,5 @@
 3. Fenwick Tree [ https://youtu.be/DPiY9wFxGIw ] 
 4. KMP ALGORITHM [ https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/ ]
 5. Rabin Karp Using  Rolling Hash [ https://youtu.be/H4VrKHVG5qI ] 
+6. Why use a prime number in hashCode ? [ A prime number can only be divided by 1 or itself, so it cannot be factored any further! Every other whole number can be broken down into prime number factors. ]
+
