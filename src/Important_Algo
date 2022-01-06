@@ -39,3 +39,23 @@ public class Solution {
 
 
 8 . [ 1542. Find Longest Awesome Substring ] [ https://leetcode.com/problems/find-longest-awesome-substring/ ]
+
+
+9.  [  1109. Corporate Flight Bookings  ]  [ https://leetcode.com/problems/corporate-flight-bookings/ ]
+
+
+
+class Solution {
+    public int[] corpFlightBookings(int[][] bookings, int n) {
+        int result[]=new int[n];
+        for(int booking[]:bookings){
+            result[booking[0]-1]+=booking[2];
+            if(booking[1]<n)
+                result[booking[1]]-=booking[2];
+        }
+        for(int i=1;i<n;i++)
+            result[i]+=result[i-1];
+        return result;
+        
+    }
+}
