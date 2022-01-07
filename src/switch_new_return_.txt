@@ -131,6 +131,34 @@ initialize honi  chahiye
 
 
 
+-> we can also use agar hame varaible initialize bhi naa karna ho to 
+public class Test {
+    public static void main(String[] args) {
+
+
+        switch(1){
+            case 1->System.out.println(10);
+        }
+
+    }
+}
+
+
+
+// CORRECT 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
