@@ -12,9 +12,9 @@ if it is block then we have to use return if return type is given [ same goes wi
 
 in a switch expression we can not use both type of case at a same time
 like
-(i) case :  default :
- (ii) case -> default ->
-we can use , to seperate multiple values in  new switch expression
+(i) case :  default ->
+ (ii) case -> default :
+we can use , on jdk 13 onwards
 
 
 
