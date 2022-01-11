@@ -105,3 +105,27 @@ class Solution {
 
 13 . Three clusters can also be done in the similar fashion [ see Sorting Colors problem ]
 
+
+
+
+14 .  Minimum Numbers of Function Calls to Make Target Array   [  https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/ ]
+
+
+class Solution {
+    public int minOperations(int[] nums) {
+        int op=0;
+        for(int i=0;i<32;i++){
+        
+            boolean flag=false;
+        for(int j=0;j<nums.length;j++){
+            op+=nums[j]%2;
+            nums[j]/=2;
+            flag|=(nums[j]>0);
+        }
+        if(flag) op++; else break;
+    }
+     return op;   
+    }
+}
+
+
