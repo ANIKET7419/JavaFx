@@ -28,8 +28,21 @@ the classpath is the path where compiler and jvm search for class loaded by appl
   if class does not exist in location defined by absolute import will cause compile time error whether this class is used or not
 
  3:
-  if class is not found in current file then classname will be searched in the classpath/imported_same_class_path_name
-  then if it is not found then classname with the prefixed package name will be searched in the given classpath not if provided class name currently not
+ 
+ First Preference class name defined in same file [ iska matlab import me absolute import same class ke name pe nhi kr skte see rule # 4 ]
+ Agar file me wo class name defined nhi hai to there are two possibilites :-
+ ( i ) us class name ka absolute import  [ without * ] kiya hoga
+ ( ii ) us class name ka import * ke sath ho rha hai 
+ 
+ 
+ (i) is case me same import waali me class use hogi 
+ (ii) is case me agar same package me usi name ki defined h to wo use hogi otherwise * import waali
+ 
+ 
+
+ 
+ 
+ provided class name currently not
   compiled but exist in filname_2.java then filename_2 should be as classname then filname_2 will be compiled if it contains that class otherwise error will be generated
   other option is expilictally compile filname_2.java
 
