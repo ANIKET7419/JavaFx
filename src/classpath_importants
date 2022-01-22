@@ -4,6 +4,28 @@
  4.    If -classpath is not used then only env variable will be preferred only not default
  5.    If env varible is not mentioned then only default option is available
  Note : whether file is found or not ( applicable for 3,4,5)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Multiple specifications
+To find class files in the directory C:\java\MyClasses as well as classes in C:\java\OtherClasses, you would set the class path to:
+
+C:> java -classpath C:\java\MyClasses;C:\java\OtherClasses ...
+    
+Note that the two paths are separated by a semicolon.
+
+Specification order
+The order in which you specify multiple class path entries is important. The Java interpreter will look for classes in the directories in the order they appear in the class path variable. In the example above, the Java interpreter will first look for a needed class in the directory C:\java\MyClasses. Only if it doesn't find a class with the proper name in that directory will the interpreter look in the C:\java\OtherClasses directory.
+
+ 
+ 
+ 
+ 
 java class_name
 if classname is given with / or . then it is considered inside that package
 
