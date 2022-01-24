@@ -129,3 +129,69 @@ class Solution {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+15 . [ IMP ] 834. Sum of Distances in Tree   [ https://leetcode.com/problems/sum-of-distances-in-tree/  ]
+
+class Solution {
+    
+    HashMap<Integer,ArrayList<Integer>> map;
+    int count[],ans[];
+    public int[] sumOfDistancesInTree(int n, int[][] edges) {
+        map=new HashMap<>();
+        for(int i=0;i<n;i++)
+            map.put(i,new ArrayList<Integer>());
+        for(int i[]:edges){
+            map.get(i[0]).add(i[1]);
+            map.get(i[1]).add(i[0]);
+        }
+        count=new int[n];
+        ans=new int[n];
+        Arrays.fill(count,1);
+        dfs(0,-1,0);
+        dfs2(0,-1);
+        return ans;
+        
+    }
+    
+    
+    void dfs(int node,int parent,int level){
+        ans[0]+=level;
+        for(int i:map.get(node)){
+            if(i!=parent){
+               dfs(i,node,level+1);
+               count[node]+=count[i];
+            }
+        }  
+    }
+    
+    void dfs2(int node,int parent){
+        for(int i:map.get(node)){
+            if(i!=parent){
+                ans[i]=ans[node]+count.length-2*count[i];
+                dfs2(i,node);
+                
+            }
+        }
+        
+    }
+    
+    
+}
+
+
+
+
+
+
