@@ -190,6 +190,69 @@ class Solution {
     
 }
 
+16 . [ 1825. Finding MK Average ] [ https://leetcode.com/problems/finding-mk-average/ ] 
+
+class MKAverage {
+
+  int sum,total,m,k;
+
+    TreeMap<Integer,Integer> map=new TreeMap<>();
+    Queue<Integer> queue=new LinkedList<>();
+    public MKAverage(int m, int k) {
+
+       this.m=m;
+       this.k=k;
+    }
+
+    public void addElement(int num) {
+
+       total++;
+       sum+=num;
+       queue.add(num);
+       map.put(num,map.getOrDefault(num,0)+1);
+       if (total>m){
+           total--;
+          int first=queue.poll();
+          sum-=first;
+          if (map.get(first)==1)
+             map.remove(first);
+          else map.put(first,map.get(first)-1);
+
+       }
+
+
+    }
+
+    public int calculateMKAverage() {
+
+       if (total<m) return -1;
+
+       int count=k;
+       int temp_sum=sum;
+       for (Map.Entry<Integer,Integer> entry:map.entrySet()){
+          if (count==0) break;
+          int val=entry.getValue();
+          int key=entry.getKey();
+          int min=Math.min(count,val);
+          count-=min;
+          temp_sum-=min*key;
+
+       }
+       count=k;
+       for (Map.Entry<Integer,Integer> entry:map.descendingMap().entrySet()){
+          if (count==0) break;
+          int val=entry.getValue();
+          int key=entry.getKey();
+          int min=Math.min(count,val);
+          count-=min;
+          temp_sum-=min*key;
+       }
+
+
+       return temp_sum/(m-2*k);
+    }
+}
+
 
 
 
