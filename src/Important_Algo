@@ -256,5 +256,58 @@ class MKAverage {
 
 
 
+17 .  Find Median from Data Stream [ https://leetcode.com/problems/find-median-from-data-stream/ ]
+
+
+
+
+class MedianFinder {
+
+    PriorityQueue<Integer> left,right;
+    public MedianFinder() {
+        left=new PriorityQueue<>(Collections.reverseOrder());
+        right=new PriorityQueue<>();
+    }
+
+     public void addNum(int num) {
+        if (left.size()==0) {
+            left.add(num);
+            return;
+        }
+        else if (right.size()==0){
+            if (left.peek()>num) {
+                right.add(left.poll());
+                left.add(num);
+            }
+            else right.add(num);
+            return;
+        }
+
+        if (left.peek()>num){
+            if (left.size()!=right.size()){
+                right.add(left.poll());
+            }
+            left.add(num);
+        }
+        else if (right.peek()<num){
+            if (left.size()==right.size()){
+                left.add(right.poll());
+            }
+            right.add(num);
+        }
+        else {
+            if (left.size()==right.size()) left.add(num);
+            else right.add(num);
+        }
+    }
+
+    public double findMedian() {
+        return left.size()==right.size()?((double)left.peek()+ right.peek())/2: left.peek();
+    }
+
+}
+
+
+
 
 
