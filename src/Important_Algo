@@ -377,3 +377,37 @@ class Solution {
 }
 
 
+
+
+20. Minimize Deviation in Array  [ https://leetcode.com/problems/minimize-deviation-in-array/ ]
+
+class Solution {
+    public int minimumDeviation(int[] nums) {
+        TreeSet<Integer> set=new TreeSet<>();
+        for(int i:nums)
+        {
+            if((i&1)==1)
+                set.add(i*2);
+            else set.add(i);
+            
+            
+        }
+        int ans=Integer.MAX_VALUE;
+        while(true){
+            int min=set.first();
+            int max=set.pollLast();
+            ans=Math.min(ans,max-min);
+            if((max&1)==1) break;
+            set.add(max/2);
+            
+            
+        }
+        
+        
+        
+        return ans;
+    }
+}
+
+
+
