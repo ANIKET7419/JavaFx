@@ -411,3 +411,60 @@ class Solution {
 
 
 
+21 . https://www.geeksforgeeks.org/minimize-count-of-divisions-by-d-to-obtain-at-least-k-equal-array-elements/# [[[[[  VVVVVVVV IMP ]]]]]]
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class EqualizeTheArray {
+
+
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        int k=scanner.nextInt();
+        int d=scanner.nextInt();
+        int []data=new int[n];
+        for (int i=0;i<n;i++) data[i]=scanner.nextInt();
+        int max=data[0];
+        for(int i=1;i<n;i++)
+            max=Math.max(max,data[i]);
+        ArrayList<Integer>[] temp=new ArrayList[max+1];
+        for(int i=0;i<max+1;i++)
+            temp[i]=new ArrayList<>();
+        for (int i=0;i<n;i++){
+            temp[data[i]].add(0);
+            int count=0;
+            while(data[i]>0){
+                data[i]/=d;
+                count++;
+                temp[data[i]].add(count);
+            }
+        }
+        int ans=Integer.MAX_VALUE;
+        for(int i=0;i<=max;i++){
+            if(temp[i].size()>=k) {
+                Collections.sort(temp[i]);
+                int sum=0;
+                for(int j=0;j<k;j++)
+                    sum+=temp[i].get(j);
+                ans=Math.min(ans,sum);
+            }
+
+        }
+        System.out.println("Answer is "+ans);
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
