@@ -1,0 +1,3 @@
+agar try me return break or continue ho to finally always execute hoga [ java and python ]
+lekin System.exit(0) [ direct termination in java ]
+exit(0) [ it is not direct termination in python ] use os._exit for direct termination
