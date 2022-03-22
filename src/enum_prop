@@ -2,6 +2,9 @@ Inheriting a Class from an enum Class
 
 In Java, enum classes are final by default. Hence, we cannot inherit other classes from it. For example,
 
+In enum we can not have public constructor
+
+
 enum A {
   // enum constants
   // fields and methods
