@@ -1,3 +1,11 @@
+
+case literal or final:
+
+
+case ke sath user defined class literal object or final reference does not works
+
+
+
 java 14 supports switch expression
 data_type variable_name=switch(expression){
 case constant_exp , constant_exp // for multiple value ->
