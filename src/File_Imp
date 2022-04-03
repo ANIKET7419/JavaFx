@@ -30,7 +30,7 @@ data = null hai kyuki ye file hai file mein sub directory aur other file nhi hot
 
 :::::-----IMP::::---
 FileWriter outputStream =new FileWriter("/root/IdeaProjects/PR/src/read");
- ye line agar file exist nhi karti to kuchh nhi sirf usko naam ko refer karegi koi file new create nhi karegi jab tak kuchh write function ka use naa kare
+ ye line agar file exist nhi karti to file  new create  karegi 
  agar file  already exist karti hai to iska matlab ye usko point karegi lekin uske under ka sara data chla jayega
 
 
