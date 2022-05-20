@@ -3,12 +3,14 @@ a  and b are floating point numbers
 ex :- a%b
 remainder = a - n*b here n is the integral part such that n<=(int)(a/b)
 
-negative integers :-
-86 % 7 = 2 it means agar hum 86 me se 2 minus kar de to hme  7 se divisible number milega
-86 % -7 = -5 it mean agar hum 86 - (-5) =91 it is divisible by 7
--86 % 7 = 5  here -86 - 5 = -91 which is divisible by 7
--86 % -7 = -2 here -86 +2=-84 which is divisible by 7
 
-Agar divider like 7 is positive to hm 86 ko niche kar rhe hai particular value k se so that wo 7 se divisible ho jaye and k can be negative and positive depends on divisor
-agar divider is negative to hm number ko bda rhe hai particular value k se so that wo -7 se divisible ho jaye that can be positive or negative note : k=remainder
+
+
+
+
+
+https://docs.oracle.com/javase/specs/jls/se7/html/jls-15.html#jls-15.17.3
+
+It follows from this rule that the result of the remainder operation can be negative only if the dividend is negative, and can be positive only if the dividend is positive. Moreover, the magnitude of the result is always less than the magnitude of the divisor.
+
 
