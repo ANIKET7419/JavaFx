@@ -468,3 +468,52 @@ public class EqualizeTheArray {
 
 
 
+
+
+
+23 . N Equal Partitions Problem Intituation [ https://leetcode.com/problems/matchsticks-to-square/ ]
+
+===============      DP + BITMASKING   ====================== 
+
+
+class Solution {
+    int side = 0;
+    HashMap<Pair<Integer,Integer>,Boolean> map = new HashMap<>();
+    public boolean makesquare(int[] matchsticks) {
+      int sum = 0;
+      for(int i :matchsticks)
+          sum+=i;
+      if(sum%4!=0) return false;
+        side = sum/4;
+      return helper(matchsticks,0,0);
+    }
+    boolean helper(int [] matchsticks,int mask , int done){
+        int total = 0;
+        int n = matchsticks.length;
+        Pair <Integer,Integer>pair = new Pair<>(mask,done);
+        if(map.containsKey(pair)) return map.get(pair);
+        for(int i =0 ; i<n ;i++)
+        {
+            if((mask&(1<<i))!=0)
+                total+=matchsticks[i];
+        }
+        if(total>0&&total%side==0)
+            done++;
+        if(done==3) return true;
+        
+        int rem = (done+1)*side- total;
+        for(int i =0;i<n;i++){
+            if((mask&(1<<i))==0 && matchsticks[i]<=rem)
+            {
+                if(helper(matchsticks,mask^(1<<i),done)){
+                    {
+                        map.put(pair,true);
+                        return true;
+                    }
+                }
+            }
+        }
+        map.put(pair,false);
+        return false;
+    }
+}
