@@ -1,0 +1,123 @@
+Since JDK 1.1, Java provides us with the Void type. Its purpose is simply to represent the void return type as a class and contain a Class<Void> public value. It's not instantiable as its only constructor is private.
+
+Therefore, the only value we can assign to a Void variable is null. It may seem a little bit useless, but we'll now see when and how to use this type.
+
+
+
+3.1. Reflection
+First, we could use it when doing reflection. Indeed, the return type of any void method will match the Void.TYPE variable that holds the Class<Void> value mentioned earlier.
+
+Let's imagine a simple Calculator class:
+
+public class Calculator {
+    private int result = 0;
+
+    public int add(int number) {
+        return result += number;
+    }
+
+    public int sub(int number) {
+        return result -= number;
+    }
+
+    public void clear() {
+        result = 0;
+    }
+
+    public void print() {
+        System.out.println(result);
+    }
+}
+Some methods are returning an integer, some are not returning anything. Now, let's say we have to retrieve, by reflection, all methods that don't return any result. We'll achieve this by using the Void.TYPE variable:
+
+@Test
+void givenCalculator_whenGettingVoidMethodsByReflection_thenOnlyClearAndPrint() {
+    Method[] calculatorMethods = Calculator.class.getDeclaredMethods();
+    List<Method> calculatorVoidMethods = Arrays.stream(calculatorMethods)
+      .filter(method -> method.getReturnType().equals(Void.TYPE))
+      .collect(Collectors.toList());
+
+    assertThat(calculatorVoidMethods)
+      .allMatch(method -> Arrays.asList("clear", "print").contains(method.getName()));
+}
+As we can see, only the clear() and print() methods have been retrieved.
+
+
+
+
+
+
+
+
+
+Another usage of the Void type is with generic classes. Let's suppose we are calling a method that requires a Callable parameter:
+
+
+freestar
+public class Defer {
+    public static <V> V defer(Callable<V> callable) throws Exception {
+        return callable.call();
+    }
+}
+But, the Callable we want to pass doesn't have to return anything. Therefore, we can pass a Callable<Void>:
+
+@Test
+void givenVoidCallable_whenDiffer_thenReturnNull() throws Exception {
+    Callable<Void> callable = new Callable<Void>() {
+        @Override
+        public Void call() {
+            System.out.println("Hello!");
+            return null;
+        }
+    };
+
+    assertThat(Defer.defer(callable)).isNull();
+}
+As shown above, in order to return from a method with the Void return type, we just have to return null. Moreover, we could have either used a random type (such as Callable<Integer>) and return null or no type at all (Callable), but using Void states our intentions clearly.
+
+We can also apply this method to lambdas. As a matter of fact, our Callable could have been written as a lambda. Let's imagine a method requiring a Function, but we want to use a Function that doesn't return anything. Then we just have to make it return Void:
+
+public static <T, R> R defer(Function<T, R> function, T arg) {
+    return function.apply(arg);
+}
+@Test
+void givenVoidFunction_whenDiffer_thenReturnNull() {
+    Function<String, Void> function = s -> {
+        System.out.println("Hello " + s + "!");
+        return null;
+    };
+
+    assertThat(Defer.defer(function, "World")).isNull();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void.class is the object used in reflection to indicate that a method has void return type. If you write method.getReturnType();, this object may be returned.
+
+int.class can represent both arguments and return types.
+
+You can write int.class.isInstance(...) but it will always return false, because the argument is an Object.
+
+No Class object has an accessible constructor.
+
+Both int.class.getConstructors() and int.class.getDeclaredConstructors() return an empty array. There are no constructors for primitive types.
+
+
+
+
+
+        System.out.println(void.class==Void.TYPE); // TRUE
+        System.out.println(void.class.equals(Void.TYPE)); // TRUE
+        System.out.println(int.class.equals(Integer.TYPE)); // TRUE
+        System.out.println(float.class.equals(Float.TYPE)); // TRUE
