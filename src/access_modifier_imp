@@ -44,7 +44,7 @@ DEFAULT - non static public
 
 
 COMBINATION in interface methods :-
-final private  - invalid
+final private  - valid
 final static - invalid
 final default - invalid
 final void hello(); - invalid
