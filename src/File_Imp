@@ -48,7 +48,7 @@ FileWriter writer=new FileWriter("file",true); // true yha pe append ko show kar
 
 
 
-flush karna zaroori hai agar autoflush off hai otherwise data write hi nhi hoga chahe file close [ file writer object nhi kar rhe agar filewriter object ko close krenge to automatically glush kr dega  ] hi kyu naa ho jaye
+flush karna zaroori hai agar autoflush off hai otherwise data write hi nhi hoga  [ close method flush ko call kr deta h  automatically ]
 
 
 agar autoflush off hai aur  buffer full ho gya to wah data ko write kar dega bina flush command ke
