@@ -566,4 +566,6 @@ https://practice.geeksforgeeks.org/problems/bst-to-max-heap/1
 [ IMP POINT -> IF WE NEED TO KNOW WHETHER THE OCURRENCE IS ODD OR EVEN FOR LIMITED NUMBERS LIKE FOR TOTAL 64 NUMBERS THEN WE SHOULD USE BIT MANIPULATION WHERE CORRESPONDIGN 1 BIT SHOWS IT ODD TIME OCCURS OTHERWISE EVEN TIMES ]
 
 
+2^n ke sabhi factors 2 ki power ke hi honge [   2*2*2*2*2*...n times if we group them in any way we would get factors in power of 2 ]
+how to check whether a number is power of 2 :-> [ https://www.ritambhara.in/check-if-number-is-a-power-of-2/#:~:text=Keep%20dividing%20the%20number%20by,is%20a%20power%20of%202. ]
 
