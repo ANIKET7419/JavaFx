@@ -584,3 +584,17 @@ https://www.geeksforgeeks.org/how-to-calculate-log-base-2-of-an-integer-in-java/
 [ GCD OF STRING [ IMP ] - QUES LINK [ https://leetcode.com/problems/greatest-common-divisor-of-strings/ ] BEST ANS USING EUCLIDEAN [ https://leetcode.com/problems/greatest-common-divisor-of-strings/discuss/2541720/Java-easy-solution-by-Euclidean-Algorithms ]
 
 
+
+
+
+
+[ COUNTING OF BITS OF LARGE DATA : - USING DP ]
+
+vector<int> dp(10001,0);
+        for(int i=1;i<10001;i++){
+            dp[i] = i%2 + dp[i/2];
+        }
+
+
+
+
