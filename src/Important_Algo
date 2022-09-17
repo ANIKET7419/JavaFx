@@ -598,3 +598,74 @@ vector<int> dp(10001,0);
 
 
 
+ [ IMP ]    NUMBER OF WAYS TO ARRIVE AT DESTINATION - [ BEST DIJKSTRA QUESTION ] ] :- https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/ 
+
+
+class Solution {
+    
+    final int mod = 1_000_000_007;
+    public int countPaths(int n, int[][] roads) {
+        
+        HashMap<Integer,ArrayList<int[]>> map = new HashMap<>();
+        
+        for( int road [] :roads){
+            
+            if(!map.containsKey(road[0]))   map.put(road[0],new ArrayList<>());
+            
+            map.get(road[0]).add(new int[]{road[1],road[2]});
+            
+            if(!map.containsKey(road[1]))   map.put(road[1],new ArrayList<>());
+            
+            map.get(road[1]).add(new int[]{road[0],road[2]});
+            
+                
+                
+        }
+        
+        int ways [] = new int[n];
+        
+        int distance [] = new int [n];
+        
+        Arrays.fill(distance , Integer.MAX_VALUE);
+        distance[0] = 0;
+        
+        PriorityQueue<int[]> queue = new PriorityQueue<>((a,b)->a[1]-b[1]);
+        
+        queue.add(new int[]{0,0});
+        
+        ways[0] = 1;
+        while(!queue.isEmpty()){
+            
+            int node [] = queue.poll();
+            
+            if(node[1]>distance[node[0]])
+                continue;
+            
+            if(map.containsKey(node[0])){
+                for(int[] adj : map.get(node[0])){
+                    int t = adj[1];
+                    int v = adj[0];
+                    int new_d = distance[node[0]]+t ;
+                    if(new_d<distance[v])
+                    {
+                        distance[v] = new_d;
+                        queue.add(new int[]{v,distance[v]});
+                        ways[v] = ways[node[0]];
+                    }
+                    else if(new_d==distance[v]){
+                        ways[v] = (ways[v]+ways[node[0]])%mod;
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        return ways[n-1];
+        
+    }
+}
+
+
+
+
