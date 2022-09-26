@@ -8,3 +8,4 @@ find the largest cycle in the graph
 Minimum Money Required Before Transactions   [ done ] 
 palindrome pairs [ https://leetcode.com/problems/palindrome-pairs/submissions/ ] [ done ]
 https://leetcode.com/problems/minimum-jumps-to-reach-home/ [ do it using dp  bfs is already done ] 
+526. Beautiful Arrangement
