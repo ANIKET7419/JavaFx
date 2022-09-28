@@ -672,3 +672,7 @@ class Solution {
 
 [ MOST IMP ] https://leetcode.com/problems/minimum-money-required-before-transactions/submissions/
 
+
+[ IMP ] Remove Nth Node From End of List [ SINGLE PASS [ USING FAST AND SLOW POINTER ] ]
+[ IMP ] DELETE A GIVEN NODE IN O(1) [ VALUE COPY OTHERWISE IT IS NOT POSSIBLE WITHOUT HEAD POINTER AND WITHOUT TAKING MUCH TIME THAN O(1) ]
+
