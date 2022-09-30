@@ -16,3 +16,7 @@ https://leetcode.com/problems/the-skyline-problem/description/ [ IMP ]
 
 Longest uncommon subsequence 
 
+Exam Room 
+
+Intersection of two line segment 
+
