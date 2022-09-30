@@ -12,3 +12,7 @@ https://leetcode.com/problems/minimum-jumps-to-reach-home/ [ do it using dp  bfs
 838. Push Dominoes
 https://leetcode.com/problems/subarrays-with-k-different-integers/   [ Related problem - 1248. Count Number of Nice Subarrays ]
 
+https://leetcode.com/problems/the-skyline-problem/description/ [ IMP ] 
+
+Longest uncommon subsequence 
+
