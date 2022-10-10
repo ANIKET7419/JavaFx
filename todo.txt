@@ -22,3 +22,5 @@ Intersection of two line segment
 
 https://leetcode.com/contest/weekly-contest-313/problems/maximum-deletions-on-a-string/
 
+https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/
+
