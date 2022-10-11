@@ -3,7 +3,7 @@ minimize heights ii ( gfg )
 johnson algorithm
 smallest number following pattern
 leetcode contest 11 sep 2022 [ hard ] longest increasing subseq [ using binary search ]
-median of two sorted array
+median of two sorted array [ done ->  https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2691189/JAVA-EASY-SOLUTION-BINARY-SEARCH ]
 find the largest cycle in the graph
 Minimum Money Required Before Transactions   [ done ] 
 palindrome pairs [ https://leetcode.com/problems/palindrome-pairs/submissions/ ] [ done ]
