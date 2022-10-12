@@ -1,15 +1,28 @@
 === TO DO LIST ===
+
 minimize heights ii ( gfg )
+
 johnson algorithm
+
 smallest number following pattern
-leetcode contest 11 sep 2022 [ hard ] longest increasing subseq [ using binary search ]
+
+leetcode contest 11 sep 2022 [ hard ] longest increasing subseq [ using binary search ]  done -> https://leetcode.com/problems/longest-increasing-subsequence-ii/
+
+
 median of two sorted array [ done ->  https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2691189/JAVA-EASY-SOLUTION-BINARY-SEARCH ]
+
 find the largest cycle in the graph
+
 Minimum Money Required Before Transactions   [ done ] 
+
 palindrome pairs [ https://leetcode.com/problems/palindrome-pairs/submissions/ ] [ done ]
+
 https://leetcode.com/problems/minimum-jumps-to-reach-home/ [ do it using dp  bfs is already done ] 
+
 526. Beautiful Arrangement
+
 838. Push Dominoes
+
 https://leetcode.com/problems/subarrays-with-k-different-integers/   [ Related problem - 1248. Count Number of Nice Subarrays ]
 
 https://leetcode.com/problems/the-skyline-problem/description/ [ IMP ] 
