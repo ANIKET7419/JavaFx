@@ -27,7 +27,9 @@ https://leetcode.com/problems/subarrays-with-k-different-integers/   [ Related p
 
 https://leetcode.com/problems/the-skyline-problem/description/ [ IMP ] 
 
-Longest uncommon subsequence 
+Longest uncommon subsequence [ DONE ] [ https://leetcode.com/problems/longest-uncommon-subsequence-ii/discuss/2695111/JAVA-EASY-SOLUTION-HASHMAP-%2B-SORTING-%2B-TWO-POINTER  ] 
+
+
 
 Exam Room 
 
