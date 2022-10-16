@@ -47,3 +47,6 @@ Biweeky contest 89 [ hard waala ]
 
 https://leetcode.com/problems/string-compression-ii/
 
+
+https://leetcode.com/contest/weekly-contest-315/problems/count-subarrays-with-fixed-bounds/
+
