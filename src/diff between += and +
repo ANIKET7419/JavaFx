@@ -1,0 +1,21 @@
+char a = 10;
+a += 10 ; // correct 
+
+a = a + 10 ; // incorrect 
+int j = 1000000;
+
+a += j; // correct 
+
+a = a + j ; // incorrect 
+
+
+
+
+
+int m = 10;
+
+double d = 190.44;
+
+m += d; // correct 
+
+m = m + d ; // incorrect 
