@@ -50,3 +50,5 @@ https://leetcode.com/problems/string-compression-ii/
 
 https://leetcode.com/contest/weekly-contest-315/problems/count-subarrays-with-fixed-bounds/
 
+https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
+
