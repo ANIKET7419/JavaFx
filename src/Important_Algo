@@ -816,4 +816,19 @@ Solution :-  https://leetcode.com/problems/longest-uploaded-prefix/solutions/265
 [ IMP ] 572. Subtree of Another Tree  [ KMP SOLUTION IS VERY VVVVVVV IMP ]
 
 
+================================================== IMP POINTS ==================================================================
+
+Only Preorder without null node  - Uniquely Generates BST 
+Only Postorder without null node - Uniquely Generate BST 
+Only Inorder Without null node - can not generate uniquely 
+PreOrder + InOrder ( Without null ) - Uniquely Generate Binary Tree
+PostoRDER + InOrder ( without null ) - Uniquely Generate Binary Tree 
+PreOrder + PostOrder ( without null ) - Can not generate Binary Tree
+PreOrder + PostOrder ( without null ) - can generate Uniquely Full Binary Tree
+PreOrder ( with null ) - Uniquely Generate Binary Tree
+PostOrder ( with null nodes ) - Uniquely Generate Binary Tree 
+Inorder ( with null nodes ) - Can not generate Unique Binary Tree
+
+==================================================================================================================================
+
 
