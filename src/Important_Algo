@@ -832,3 +832,6 @@ Inorder ( with null nodes ) - Can not generate Unique Binary Tree
 ==================================================================================================================================
 
 
+[ IMP ] https://leetcode.com/problems/create-target-array-in-the-given-order/   -   https://leetcode.com/problems/create-target-array-in-the-given-order/discuss/2745864/BRUTE-FORCE-TO-OPTIMIZED-O(NLOGN)-USING-MERGE-SORT
+
+
