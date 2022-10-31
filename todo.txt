@@ -65,3 +65,6 @@ https://leetcode.com/problems/range-module/
 https://leetcode.com/problems/create-target-array-in-the-given-order/
 
 weeky and biweekly contest - 90 and 317
+
+https://leetcode.com/problems/maximum-binary-string-after-change/  
+
