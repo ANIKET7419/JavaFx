@@ -68,3 +68,12 @@ weeky and biweekly contest - 90 and 317
 
 https://leetcode.com/problems/maximum-binary-string-after-change/  
 
+
+
+https://leetcode.com/problems/minimum-height-trees/ 
+
+
+https://leetcode.com/problems/possible-bipartition/
+
+
+
